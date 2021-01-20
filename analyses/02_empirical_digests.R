@@ -1,14 +1,15 @@
 #### Script for reading in restriction enzyme
 #### digestion data from bioanalyzer output files
-## 16/12/2020
+## 20/01/2021
 ## H. Christiansen
-## v2.2
+## v2.3
 
 #### NOT RUN
 #### install package
 #####
 #remotes::install_github("jwfoley/bioanalyzeR")
 # edit: later versions, install without demo data:
+#install.packages("https://github.com/jwfoley/bioanalyzeR/releases/download/v0.6.2/bioanalyzeR_0.6.2-no_data.tar.gz", repos = NULL)
 #install.packages("https://github.com/jwfoley/bioanalyzeR/releases/download/v0.6.0/bioanalyzeR_0.6.0-no_data.tar.gz", repos = NULL)
 #install.packages("https://github.com/jwfoley/bioanalyzeR/releases/download/v0.5.1/bioanalyzeR_0.5.1-no_data.tar.gz", repos = NULL)
 #####
@@ -38,8 +39,10 @@ run_sample_names <-  function(samples, run_nr) {
 }
 
 ## read in bioanalyzer data for each run
-run1 <- read.bioanalyzer(here("data/bioanalyzer_results/1_new_bins/2017-12-01_09-25-08/2019-07-22/2100 expert_High Sensitivity DNA Assay_DE24802662_2017-12-01_09-25-08.xml"))
-run2 <- read.bioanalyzer(here("data/bioanalyzer_results/1_new_bins/2017-12-01_10-21-28/2019-07-22/2100 expert_High Sensitivity DNA Assay_DE24802662_2017-12-01_10-21-28.xml"))
+run1 <- read.bioanalyzer("/home/henrik/Dropbox/01_science/02_projects/02_radseq_pilot/data/bioanalyzer_results/1_new_bins/2017-12-01_09-25-08/2019-07-22/2100 expert_High Sensitivity DNA Assay_DE24802662_2017-12-01_09-25-08.xml")
+
+run1 <- read.bioanalyzer(here("data/bioanalyzer_results/2100 expert_High Sensitivity DNA Assay_DE24802662_2017-12-01_09-25-08.xml"))
+run2 <- read.bioanalyzer(here("data/bioanalyzer_results/2100 expert_High Sensitivity DNA Assay_DE24802662_2017-12-01_10-21-28.xml"))
 run3 <- read.bioanalyzer(here("data/bioanalyzer_results/1_new_bins/2018-06-15_11-05-44/2019-07-22/2100 expert_High Sensitivity DNA Assay_DE24802662_2018-06-15_11-05-44.xml"))
 run4 <- read.bioanalyzer(here("data/bioanalyzer_results/1_new_bins/2018-06-20_20-09-30-57/2019-07-22/2100 expert_High Sensitivity DNA Assay_DE24802662_2018-06-20_09-30-57.xml"))
 run5 <- read.bioanalyzer(here("data/bioanalyzer_results/1_new_bins/2018-07-05_10-45-54/2019-07-22/2100 expert_High Sensitivity DNA Assay_DE24802662_2018-07-05_10-45-54.xml"))
@@ -48,7 +51,7 @@ run7 <- read.bioanalyzer(here("data/bioanalyzer_results/1_new_bins/2018-08-03_10
 trace(read.bioanalyzer, edit = T)
 library(XML)
 library(caTools)
-run7 <- read.bioanalyzer_recto(here("data/bioanalyzer_results/1_new_bins/2018-08-03_10-18-03/2019-07-22/2100 expert_High Sensitivity DNA Assay_DE24802662_2018-08-03_10-18-03.xml"))
+run7 <- read.bioanalyzer_recto(here("data/bioanalyzer_results/2100 expert_High Sensitivity DNA Assay_DE24802662_2018-08-03_10-18-03.xml"))
 run8 <- read.bioanalyzer_recto(here("data/bioanalyzer_results/1_new_bins/2018-09-07_09-46-06/2019-07-22/2100 expert_High Sensitivity DNA Assay_DE24802662_2018-09-07_09-46-06.xml"))
 
 run7 <- read.bioanalyzer(here("data/bioanalyzer_results/1_new_bins/2018-08-03_10-18-03/2019-07-22/test.xml"))

@@ -1,0 +1,111 @@
+run,run_name,sample,specimen,species,enzyme,replicate,quality
+1,2017-12-01_09-25-08,sample 1,1C,Aequiyoldia eightsii,EcoRI,1,ok
+1,2017-12-01_09-25-08,sample 2,2C,Aequiyoldia eightsii,EcoRI,2,ok
+1,2017-12-01_09-25-08,sample 3,3C,Aequiyoldia eightsii,EcoRI,3,ok
+1,2017-12-01_09-25-08,sample 4,4C,Laternula elliptica,EcoRI,1,ok
+1,2017-12-01_09-25-08,sample 5,5C,Laternula elliptica,EcoRI,2,ok
+1,2017-12-01_09-25-08,sample 6,6C,Laternula elliptica,EcoRI,3,poor
+1,2017-12-01_09-25-08,sample 7,1C,Aequiyoldia eightsii,PstI,1,ok
+1,2017-12-01_09-25-08,sample 8,2C,Aequiyoldia eightsii,PstI,2,ok
+1,2017-12-01_09-25-08,sample 9,3C,Aequiyoldia eightsii,PstI,3,ok
+1,2017-12-01_09-25-08,sample 10,4C,Laternula elliptica,PstI,1,ok
+1,2017-12-01_09-25-08,sample 11,5C,Laternula elliptica,PstI,2,ok
+2,2017-12-01_10-21-28,sample 1,6C,Laternula elliptica,PstI,3,poor
+2,2017-12-01_10-21-28,sample 2,1C,Aequiyoldia eightsii,MspI,1,ok
+2,2017-12-01_10-21-28,sample 3,2C,Aequiyoldia eightsii,MspI,2,ok
+2,2017-12-01_10-21-28,sample 4,3C,Aequiyoldia eightsii,MspI,3,ok
+2,2017-12-01_10-21-28,sample 5,4C,Laternula elliptica,MspI,1,ok
+2,2017-12-01_10-21-28,sample 6,5C,Laternula elliptica,MspI,2,ok
+2,2017-12-01_10-21-28,sample 7,6C,Laternula elliptica,MspI,3,ok
+2,2017-12-01_10-21-28,sample 8,280,Macropyxis hornei,MspI,1,poor
+2,2017-12-01_10-21-28,sample 9,340,Macrocyprina rocas,MspI,2,poor
+2,2017-12-01_10-21-28,sample 10,176,Macroscapha falcis,MspI,3,poor
+2,2017-12-01_10-21-28,sample 11,empty,empty,empty,empty,empty
+3,2018-06-15_11-05-44,sample 1,3,Pagodroma nivea,EcoRI,1,
+3,2018-06-15_11-05-44,sample 2,5,Pagodroma nivea,EcoRI,3,
+3,2018-06-15_11-05-44,sample 3,Psi002,Psilaster charcoti,EcoRI,1,poor
+3,2018-06-15_11-05-44,sample 4,Psi003,Psilaster charcoti,EcoRI,2,poor
+3,2018-06-15_11-05-44,sample 5,Psi036,Psilaster charcoti,EcoRI,3,poor
+3,2018-06-15_11-05-44,sample 6,Bat076,Bathybiaster loripes,EcoRI,1,poor
+3,2018-06-15_11-05-44,sample 7,Bat096,Bathybiaster loripes,EcoRI,2,poor
+3,2018-06-15_11-05-44,sample 8,Bat152,Bathybiaster loripes,EcoRI,3,poor
+3,2018-06-15_11-05-44,sample 9,3,Pagodroma nivea,PstI,1,
+3,2018-06-15_11-05-44,sample 10,5,Pagodroma nivea,PstI,3,
+3,2018-06-15_11-05-44,sample 11,Psi002,Psilaster charcoti,PstI,1,poor
+4,2018-06-20_20-09-30-57,sample 1,Psi003,Psilaster charcoti,PstI,2,ok
+4,2018-06-20_20-09-30-57,sample 2,Psi036,Psilaster charcoti,PstI,3,ok
+4,2018-06-20_20-09-30-57,sample 3,Bat076,Bathybiaster loripes,PstI,1,ok
+4,2018-06-20_20-09-30-57,sample 4,Bat096,Bathybiaster loripes,PstI,2,poor
+4,2018-06-20_20-09-30-57,sample 5,Bat152,Bathybiaster loripes,PstI,3,ok
+4,2018-06-20_20-09-30-57,sample 6,3,Pagodroma nivea,MspI,1,
+4,2018-06-20_20-09-30-57,sample 7,5,Pagodroma nivea,MspI,3,
+4,2018-06-20_20-09-30-57,sample 8,Psi002,Psilaster charcoti,MspI,1,ok
+4,2018-06-20_20-09-30-57,sample 9,Psi003,Psilaster charcoti,MspI,2,ok
+4,2018-06-20_20-09-30-57,sample 10,Psi036,Psilaster charcoti,MspI,3,ok
+4,2018-06-20_20-09-30-57,sample 11,Bat076,Bathybiaster loripes,MspI,1,poor
+5,2018-07-05_10-45-54,sample 1,T.loe_ROS_1418,Trematomus loennbergii,ApeKI,1,ok
+5,2018-07-05_10-45-54,sample 2,T.loe_ROS_1485,Trematomus loennbergii,ApeKI,2,ok
+5,2018-07-05_10-45-54,sample 3,T.loe_ROS_1487,Trematomus loennbergii,ApeKI,3,ok
+5,2018-07-05_10-45-54,sample 4,T.ber_JRI_06,Trematomus bernacchii,ApeKI,1,ok
+5,2018-07-05_10-45-54,sample 5,T.ber_JRI_08,Trematomus bernacchii,ApeKI,2,ok
+5,2018-07-05_10-45-54,sample 6,T.ber_JRI_11,Trematomus bernacchii,ApeKI,3,ok
+5,2018-07-05_10-45-54,sample 7,T.loe_ROS_1418,Trematomus loennbergii,EcoRI,1,ok
+5,2018-07-05_10-45-54,sample 8,T.loe_ROS_1485,Trematomus loennbergii,EcoRI,2,ok
+5,2018-07-05_10-45-54,sample 9,T.loe_ROS_1487,Trematomus loennbergii,EcoRI,3,ok
+5,2018-07-05_10-45-54,sample 10,T.ber_JRI_06,Trematomus bernacchii,EcoRI,1,ok
+5,2018-07-05_10-45-54,sample 11,T.ber_JRI_08,Trematomus bernacchii,EcoRI,2,poor
+6,2018-08-03_09-07-54,sample 1,A77,Charcotia obesa,MspI,1,ok
+6,2018-08-03_09-07-54,sample 2,A78,Charcotia obesa,MspI,2,ok
+6,2018-08-03_09-07-54,sample 3,A79,Charcotia obesa,MspI,3,ok
+6,2018-08-03_09-07-54,sample 4,A77,Charcotia obesa,EcoRI,1,poor
+6,2018-08-03_09-07-54,sample 5,A78,Charcotia obesa,EcoRI,2,poor
+6,2018-08-03_09-07-54,sample 6,A79,Charcotia obesa,EcoRI,3,ok
+6,2018-08-03_09-07-54,sample 7,280,Macropyxis hornei,EcoRI,1,overload
+6,2018-08-03_09-07-54,sample 8,340,Macrocyprina rocas,EcoRI,2,overload
+6,2018-08-03_09-07-54,sample 9,176,Macroscapha falcis,EcoRI,3,overload
+6,2018-08-03_09-07-54,sample 10,4,Pagodroma nivea,MspI,2,too low
+6,2018-08-03_09-07-54,sample 11,4,Pagodroma nivea,EcoRI,2,
+7,2018-08-03_10-18-03,sample 1,4,Pagodroma nivea,PstI,2,too low
+7,2018-08-03_10-18-03,sample 2,T.ber_JRI_08,Trematomus bernacchii,EcoRI,2,ok
+7,2018-08-03_10-18-03,sample 3,T.ber_JRI_11,Trematomus bernacchii,EcoRI,3,ok
+7,2018-08-03_10-18-03,sample 4,T.loe_ROS_1418,Trematomus loennbergii,MspI_EcoRI,1,ok
+7,2018-08-03_10-18-03,sample 5,T.loe_ROS_1485,Trematomus loennbergii,MspI_EcoRI,2,poor
+7,2018-08-03_10-18-03,sample 6,T.loe_ROS_1487,Trematomus loennbergii,MspI_EcoRI,3,ok
+7,2018-08-03_10-18-03,sample 7,T.ber_JRI_06,Trematomus bernacchii,MspI_EcoRI,1,ok
+7,2018-08-03_10-18-03,sample 8,T.ber_JRI_08,Trematomus bernacchii,MspI_EcoRI,2,ok
+7,2018-08-03_10-18-03,sample 9,T.ber_JRI_11,Trematomus bernacchii,MspI_EcoRI,3,ok
+7,2018-08-03_10-18-03,sample 10,Bat096,Bathybiaster loripes,MspI,2,ok
+7,2018-08-03_10-18-03,sample 11,Bat152,Bathybiaster loripes,MspI,3,ok
+8,2018-09-07_09-46-06,sample 1,B16-RAD-I,Abyssorchomene gerulicorbis,MspI,1,ok
+8,2018-09-07_09-46-06,sample 2,B41-RAD-I,Abyssorchomene gerulicorbis,MspI,2,ok
+8,2018-09-07_09-46-06,sample 3,B62-RAD-I,Abyssorchomene gerulicorbis,MspI,3,ok
+8,2018-09-07_09-46-06,sample 4,A100-RAD-II,Paralicella caperesca,MspI,1,
+8,2018-09-07_09-46-06,sample 5,A113-RAD-II,Paralicella caperesca,MspI,2,
+8,2018-09-07_09-46-06,sample 6,A168-RAD-II,Paralicella caperesca,MspI,3,
+8,2018-09-07_09-46-06,sample 7,B16-RAD-I,Abyssorchomene gerulicorbis,EcoRI,1,ok
+8,2018-09-07_09-46-06,sample 8,B41-RAD-I,Abyssorchomene gerulicorbis,EcoRI,2,ok
+8,2018-09-07_09-46-06,sample 9,B62-RAD-I,Abyssorchomene gerulicorbis,EcoRI,3,ok
+8,2018-09-07_09-46-06,sample 10,A100-RAD-II,Paralicella caperesca,EcoRI,1,ok
+8,2018-09-07_09-46-06,sample 11,A113-RAD-II,Paralicella caperesca,EcoRI,2,ok
+9,2019-07-22_11-23,sample 1,HE10,Eusirus aff perdentatus,MspI,1,
+9,2019-07-22_11-23,sample 2,HE13,Eusirus aff perdentatus,MspI,2,
+9,2019-07-22_11-23,sample 3,HE14,Eusirus aff perdentatus,MspI,3,
+9,2019-07-22_11-23,sample 4,HE10,Eusirus aff perdentatus,EcoRI,1,poor
+9,2019-07-22_11-23,sample 5,HE13,Eusirus aff perdentatus,EcoRI,2,
+9,2019-07-22_11-23,sample 6,HE14,Eusirus aff perdentatus,EcoRI,3,
+9,2019-07-22_11-23,sample 7,280,Macropyxis hornei,EcoRI,1,
+9,2019-07-22_11-23,sample 8,340,Macrocyprina rocas,EcoRI,2,overload
+9,2019-07-22_11-23,sample 9,176,Macroscapha falcis,EcoRI,3,
+9,2019-07-22_11-23,sample 10,280,Macropyxis hornei,EcoRI,1,
+9,2019-07-22_11-23,sample 11,340,Macrocyprina rocas,EcoRI,2,
+10,2019-07-25_11-54-39,sample 1,280,Macropyxis hornei,MspI,1,
+10,2019-07-25_11-54-39,sample 2,340,Macrocyprina rocas,MspI,2,
+10,2019-07-25_11-54-39,sample 3,176,Macroscapha falcis,MspI,3,
+10,2019-07-25_11-54-39,sample 4,HE10,Eusirus aff perdentatus,EcoRI,1,poor
+10,2019-07-25_11-54-39,sample 5,340,Macrocyprina rocas,EcoRI,2,
+10,2019-07-25_11-54-39,sample 6,2,Pagodroma nivea,MspI,2,
+10,2019-07-25_11-54-39,sample 7,2,Pagodroma nivea,PstI,2,
+10,2019-07-25_11-54-39,sample 8,2,Pagodroma nivea,EcoRI,2,
+10,2019-07-25_11-54-39,sample 9,2,Pagodroma nivea,MspI,2,
+10,2019-07-25_11-54-39,sample 10,2,Pagodroma nivea,PstI,2,
+10,2019-07-25_11-54-39,sample 11,2,Pagodroma nivea,EcoRI,2,

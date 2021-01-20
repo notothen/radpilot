@@ -19,9 +19,11 @@ Contact: <henrik.christiansen@kuleuven.be>
 
 ## Log:
 
+20/01/2020: added new xml file for run 7, updated bioanalyzer to v0.6.2 and updated 02_empirical_digests.R
+
 20/01/2020: added the project to a github repository
 
-16/12/2020: add a modified read.bioanalyzer function to read in xml file with a missing lower marker in one sample
+16/12/2020: added a modified read.bioanalyzer function to read in xml file with a missing lower marker in one sample
 
 14/12/2020: small, mostly cosmetic updates in most scripts; updated project and input/output description;
             finalized 02_empirical_digests.R
