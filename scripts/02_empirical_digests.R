@@ -7,10 +7,8 @@
 #### NOT RUN
 #### install package
 #####
-#remotes::install_github("jwfoley/bioanalyzeR")
-# edit: later versions, install without demo data:
-#install.packages("https://github.com/jwfoley/bioanalyzeR/releases/download/v0.6.2/bioanalyzeR_0.6.2-no_data.tar.gz", repos = NULL)
-#install.packages("https://github.com/jwfoley/bioanalyzeR/releases/download/v0.6.0/bioanalyzeR_0.6.0-no_data.tar.gz", repos = NULL)
+## latest version throws an error when trying to load the xml files
+## USE THIS VERSION (0.5.1):
 #install.packages("https://github.com/jwfoley/bioanalyzeR/releases/download/v0.5.1/bioanalyzeR_0.5.1-no_data.tar.gz", repos = NULL)
 #####
 
@@ -39,62 +37,35 @@ run_sample_names <-  function(samples, run_nr) {
 }
 
 ## read in bioanalyzer data for each run
-run1 <- read.bioanalyzer(here("data/bioanalyzer_results/run1_2017-12-01_09-25-08.xml"))
-# this suddenly throws an error
-# try with a local copy on windows instead:
-run1 <- read.bioanalyzer("C:/Users/chris/Dropbox/01_science/02_projects/02_radseq_pilot/data/bioanalyzer_results/1_new_bins/2017-12-01_09-25-08/2019-07-22/2100 expert_High Sensitivity DNA Assay_DE24802662_2017-12-01_09-25-08.xml")
-
-# also doesn't work...
-# check local copy on desktop
-
-run1 <- read.bioanalyzer(here("data/bioanalyzer_results/2100 expert_High Sensitivity DNA Assay_DE24802662_2017-12-01_09-25-08.xml"))
-run2 <- read.bioanalyzer(here("data/bioanalyzer_results/2100 expert_High Sensitivity DNA Assay_DE24802662_2017-12-01_10-21-28.xml"))
-run3 <- read.bioanalyzer(here("data/bioanalyzer_results/1_new_bins/2018-06-15_11-05-44/2019-07-22/2100 expert_High Sensitivity DNA Assay_DE24802662_2018-06-15_11-05-44.xml"))
-run4 <- read.bioanalyzer(here("data/bioanalyzer_results/1_new_bins/2018-06-20_20-09-30-57/2019-07-22/2100 expert_High Sensitivity DNA Assay_DE24802662_2018-06-20_09-30-57.xml"))
-run5 <- read.bioanalyzer(here("data/bioanalyzer_results/1_new_bins/2018-07-05_10-45-54/2019-07-22/2100 expert_High Sensitivity DNA Assay_DE24802662_2018-07-05_10-45-54.xml"))
-run6 <- read.bioanalyzer(here("data/bioanalyzer_results/1_new_bins/2018-08-03_09-07-54/2019-07-22/2100 expert_High Sensitivity DNA Assay_DE24802662_2018-08-03_09-07-54.xml"))
-run7 <- read.bioanalyzer(here("data/bioanalyzer_results/1_new_bins/2018-08-03_10-18-03/2019-07-22/2100 expert_High Sensitivity DNA Assay_DE24802662_2018-08-03_10-18-03.xml"))
-trace(read.bioanalyzer, edit = T)
-library(XML)
-library(caTools)
-run7 <- read.bioanalyzer_recto(here("data/bioanalyzer_results/2100 expert_High Sensitivity DNA Assay_DE24802662_2018-08-03_10-18-03.xml"))
-run8 <- read.bioanalyzer_recto(here("data/bioanalyzer_results/1_new_bins/2018-09-07_09-46-06/2019-07-22/2100 expert_High Sensitivity DNA Assay_DE24802662_2018-09-07_09-46-06.xml"))
-
-run7 <- read.bioanalyzer(here("data/bioanalyzer_results/1_new_bins/2018-08-03_10-18-03/2019-07-22/test.xml"))
-#run7 <- read.bioanalyzer(here("data/bioanalyzer_results/2018-08-03-ii/2100 expert_High Sensitivity DNA Assay_DE24802662_2018-08-03_10-18-03.xml"))
-run8 <- read.bioanalyzer(here("data/bioanalyzer_results/1_new_bins/2018-09-07_09-46-06/2019-07-22/2100 expert_High Sensitivity DNA Assay_DE24802662_2018-09-07_09-46-06.xml"))
-run9 <- read.bioanalyzer(here("data/bioanalyzer_results/1_new_bins/2019-07-22_11-23/2019-07-25/2100 expert_High Sensitivity DNA Assay_DE24802662_2019-07-22_11-23-48.xml"))
-run10 <- read.bioanalyzer(here("data/bioanalyzer_results/1_new_bins/2019-07-25_11-54-39/2019-07-25/2100 expert_High Sensitivity DNA Assay_DE24802662_2019-07-25_11-54-39.xml"))
+run1 <- read.bioanalyzer(here("data/bioanalyzer_results/run01_2017-12-01_09-25-08.xml"))
+run2 <- read.bioanalyzer(here("data/bioanalyzer_results/run02_2017-12-01_10-21-28.xml"))
+run3 <- read.bioanalyzer(here("data/bioanalyzer_results/run03_2018-06-15_11-05-44.xml"))
+run4 <- read.bioanalyzer(here("data/bioanalyzer_results/run04_2018-06-20_09-30-57.xml"))
+run5 <- read.bioanalyzer(here("data/bioanalyzer_results/run05_2018-07-05_10-45-54.xml"))
+run6 <- read.bioanalyzer(here("data/bioanalyzer_results/run06_2018-08-03_09-07-54.xml"))
+run7 <- read.bioanalyzer(here("data/bioanalyzer_results/run07_2018-08-03_10-18-03_NEW.xml"))
+run8 <- read.bioanalyzer(here("data/bioanalyzer_results/run08_2018-09-07_09-46-06.xml"))
+run9 <- read.bioanalyzer(here("data/bioanalyzer_results/run09_2019-07-22_11-23-48.xml"))
+run10 <- read.bioanalyzer(here("data/bioanalyzer_results/run10_2019-07-25_11-54-39.xml"))
 
 ## rename samples in bioanalyzer data
 library(plyr)
 default_names <- c("sample 1", "sample 2", "sample 3", "sample 4", "sample 5", "sample 6", "sample 7", "sample 8", "sample 9", "sample 10", "sample 11")
-# edit: the following line seems not necessary, so commented out for now
-#run1$sample$sample.name <- mapvalues(run1$sample$sample.name, from = default_names, to = run_sample_names(samples, 1))
 run1$samples$sample.name <- mapvalues(run1$samples$sample.name, from = default_names, to = run_sample_names(samples, 1))
-#run2$sample$sample.name <- mapvalues(run2$sample$sample.name, from = default_names, to = run_sample_names(samples, 2))
 run2$samples$sample.name <- mapvalues(run2$samples$sample.name, from = default_names, to = run_sample_names(samples, 2))
-#run3$sample$sample.name <- mapvalues(run3$sample$sample.name, from = default_names, to = run_sample_names(samples, 3))
 run3$samples$sample.name <- mapvalues(run3$samples$sample.name, from = default_names, to = run_sample_names(samples, 3))
-#run4$sample$sample.name <- mapvalues(run4$sample$sample.name, from = default_names, to = run_sample_names(samples, 4))
 run4$samples$sample.name <- mapvalues(run4$samples$sample.name, from = default_names, to = run_sample_names(samples, 4))
-#run5$sample$sample.name <- mapvalues(run5$sample$sample.name, from = default_names, to = run_sample_names(samples, 5))
 run5$samples$sample.name <- mapvalues(run5$samples$sample.name, from = default_names, to = run_sample_names(samples, 5))
-#run6$sample$sample.name <- mapvalues(run6$sample$sample.name, from = default_names, to = run_sample_names(samples, 6))
 run6$samples$sample.name <- mapvalues(run6$samples$sample.name, from = default_names, to = run_sample_names(samples, 6))
-#run7$sample$sample.name <- mapvalues(run7$sample$sample.name, from = default_names, to = run_sample_names(samples, 7))
 run7$samples$sample.name <- mapvalues(run7$samples$sample.name, from = default_names, to = run_sample_names(samples, 7))
-#run8$sample$sample.name <- mapvalues(run8$sample$sample.name, from = default_names, to = run_sample_names(samples, 8))
 run8$samples$sample.name <- mapvalues(run8$samples$sample.name, from = default_names, to = run_sample_names(samples, 8))
-#run9$sample$sample.name <- mapvalues(run9$sample$sample.name, from = default_names, to = run_sample_names(samples, 9))
 run9$samples$sample.name <- mapvalues(run9$samples$sample.name, from = default_names, to = run_sample_names(samples, 9))
-#run10$sample$sample.name <- mapvalues(run10$sample$sample.name, from = default_names, to = run_sample_names(samples, 10))
 run10$samples$sample.name <- mapvalues(run10$samples$sample.name, from = default_names, to = run_sample_names(samples, 10))
 detach(package:plyr) # conflicts with package:here
 rm(default_names)
 #####
 
-
+#### helper functions
 #####
 # function to identify which runs were used per species
 runs_vs_species <-  function(samples, species_sel) {
@@ -114,7 +85,7 @@ species_sample_names <-  function(samples, species_sel) {
 }
 #####
 
-#### Ostracoda
+#### ostracoda
 #####
 ## subset
 unique(samples$species)
