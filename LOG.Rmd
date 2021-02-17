@@ -1,0 +1,145 @@
+---
+title: "README"
+author: "Henrik Christiansen"
+date: "January 22, 2021"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Project: radseq pilot
+
+RADseq optimization pilot experiment with several Antarctic species.
+
+Contact: <henrik.christiansen@kuleuven.be>
+
+## Log:
+
+22/01/2020: fixed xml encoding issues
+
+20/01/2020: added new xml file for run 7, updated bioanalyzer to v0.6.2 and updated 02_empirical_digests.R
+
+20/01/2020: added the project to a github repository
+
+16/12/2020: added a modified read.bioanalyzer function to read in xml file with a missing lower marker in one sample
+
+14/12/2020: small, mostly cosmetic updates in most scripts; updated project and input/output description;
+            finalized 02_empirical_digests.R
+
+11/12/2020: added customized plot saving function in recto_REs_and_functions.R
+
+10/12/2020: updated 02_empirical_digests.R,
+            added a customized ggplot plotting function in recto_REs_and_functions.R
+            added in silico functions for comparison in recto_REs_and_functions.R
+
+11-12/2020: updated 02_empirical_digests.R & added a customized plotting function in recto_REs_and_functions.R
+
+11/11/2020: updated to run with R v4.0.3
+
+07-10/2020: added script 02_empirical_digests.R to read results from bioanalyzer and analyze them in R,
+            instead of cumbersome "manual" analysis in spreadsheets
+
+20/07/2019: updated plot ratio scripts
+
+10/07/2019: updated digest scripts
+
+09/07/2019: updated the plots for test library 2
+
+02/07/2019: updated digest scripts
+
+28/06/2019: finalized coverage plot
+
+27/06/2019: re-orderd scripts, included scripts for in silico digestion (previously stored in different R project)
+
+23-27/06/2019: updated parameter plots (now based on correct de novo runs, with PE concatenating);
+              included & updated coverage plot
+
+16-22/06/2019: updated parameter plots; started script to plot targeted and realized coverage
+
+01-14/06/2019: included scripts to plot n_loci and n_snps_per_locus from de novo parameter optimization series
+
+04/12/2018: rerun due to updated input data (Trematomus mainly)
+
+29/11/2018: created script 01_plotting.R and ratio plots
+
+28/11/2018: created R project & input data
+
+## Input:
+
+Various reference genomes from target species, or related species in fasta format under:
+
+* /data/refgenomes
+
+Output files from the Agilent Bioanalyzer Software in XML format under:
+
+* data/bioanalyzer_results
+
+CSV file with all metadata related to the Bioanalyzer runs, created manually:
+
+* data/bioanalyzer_results/run_overview.csv
+
+CSV/TSV files in data/test_libraries with data from 5 test libraries:
+
+* coverage_stats.csv: coverage for each library under different M values
+
+* various n_snps_per_locus.tsv: files for each library/species and different r/M values with information about the loci and SNPs
+
+R script that contains restriction enzyme information and various functions for analysis and plotting as used in the analyses scripts:
+
+* analyses/recto_REs_and_functions.R
+
+Additional R script to export plots consistently:
+
+* ~/printfig.R
+
+## Analyses:
+
+To be run sequentially, all listed under /analyses.
+
+* 01_digests.R: script to perform in silico digestions for different target organisms
+
+* 02_empirical_digests.R: script to read bioanalyzer results and plot output in comparison with in silico results
+
+* 03_plot_n_loci.R: script based on Rochette & Catchen 2017 to plot the number of (polymorphic) loci for different M parameters
+
+* 04_plot_n_snps_per_locus.R: script based on Rochette & Catchen 2017 to plot the number of SNPs per locus for different M parameters
+
+* 05_plot_coverage.R: script to plot target and realized coverage
+
+## Output:
+
+In /data/in_silico_results:
+
+* various tables.csv containing in silico digest results per target taxa
+
+In /figures:
+
+* genome digestion curves, empirical and in silico, created with 02_empirical_digests.R
+
+* various n_loci_Mn plots per library, created with 03_plot_n_loci.R
+
+* various n_snps per library/species, created with 04_n_snps_per_locus.R
+
+* coverage plots, created by 05_plot_coverage.R
+
+## Session info:
+
+```{r libraries, include=FALSE}
+packages <-c("here", "SimRAD", "seqinr", "bioanalyzeR", "tidyverse", "ggsci", "gridExtra")
+lapply(packages, require, ch = T)
+```
+Package citations:
+
+```{r pkgs, echo = F}
+lapply(packages, citation)
+```
+
+R Session:
+
+```{r sessioninfo, echo = F}
+sessionInfo()
+```
