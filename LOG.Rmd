@@ -1,5 +1,5 @@
 ---
-title: "README"
+title: "LOG & EXTENDED README"
 author: "Henrik Christiansen"
 date: "February 17, 2021"
 output:
