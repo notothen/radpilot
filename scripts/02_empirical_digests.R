@@ -1,6 +1,6 @@
 #### Script for reading in restriction enzyme
 #### digestion data from bioanalyzer output files
-## 22/01/2021
+## 17/02/2021
 ## H. Christiansen
 ## v2.3
 
@@ -39,11 +39,10 @@ run_sample_names <-  function(samples, run_nr) {
 }
 
 ## read in bioanalyzer data for each run
-run1 <- read.bioanalyzer(here("data/bioanalyzer_results/run1_2017-12-01_09-25-08.xml"))
-run1 <- read.bioanalyzer("/home/henrik/Dropbox/01_science/02_projects/02_radseq_pilot/data/bioanalyzer_results/2017-12-01-i/2100 expert_High Sensitivity DNA Assay_DE24802662_2017-12-01_09-25-08.xml")
-
-
-run1 <- read.bioanalyzer("/home/henrik/Dropbox/01_science/02_projects/02_radseq_pilot/data/bioanalyzer_results/1_new_bins/2017-12-01_09-25-08/2019-07-22/2100 expert_High Sensitivity DNA Assay_DE24802662_2017-12-01_09-25-08.xml")
+#run1 <- read.bioanalyzer(here("data/bioanalyzer_results/run1_2017-12-01_09-25-08.xml"))
+# this suddenly throws an error
+# try with a local copy on windows instead:
+run1 <- read.bioanalyzer("C:/Users/chris/Dropbox/01_science/02_projects/02_radseq_pilot/data/bioanalyzer_results/1_new_bins/2017-12-01_09-25-08/2019-07-22/2100 expert_High Sensitivity DNA Assay_DE24802662_2017-12-01_09-25-08.xml")
 
 run1 <- read.bioanalyzer(here("data/bioanalyzer_results/2100 expert_High Sensitivity DNA Assay_DE24802662_2017-12-01_09-25-08.xml"))
 run2 <- read.bioanalyzer(here("data/bioanalyzer_results/2100 expert_High Sensitivity DNA Assay_DE24802662_2017-12-01_10-21-28.xml"))
