@@ -50,7 +50,8 @@ run10 <- read.bioanalyzer(here("data/bioanalyzer_results/run10_2019-07-25_11-54-
 
 ## rename samples in bioanalyzer data
 library(plyr)
-default_names <- c("sample 1", "sample 2", "sample 3", "sample 4", "sample 5", "sample 6", "sample 7", "sample 8", "sample 9", "sample 10", "sample 11")
+default_names <- c("sample 1", "sample 2", "sample 3", "sample 4", "sample 5", "sample 6",
+                   "sample 7", "sample 8", "sample 9", "sample 10", "sample 11")
 run1$samples$sample.name <- mapvalues(run1$samples$sample.name, from = default_names, to = run_sample_names(samples, 1))
 run2$samples$sample.name <- mapvalues(run2$samples$sample.name, from = default_names, to = run_sample_names(samples, 2))
 run3$samples$sample.name <- mapvalues(run3$samples$sample.name, from = default_names, to = run_sample_names(samples, 3))
@@ -98,10 +99,10 @@ ostra_ecor1c <- subset(run9, sample.name %in% species_sample_names(samples, c("M
 ostra_ecor1d <- subset(run10, sample.name %in% species_sample_names(samples, c("Macropyxis hornei", "Macrocyprina rocas", "Macroscapha falcis"))[15])
 
 ## load reference genomes
-Cyprideis_torosa <- ref.DNAseq(here("data/refgenomes/Cyprideis_torosa.raw_filtered.fasta"),
+#### the reference genomes are too big to be hosted on github
+#### you need to get a local copy and store it somewhere and refer to that in the following line
+Cyprideis_torosa <- ref.DNAseq(here("../refgenomes/Cyprideis_torosa.raw_filtered.fasta"),
                       subselect.contigs = F)
-#Cyprideis_torosa <- ref.DNAseq("/media/henrik/Science_HC/01_Science/R_InSilico/refgenomes/Cyprideis_torosa.raw_filtered.fasta", subselect.contigs = F) # reference genome saved on external drive
-#Cyprideis_torosa <- ref.DNAseq("E:/01_Science/R_InSilico/refgenomes/Cyprideis_torosa.raw_filtered.fasta", subselect.contigs = F) # reference genome saved on external drive
 sim_100mb <- sim.DNAseq(size=100000000, GCfreq=0.439)
 sim_500mb <- sim.DNAseq(size=500000000, GCfreq=0.439)
 ref_genomes <- data.frame(Cyprideis_torosa, sim_100mb, sim_500mb)
