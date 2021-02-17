@@ -19,6 +19,8 @@ Contact: <henrik.christiansen@kuleuven.be>
 
 ## Log:
 
+17/02/2020: updated and consolidated code and files locally and on github
+
 22/01/2020: fixed xml encoding issues
 
 20/01/2020: added new xml file for run 7, updated bioanalyzer to v0.6.2 and updated 02_empirical_digests.R
