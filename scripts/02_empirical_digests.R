@@ -155,7 +155,7 @@ eper_ecor1a <- subset(run9, sample.name %in% species_sample_names(samples, c("Ab
 eper_ecor1b <- subset(run10, sample.name %in% species_sample_names(samples, c("Abyssorchomene gerulicorbis", "Paralicella caperesca", "Eusirus aff perdentatus"))[18])
 
 ## load reference genomes
-Hyalella_azteca <- ref.DNAseq(here("data/refgenomes/GCF_000764305.1_Hazt_2.0_genomic.fna"),
+Hyalella_azteca <- ref.DNAseq(here("../refgenomes/GCF_000764305.1_Hazt_2.0_genomic.fna"),
                       subselect.contigs = F)
 #Hyalella_azteca <- ref.DNAseq("E:/01_Science/R_InSilico/refgenomes/GCF_000764305.1_Hazt_2.0_genomic.fna", subselect.contigs = F) # reference genome saved on external drive
 Parhyale_hawaiensis <- ref.DNAseq(here("refgenomes/GCA_001587735.1_Phaw3.0_genomic.fna"),
