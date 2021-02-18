@@ -100,7 +100,7 @@ ostra_ecor1d <- subset(run10, sample.name %in% species_sample_names(samples, c("
 
 ## load reference genomes
 #### the reference genomes are too big to be hosted on github
-#### you need to get a local copy and store it somewhere and refer to that in the following line
+#### you need to get a local copy and store it somewhere and change the file path accordingly
 Cyprideis_torosa <- ref.DNAseq(here("../refgenomes/Cyprideis_torosa.raw_filtered.fasta"),
                       subselect.contigs = F)
 sim_100mb <- sim.DNAseq(size=100000000, GCfreq=0.439)
@@ -155,15 +155,14 @@ eper_ecor1a <- subset(run9, sample.name %in% species_sample_names(samples, c("Ab
 eper_ecor1b <- subset(run10, sample.name %in% species_sample_names(samples, c("Abyssorchomene gerulicorbis", "Paralicella caperesca", "Eusirus aff perdentatus"))[18])
 
 ## load reference genomes
+#### the reference genomes are too big to be hosted on github
+#### you need to get a local copy and store it somewhere and change the file paths accordingly
 Hyalella_azteca <- ref.DNAseq(here("../refgenomes/GCF_000764305.1_Hazt_2.0_genomic.fna"),
                       subselect.contigs = F)
-#Hyalella_azteca <- ref.DNAseq("E:/01_Science/R_InSilico/refgenomes/GCF_000764305.1_Hazt_2.0_genomic.fna", subselect.contigs = F) # reference genome saved on external drive
-Parhyale_hawaiensis <- ref.DNAseq(here("refgenomes/GCA_001587735.1_Phaw3.0_genomic.fna"),
+Parhyale_hawaiensis <- ref.DNAseq(here("../refgenomes/GCA_001587735.1_Phaw3.0_genomic.fna"),
                           subselect.contigs = T, prop.contigs = 0.25)
-#Parhyale_hawaiensis <- ref.DNAseq("E:/01_Science/R_InSilico/refgenomes/GCA_001587735.1_Phaw3.0_genomic.fna", subselect.contigs = T, prop.contigs = 0.25) # reference genome saved on external drive
-Eusirus_perdentatus <- ref.DNAseq(here("refgenomes/Eperdentatus.fasta"),
+Eusirus_perdentatus <- ref.DNAseq(here("../refgenomes/Eperdentatus.fasta"),
                            subselect.contigs = F)
-Eusirus_perdentatus <- ref.DNAseq("E:/01_Science/R_InSilico/refgenomes/Eperdentatus.fasta", subselect.contigs = F) # reference genome saved on external drive
 ref_genomes <- data.frame(Hyalella_azteca, Parhyale_hawaiensis, Eusirus_perdentatus)
 
 ## plot
@@ -233,9 +232,14 @@ lell_pst1 <- rbind(subset(run1, sample.name %in% species_sample_names(samples, "
 lell_msp1 <- subset(run2, sample.name %in% species_sample_names(samples, "Laternula elliptica")[7:9])
 
 ## load reference genomes
-Pinctada_imbricata <- ref.DNAseq("E:/01_Science/R_InSilico/refgenomes/GCA_002216045.1_PinMar1.0_genomic.fna", subselect.contigs = F) # reference genome saved on external drive
-Bathymodiolus_platifrons <- ref.DNAseq("E:/01_Science/R_InSilico/refgenomes/GCA_002080005.1_Bpl_v1.0_genomic.fna", subselect.contigs = F) # reference genome saved on external drive
-Crassostrea_gigas <- ref.DNAseq("E:/01_Science/R_InSilico/refgenomes/GCF_000297895.1_oyster_v9_genomic.fna", subselect.contigs = F) # reference genome saved on external drive
+#### the reference genomes are too big to be hosted on github
+#### you need to get a local copy and store it somewhere and change the file paths accordingly
+Pinctada_imbricata <- ref.DNAseq(here("../refgenomes/GCA_002216045.1_PinMar1.0_genomic.fna"),
+                                 subselect.contigs = F)
+Bathymodiolus_platifrons <- ref.DNAseq(here("../refgenomes/GCA_002080005.1_Bpl_v1.0_genomic.fna"),
+                                       subselect.contigs = F)
+Crassostrea_gigas <- ref.DNAseq(here("../refgenomes/GCF_000297895.1_oyster_v9_genomic.fna"),
+                                subselect.contigs = F)
 ref_genomes <- data.frame(Pinctada_imbricata, Bathymodiolus_platifrons, Crassostrea_gigas)
 
 ## plot
