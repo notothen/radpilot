@@ -427,9 +427,10 @@ pniv_msp1 <- rbind(subset(run4, sample.name %in% species_sample_names(samples, "
 
 
 ## load reference genomes
-Fulmarus_glacialis <- ref.DNAseq(here("data/refgenomes/GCF_000690835.1_ASM69083v1_genomic.fna"),
+#### the reference genomes are too big to be hosted on github
+#### you need to get a local copy and store it somewhere and change the file path accordingly
+Fulmarus_glacialis <- ref.DNAseq(here("../refgenomes/GCF_000690835.1_ASM69083v1_genomic.fna"),
                          subselect.contigs = F)
-#Fulmarus_glacialis <- ref.DNAseq("E:/01_Science/R_InSilico/refgenomes/GCF_000690835.1_ASM69083v1_genomic.fna", subselect.contigs = F) # reference genome saved on external drive
 sim_100mb <- sim.DNAseq(size = 100000000, GCfreq = 0.412)
 sim_150mb <- sim.DNAseq(size = 150000000, GCfreq = 0.412)
 ref_genomes <- data.frame(Fulmarus_glacialis, sim_100mb, sim_150mb)
