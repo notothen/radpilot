@@ -298,15 +298,14 @@ blor_msp1 <- rbind(subset(run4, sample.name %in% species_sample_names(samples, "
 
 
 ## load reference genomes
-Acanthaster_planci <- ref.DNAseq(here("data/refgenomes/GCF_001949145.1_OKI-Apl_1.0_genomic.fna"),
+#### the reference genomes are too big to be hosted on github
+#### you need to get a local copy and store it somewhere and change the file paths accordingly
+Acanthaster_planci <- ref.DNAseq(here("../refgenomes/GCF_001949145.1_OKI-Apl_1.0_genomic.fna"),
                       subselect.contigs = F)
-#Acanthaster_planci <- ref.DNAseq("E:/01_Science/R_InSilico/refgenomes/GCF_001949145.1_OKI-Apl_1.0_genomic.fna", subselect.contigs = F) # reference genome saved on external drive
-Patiria_miniata <- ref.DNAseq(here("data/refgenomes/GCA_000285935.1_Pmin_1.0_genomic.fna"),
+Patiria_miniata <- ref.DNAseq(here("../refgenomes/GCA_000285935.1_Pmin_1.0_genomic.fna"),
                        subselect.contigs = F)
-#Patiria_miniata <- ref.DNAseq("E:/01_Science/R_InSilico/refgenomes/GCA_000285935.1_Pmin_1.0_genomic.fna", subselect.contigs = F) # reference genome saved on external drive
-Patiriella_regularis <- ref.DNAseq(here("data/refgenomes/GCA_900067625.1_Patiriella_regularis_genome_assembly_1.0_genomic.fna"),
+Patiriella_regularis <- ref.DNAseq(here("../refgenomes/GCA_900067625.1_Patiriella_regularis_genome_assembly_1.0_genomic.fna"),
                          subselect.contigs = F)
-#Patiriella_regularis <- ref.DNAseq("E:/01_Science/R_InSilico/refgenomes/GCA_900067625.1_Patiriella_regularis_genome_assembly_1.0_genomic.fna", subselect.contigs = F) # reference genome saved on external drive
 ref_genomes <- data.frame(Acanthaster_planci, Patiria_miniata, Patiriella_regularis)
 
 ## plot
