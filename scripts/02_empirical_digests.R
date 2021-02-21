@@ -445,7 +445,7 @@ pniv_ecor1 <- rbind(subset(run3, sample.name %in% species_sample_names(samples, 
 pniv_ecor1 <- subset(pniv_ecor1, well.number %in% c(1, 8, 11))
 pniv_ecor1$samples
 recto_qplot_1(pniv_ecor1, 0, 2, 0.7, 0.7)
-
+## need to decide which to keep here
 
 
 p1 <- recto_qplot_1(pniv_ecor1, 0, 2, 0.7, 0.7)
