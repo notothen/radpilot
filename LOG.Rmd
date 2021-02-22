@@ -1,7 +1,7 @@
 ---
 title: "LOG & EXTENDED README"
 author: "Henrik Christiansen"
-date: "February 21, 2021"
+date: "February 22, 2021"
 output:
   pdf_document: default
   html_document: default
@@ -18,6 +18,8 @@ RADseq optimization pilot experiment with several Antarctic species.
 Contact: <henrik.christiansen@kuleuven.be>
 
 ## Log:
+
+22/02/2020: updated and rerun 02_empirical_digests.R, added input files for coverage calculations
 
 21/02/2020: fixed some git issue with large .RDataTmp file
 
@@ -78,7 +80,7 @@ Contact: <henrik.christiansen@kuleuven.be>
 
 Various reference genomes from target species, or related species in fasta format under:
 
-* /data/refgenomes
+* ../refgenomes
 
 Output files from the Agilent Bioanalyzer Software in XML format under:
 
@@ -96,15 +98,15 @@ CSV/TSV files in data/test_libraries with data from 5 test libraries:
 
 R script that contains restriction enzyme information and various functions for analysis and plotting as used in the analyses scripts:
 
-* analyses/recto_REs_and_functions.R
+* scripts/recto_REs_and_functions.R
 
 Additional R script to export plots consistently:
 
-* ~/printfig.R
+* scripts/printfig.R
 
 ## Analyses:
 
-To be run sequentially, all listed under /analyses.
+To be run sequentially, all listed under /scripts.
 
 * 01_digests.R: script to perform in silico digestions for different target organisms
 
