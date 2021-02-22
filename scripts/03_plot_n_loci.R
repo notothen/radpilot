@@ -214,7 +214,7 @@ rm(d, mypal, p, s, s2, snps_per_loc, bathy, psi, lib3_plot)
 #### lib4
 #####
 # lib4, tber
-snps_per_loc <- read.delim(here('data/test_libraries/lib4/tber/c/n_snps_per_locus.tsv'))
+snps_per_loc <- read.delim(here('data/test_libraries/lib4/tber/n_snps_per_locus.tsv'))
 snps_per_loc <- subset(snps_per_loc, M==n & m==3)
 colnames(snps_per_loc)[1] <- 'par_set'
 d <- snps_per_loc[, c('par_set', 'M', 'n', 'm')]
@@ -229,7 +229,7 @@ for(p in rownames(d)) {
 tber <- d[order(d$M), ]
 
 # lib4, tloe
-snps_per_loc = read.delim(here('data/test_libraries/lib4/tloe/c/n_snps_per_locus.tsv'))
+snps_per_loc = read.delim(here('data/test_libraries/lib4/tloe/n_snps_per_locus.tsv'))
 snps_per_loc <- subset(snps_per_loc, M==n & m==3)
 colnames(snps_per_loc)[1] <- 'par_set'
 d <- snps_per_loc[, c('par_set', 'M', 'n', 'm')]
