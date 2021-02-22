@@ -11,7 +11,7 @@ browseURL("https://bitbucket.org/rochette/rad-seq-genotyping-demo/src/default/de
 library(here) # to shorten file paths
 library(ggsci) # for journal type colors
 library(scales) # to visualize ggsci palettes
-source("~/printfig.R") # to save plots
+source(here("scripts/printfig.R")) # to save plots
 
 #### lib 1
 #####
