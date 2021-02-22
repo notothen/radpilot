@@ -161,12 +161,12 @@ Hyalella_azteca <- ref.DNAseq(here("../refgenomes/GCF_000764305.1_Hazt_2.0_genom
                       subselect.contigs = F)
 Parhyale_hawaiensis <- ref.DNAseq(here("../refgenomes/GCA_001587735.1_Phaw3.0_genomic.fna"),
                           subselect.contigs = T, prop.contigs = 0.25)
-simI_1000mb <- sim.DNAseq(size=100000000, GCfreq=0.385)
+sim_1000mb <- sim.DNAseq(size=100000000, GCfreq=0.385)
 #Eusirus_perdentatus <- ref.DNAseq(here("../refgenomes/Eperdentatus.fasta"),
 #                           subselect.contigs = F)
 ## this was only some shotgut sequencing data
-## not available anymore
-ref_genomes <- data.frame(Hyalella_azteca, Parhyale_hawaiensis, simI_1000mb)
+## which is not available anymore
+ref_genomes <- data.frame(Hyalella_azteca, Parhyale_hawaiensis, sim_1000mb)
 
 ## plot
 p1 <- recto_qplot_1(ager_msp1, 0, 50, 0.7, 0.7)
@@ -216,8 +216,8 @@ p3 <- arrangeGrob(p1, p2, nrow = 1)
 recto_ggsave("eper_ecor1", p3)
 
 ## clean up
-rm(ostra_msp1a, ostra_msp1b, ostra_ecor1a, ostra_ecor1b, ostra_ecor1c, ostra_ecor1d, p1, p2, p3,
-   seqwidth_msp1, seqwidth_ecor1, Cyprideis_torosa, sim_100mb, sim_500mb, ref_genomes)
+rm(ager_ecor1, ager_msp1, eper_ecor1, eper_ecor1a, eper_ecor1b, eper_msp1, p1, p2, p3,
+   seqwidth_msp1, seqwidth_ecor1, Hyalella_azteca, Parhyale_hawaiensis, sim_1000mb, ref_genomes)
 #####
 
 #### Bivalvia
@@ -365,50 +365,69 @@ tloe_ecor1 <- subset(run5, sample.name %in% species_sample_names(samples, "Trema
 tloe_msp1_ecor1 <- subset(run7, sample.name %in% species_sample_names(samples, "Trematomus loennbergii")[7:9])
 
 ## load reference genomes
-Notothenia_coriiceps <- ref.DNAseq(here("data/refgenomes/GCF_000735185.1_NC01_genomic.fna"),
+#### the reference genomes are too big to be hosted on github
+#### you need to get a local copy and store it somewhere and change the file paths accordingly
+Notothenia_coriiceps <- ref.DNAseq(here("../refgenomes/GCF_000735185.1_NC01_genomic.fna"),
                          subselect.contigs = F)
-#Notothenia_coriiceps <- ref.DNAseq("E:/01_Science/R_InSilico/refgenomes/GCF_000735185.1_NC01_genomic.fna", subselect.contigs = F) # reference genome saved on external drive
 sim_100mb <- sim.DNAseq(size = 100000000, GCfreq = 0.408)
 sim_180mb <- sim.DNAseq(size = 180000000, GCfreq = 0.408)
 ref_genomes <- data.frame(Notothenia_coriiceps, sim_100mb, sim_180mb)
 
 ## plot
-p1 <- recto_qplot_1(pcha_ecor1, 0, 2, 0.7, 0.7)
+##### NEED TO ADJUST FUNCTIONS TO WORK WITH APEKI
+p1 <- recto_qplot_1(tber_apek1, 0, 4, 0.7, 0.7)
+p1
+seqwidth_apek1 <- recto_digest_2(ref_genomes, apek1)
+p2 <- recto_digest_ggplot(seqwidth_apek1, 30000)
+p2
+p3 <- arrangeGrob(p1, p2, nrow = 1)
+recto_ggsave("tber_apek1", p3)
+#####
+
+p1 <- recto_qplot_1(tber_ecor1, 0, 3, 0.7, 0.7)
 seqwidth_ecor1 <- recto_digest_2(ref_genomes, ecor1)
 p2 <- recto_digest_ggplot(seqwidth_ecor1, 30000)
 p3 <- arrangeGrob(p1, p2, nrow = 1)
-recto_ggsave("pcha_ecor1", p3)
+recto_ggsave("tber_ecor1", p3)
 
-p1 <- recto_qplot_1(pcha_pst1, 0, 4, 0.7, 0.7)
-seqwidth_pst1 <- recto_digest_2(ref_genomes, pst1)
-p2 <- recto_digest_ggplot(seqwidth_pst1, 30000)
+##### NEED TO ADJUST FUNCTIONS TO WORK WITH DOUBLE DIGEST
+p1 <- recto_qplot_1(tber_msp1_ecor1, 0, 4, 0.7, 0.7)
+p1
+seqwidth_msp1_ecor1 <- recto_digest_2(ref_genomes, msp1_ecor1)
+p2 <- recto_digest_ggplot(seqwidth_msp1_ecor1, 100000)
+p2
 p3 <- arrangeGrob(p1, p2, nrow = 1)
-recto_ggsave("pcha_pst1", p3)
+recto_ggsave("tber_msp1_ecor1", p3)
+#####
 
-p1 <- recto_qplot_1(pcha_msp1, 0, 4, 0.7, 0.7)
-seqwidth_msp1 <- recto_digest_2(ref_genomes, msp1)
-p2 <- recto_digest_ggplot(seqwidth_msp1, 100000)
+##### NEED TO ADJUST FUNCTIONS TO WORK WITH APEKI
+p1 <- recto_qplot_1(tloe_apek1, 0, 4, 0.7, 0.7)
+p1
+seqwidth_apek1 <- recto_digest_2(ref_genomes, apek1)
+p2 <- recto_digest_ggplot(seqwidth_apek1, 30000)
+p2
 p3 <- arrangeGrob(p1, p2, nrow = 1)
-recto_ggsave("pcha_msp1", p3)
+recto_ggsave("tloe_apek1", p3)
+#####
 
-p1 <- recto_qplot_1(blor_msp1, 0, 10, 0.7, 0.7)
-p2 <- recto_digest_ggplot(seqwidth_msp1, 100000)
-p3 <- arrangeGrob(p1, p2, nrow = 1)
-recto_ggsave("blor_msp1", p3)
-
-p1 <- recto_qplot_1(blor_pst1, 0, 2, 0.7, 0.7)
-p2 <- recto_digest_ggplot(seqwidth_pst1, 30000)
-p3 <- arrangeGrob(p1, p2, nrow = 1)
-recto_ggsave("blor_pst1", p3)
-
-p1 <- recto_qplot_1(blor_ecor1, 0, 4, 0.7, 0.7)
+p1 <- recto_qplot_1(tloe_ecor1, 0, 2, 0.7, 0.7)
 p2 <- recto_digest_ggplot(seqwidth_ecor1, 30000)
 p3 <- arrangeGrob(p1, p2, nrow = 1)
-recto_ggsave("blor_ecor1", p3)
+recto_ggsave("tloe_ecor1", p3)
+
+##### NEED TO ADJUST FUNCTIONS TO WORK WITH DOUBLE DIGEST
+p1 <- recto_qplot_1(tloe_msp1_ecor1, 0, 4, 0.7, 0.7)
+p1
+seqwidth_msp1_ecor1 <- recto_digest_2(ref_genomes, msp1_ecor1)
+p2 <- recto_digest_ggplot(seqwidth_msp1_ecor1, 100000)
+p2
+p3 <- arrangeGrob(p1, p2, nrow = 1)
+recto_ggsave("tloe_msp1_ecor1", p3)
+#####
 
 ## clean up
 rm(tber_apek1, tber_ecor1, tber_msp1_ecor1, tloe_apek1, tloe_ecor1, tloe_msp1_ecor1, p1, p2, p3,
-   seqwidth_msp1, seqwidth_ecor1, seqwidth_pst1, Notothenia_coriiceps, ref_genomes)
+   seqwidth_apek1, seqwidth_ecor1, seqwidth_msp1_ecor1, Notothenia_coriiceps, ref_genomes)
 #####
 
 #### Aves
