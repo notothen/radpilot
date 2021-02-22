@@ -11,7 +11,7 @@ browseURL("https://bitbucket.org/rochette/rad-seq-genotyping-demo/src/default/de
 library(here) # to shorten file paths
 library(ggsci) # for journal type colors
 library(scales) # to visualize ggsci palettes
-source("~/printfig.R") # to save plots
+source(here("scripts/printfig.R")) # to save plots
 
 #### lib1
 #####
@@ -181,7 +181,7 @@ rm(bathy, psi, m, snps_per_loc, i, max_n_snps, mypal, Mn_values, colfunc, colfun
 #### lib4
 #####
 # lib4, tber
-snps_per_loc <- read.delim(here('data/test_libraries/lib4/tber/c/n_snps_per_locus.tsv'))
+snps_per_loc <- read.delim(here('data/test_libraries/lib4/tber/n_snps_per_locus.tsv'))
 snps_per_loc <- subset(snps_per_loc, M==n & m==3)
 snps_per_loc <- snps_per_loc[order(snps_per_loc$n_snps),]
 Mn_values <- sort(unique(snps_per_loc$M))
@@ -195,7 +195,7 @@ m <- m[, 1:(max_n_snps + 2)]
 tber <- m / rowSums(m, na.rm = T)
 
 # lib4, tloe
-snps_per_loc <- read.delim(here('data/test_libraries/lib4/tloe/c/n_snps_per_locus.tsv'))
+snps_per_loc <- read.delim(here('data/test_libraries/lib4/tloe/n_snps_per_locus.tsv'))
 snps_per_loc <- subset(snps_per_loc, M==n & m==3)
 snps_per_loc <- snps_per_loc[order(snps_per_loc$n_snps),]
 Mn_values <- sort(unique(snps_per_loc$M))
@@ -275,3 +275,4 @@ printfig(here('figures/n_snps_lib5'), lib5_plot)
 printfigpdf(here('figures/n_snps_lib5'), lib5_plot) 
 rm(lib5, m, snps_per_loc, i, max_n_snps, mypal, Mn_values, colfunc, lib5_plot)
 #####
+
