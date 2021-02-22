@@ -161,9 +161,12 @@ Hyalella_azteca <- ref.DNAseq(here("../refgenomes/GCF_000764305.1_Hazt_2.0_genom
                       subselect.contigs = F)
 Parhyale_hawaiensis <- ref.DNAseq(here("../refgenomes/GCA_001587735.1_Phaw3.0_genomic.fna"),
                           subselect.contigs = T, prop.contigs = 0.25)
-Eusirus_perdentatus <- ref.DNAseq(here("../refgenomes/Eperdentatus.fasta"),
-                           subselect.contigs = F)
-ref_genomes <- data.frame(Hyalella_azteca, Parhyale_hawaiensis, Eusirus_perdentatus)
+simI_1000mb <- sim.DNAseq(size=100000000, GCfreq=0.385)
+#Eusirus_perdentatus <- ref.DNAseq(here("../refgenomes/Eperdentatus.fasta"),
+#                           subselect.contigs = F)
+## this was only some shotgut sequencing data
+## not available anymore
+ref_genomes <- data.frame(Hyalella_azteca, Parhyale_hawaiensis, simI_1000mb)
 
 ## plot
 p1 <- recto_qplot_1(ager_msp1, 0, 50, 0.7, 0.7)
