@@ -1,7 +1,7 @@
 ---
 title: "LOG & EXTENDED README"
 author: "Henrik Christiansen"
-date: "February 22, 2021"
+date: "February 23, 2021"
 output:
   pdf_document: default
   html_document: default
@@ -19,13 +19,16 @@ Contact: <henrik.christiansen@kuleuven.be>
 
 ## Log:
 
+23/02/2020: updated double digest calculations in 02_empirical_digests.R
+
 22/02/2020: updated and rerun 02_empirical_digests.R, added input files for coverage calculations
 
 21/02/2020: fixed some git issue with large .RDataTmp file
 
 18/02/2020: updated and rerun 02_empirical_digests.R
 
-17/02/2020: updated and consolidated code and files locally and on github
+17/02/2020: updated and consolidated code and files locally and on github,
+            downdgraded bioanalyzer to v0.5.1 again, the other version throws an error
 
 22/01/2020: fixed xml encoding issues
 
@@ -44,7 +47,7 @@ Contact: <henrik.christiansen@kuleuven.be>
             added a customized ggplot plotting function in recto_REs_and_functions.R
             added in silico functions for comparison in recto_REs_and_functions.R
 
-11-12/2020: updated 02_empirical_digests.R & added a customized plotting function in recto_REs_and_functions.R
+12/11/2020: updated 02_empirical_digests.R & added a customized plotting function in recto_REs_and_functions.R
 
 11/11/2020: updated to run with R v4.0.3
 
