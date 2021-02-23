@@ -19,7 +19,7 @@ Contact: <henrik.christiansen@kuleuven.be>
 
 ## Log:
 
-23/02/2020: updated double digest calculations in 02_empirical_digests.R
+23/02/2020: updated double digest calculations in recto_REs_and_functions.R and 02_empirical_digests.R
 
 22/02/2020: updated and rerun 02_empirical_digests.R, added input files for coverage calculations
 
