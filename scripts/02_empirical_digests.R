@@ -377,7 +377,7 @@ ref_genomes <- data.frame(Notothenia_coriiceps, sim_100mb, sim_180mb)
 ##### NEED TO ADJUST FUNCTIONS TO WORK WITH APEKI
 p1 <- recto_qplot_1(tber_apek1, 0, 4, 0.7, 0.7)
 p1
-seqwidth_apek1 <- recto_digest_2(ref_genomes, apek1)
+seqwidth_apek1 <- recto_digest_3(ref_genomes, apek1a, apek1t)
 p2 <- recto_digest_ggplot(seqwidth_apek1, 30000)
 p2
 p3 <- arrangeGrob(p1, p2, nrow = 1)
@@ -393,7 +393,7 @@ recto_ggsave("tber_ecor1", p3)
 ##### NEED TO ADJUST FUNCTIONS TO WORK WITH DOUBLE DIGEST
 p1 <- recto_qplot_1(tber_msp1_ecor1, 0, 4, 0.7, 0.7)
 p1
-seqwidth_msp1_ecor1 <- recto_digest_2(ref_genomes, msp1_ecor1)
+seqwidth_msp1_ecor1 <- recto_doubledigest(ref_genomes, msp1, ecor1)
 p2 <- recto_digest_ggplot(seqwidth_msp1_ecor1, 100000)
 p2
 p3 <- arrangeGrob(p1, p2, nrow = 1)
