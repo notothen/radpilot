@@ -374,15 +374,11 @@ sim_180mb <- sim.DNAseq(size = 180000000, GCfreq = 0.408)
 ref_genomes <- data.frame(Notothenia_coriiceps, sim_100mb, sim_180mb)
 
 ## plot
-##### NEED TO ADJUST FUNCTIONS TO WORK WITH APEKI
 p1 <- recto_qplot_1(tber_apek1, 0, 4, 0.7, 0.7)
-p1
 seqwidth_apek1 <- recto_digest_3(ref_genomes, apek1a, apek1t)
-p2 <- recto_digest_ggplot(seqwidth_apek1, 30000)
-p2
+p2 <- recto_digest_ggplot(seqwidth_apek1, 100000)
 p3 <- arrangeGrob(p1, p2, nrow = 1)
 recto_ggsave("tber_apek1", p3)
-#####
 
 p1 <- recto_qplot_1(tber_ecor1, 0, 3, 0.7, 0.7)
 seqwidth_ecor1 <- recto_digest_2(ref_genomes, ecor1)
@@ -390,40 +386,26 @@ p2 <- recto_digest_ggplot(seqwidth_ecor1, 30000)
 p3 <- arrangeGrob(p1, p2, nrow = 1)
 recto_ggsave("tber_ecor1", p3)
 
-##### NEED TO ADJUST FUNCTIONS TO WORK WITH DOUBLE DIGEST
 p1 <- recto_qplot_1(tber_msp1_ecor1, 0, 4, 0.7, 0.7)
-p1
 seqwidth_msp1_ecor1 <- recto_doubledigest(ref_genomes, msp1, ecor1)
-p2 <- recto_digest_ggplot(seqwidth_msp1_ecor1, 100000)
-p2
+p2 <- recto_digest_ggplot(seqwidth_msp1_ecor1, 30000)
 p3 <- arrangeGrob(p1, p2, nrow = 1)
 recto_ggsave("tber_msp1_ecor1", p3)
-#####
 
-##### NEED TO ADJUST FUNCTIONS TO WORK WITH APEKI
 p1 <- recto_qplot_1(tloe_apek1, 0, 4, 0.7, 0.7)
-p1
-seqwidth_apek1 <- recto_digest_2(ref_genomes, apek1)
-p2 <- recto_digest_ggplot(seqwidth_apek1, 30000)
-p2
+p2 <- recto_digest_ggplot(seqwidth_apek1, 100000)
 p3 <- arrangeGrob(p1, p2, nrow = 1)
 recto_ggsave("tloe_apek1", p3)
-#####
 
 p1 <- recto_qplot_1(tloe_ecor1, 0, 2, 0.7, 0.7)
 p2 <- recto_digest_ggplot(seqwidth_ecor1, 30000)
 p3 <- arrangeGrob(p1, p2, nrow = 1)
 recto_ggsave("tloe_ecor1", p3)
 
-##### NEED TO ADJUST FUNCTIONS TO WORK WITH DOUBLE DIGEST
-p1 <- recto_qplot_1(tloe_msp1_ecor1, 0, 4, 0.7, 0.7)
-p1
-seqwidth_msp1_ecor1 <- recto_digest_2(ref_genomes, msp1_ecor1)
-p2 <- recto_digest_ggplot(seqwidth_msp1_ecor1, 100000)
-p2
+p1 <- recto_qplot_1(tloe_msp1_ecor1, 0, 5, 0.7, 0.7)
+p2 <- recto_digest_ggplot(seqwidth_msp1_ecor1, 30000)
 p3 <- arrangeGrob(p1, p2, nrow = 1)
 recto_ggsave("tloe_msp1_ecor1", p3)
-#####
 
 ## clean up
 rm(tber_apek1, tber_ecor1, tber_msp1_ecor1, tloe_apek1, tloe_ecor1, tloe_msp1_ecor1, p1, p2, p3,
