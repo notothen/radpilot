@@ -1,6 +1,6 @@
 #### Script containing RE 
 #### cut sites for RADseq pilot experiment RECTO
-## 22/02/2021
+## 23/02/2021
 ## H. Christiansen
 ## v3.3
 
@@ -45,7 +45,7 @@ reverse2 <- c((rep('', 4)), apek1_3t, '', '',
 ## combine
 recto_REs <- data.frame(run, names, forward, reverse, forward2, reverse2)
 
-## add some enzymes also as simple dataframe
+## add some enzymes also as simple data frame
 ## needed as input for plotting functions
 run <- 1
 forward <- ecor1_5
@@ -59,6 +59,15 @@ msp1 <- data.frame(run, forward, reverse)
 forward <- pst1_5
 reverse <- pst1_3
 pst1 <- data.frame(run, forward, reverse)
+
+forward <- apek1_5
+reverse <- apek1_3a
+apek1a <- data.frame(run, forward, reverse)
+
+forward <- apek1_5
+reverse <- apek1_3t
+apek1t <- data.frame(run, forward, reverse)
+
 
 ## add size windows
 lower_size <- c(210, 240, 0, 100, 200, 300, 400, 500, 600, 700, 800)
@@ -309,7 +318,22 @@ recto_digest_2 <- function(genomes, enzyme){
   seqwidth <- rbind(seq1, seq2, seq3)
   return(seqwidth)
 }
-  
+
+## same function, but for double digest
+recto_doubledigest <- function(genomes, enzyme1, enzyme2){
+  sequences1 <- insilico.digest(genomes[, 1], enzyme1$forward[1], enzyme1$reverse[1], enzyme2$forward[1], enzyme2$reverse[1], verbose = F)
+  sequences2 <- insilico.digest(genomes[, 2], enzyme1$forward[1], enzyme1$reverse[1], enzyme2$forward[1], enzyme2$reverse[1], verbose = F)
+  sequences3 <- insilico.digest(genomes[, 3], enzyme1$forward[1], enzyme1$reverse[1], enzyme2$forward[1], enzyme2$reverse[1], verbose = F)
+  seq1sel <- adapt.select(sequences1, type = "AB+BA", enzyme1$forward[1], enzyme1$reverse[1], enzyme2$forward[1], enzyme2$reverse[1])
+  seq2sel <- adapt.select(sequences2, type = "AB+BA", enzyme1$forward[1], enzyme1$reverse[1], enzyme2$forward[1], enzyme2$reverse[1])
+  seq3sel <- adapt.select(sequences3, type = "AB+BA", enzyme1$forward[1], enzyme1$reverse[1], enzyme2$forward[1], enzyme2$reverse[1])
+  eq1 <- data.frame(genome = rep(paste(names(genomes[1])), each = length(seq1sel)), size = width(seq1sel))
+  seq2 <- data.frame(genome = rep(paste(names(genomes[2])), each = length(seq2sel)), size = width(seq2sel))
+  seq3 <- data.frame(genome = rep(paste(names(genomes[3])), each = length(seq3sel)), size = width(seq3sel))
+  seqwidth <- rbind(seq1, seq2, seq3)
+  return(seqwidth)
+}
+
 ## ggplot function
 recto_digest_ggplot <- function(seqwidth, bins) {
   ggplot2::ggplot(data = seqwidth, aes(x = size, fill = genome)) + 
