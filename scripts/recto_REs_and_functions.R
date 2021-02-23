@@ -319,6 +319,18 @@ recto_digest_2 <- function(genomes, enzyme){
   return(seqwidth)
 }
 
+## same function, but for digest with apek1
+recto_digest_3 <- function(genomes, enzyme1, enzyme2){
+  sequences1 <- insilico.digest(genomes[, 1], enzyme1$forward[1], enzyme1$reverse[1], enzyme2$forward[1], enzyme2$reverse[1], verbose = F)
+  sequences2 <- insilico.digest(genomes[, 2], enzyme1$forward[1], enzyme1$reverse[1], enzyme2$forward[1], enzyme2$reverse[1], verbose = F)
+  sequences3 <- insilico.digest(genomes[, 3], enzyme1$forward[1], enzyme1$reverse[1], enzyme2$forward[1], enzyme2$reverse[1], verbose = F)
+  seq1 <- data.frame(genome = rep(paste(names(genomes[1])), each = length(sequences1)), size = width(sequences1))
+  seq2 <- data.frame(genome = rep(paste(names(genomes[2])), each = length(sequences2)), size = width(sequences2))
+  seq3 <- data.frame(genome = rep(paste(names(genomes[3])), each = length(sequences3)), size = width(sequences3))
+  seqwidth <- rbind(seq1, seq2, seq3)
+  return(seqwidth)
+}
+
 ## same function, but for double digest
 recto_doubledigest <- function(genomes, enzyme1, enzyme2){
   sequences1 <- insilico.digest(genomes[, 1], enzyme1$forward[1], enzyme1$reverse[1], enzyme2$forward[1], enzyme2$reverse[1], verbose = F)
@@ -327,7 +339,7 @@ recto_doubledigest <- function(genomes, enzyme1, enzyme2){
   seq1sel <- adapt.select(sequences1, type = "AB+BA", enzyme1$forward[1], enzyme1$reverse[1], enzyme2$forward[1], enzyme2$reverse[1])
   seq2sel <- adapt.select(sequences2, type = "AB+BA", enzyme1$forward[1], enzyme1$reverse[1], enzyme2$forward[1], enzyme2$reverse[1])
   seq3sel <- adapt.select(sequences3, type = "AB+BA", enzyme1$forward[1], enzyme1$reverse[1], enzyme2$forward[1], enzyme2$reverse[1])
-  eq1 <- data.frame(genome = rep(paste(names(genomes[1])), each = length(seq1sel)), size = width(seq1sel))
+  seq1 <- data.frame(genome = rep(paste(names(genomes[1])), each = length(seq1sel)), size = width(seq1sel))
   seq2 <- data.frame(genome = rep(paste(names(genomes[2])), each = length(seq2sel)), size = width(seq2sel))
   seq3 <- data.frame(genome = rep(paste(names(genomes[3])), each = length(seq3sel)), size = width(seq3sel))
   seqwidth <- rbind(seq1, seq2, seq3)
