@@ -1,7 +1,7 @@
 ---
 title: "LOG & EXTENDED README"
 author: "Henrik Christiansen"
-date: "February 23, 2021"
+date: "March 01, 2021"
 output:
   pdf_document: default
   html_document: default
@@ -19,22 +19,24 @@ Contact: <henrik.christiansen@kuleuven.be>
 
 ## Log:
 
-23/02/2020: updated double digest calculations in recto_REs_and_functions.R and 02_empirical_digests.R
+01/03/2021: updated bird plots in 02_empirical_digests.R
 
-22/02/2020: updated and rerun 02_empirical_digests.R, added input files for coverage calculations
+23/02/2021: updated double digest calculations in recto_REs_and_functions.R and 02_empirical_digests.R
 
-21/02/2020: fixed some git issue with large .RDataTmp file
+22/02/2021: updated and rerun 02_empirical_digests.R, added input files for coverage calculations
 
-18/02/2020: updated and rerun 02_empirical_digests.R
+21/02/2021: fixed some git issue with large .RDataTmp file
 
-17/02/2020: updated and consolidated code and files locally and on github,
+18/02/2021: updated and rerun 02_empirical_digests.R
+
+17/02/2021: updated and consolidated code and files locally and on github,
             downdgraded bioanalyzer to v0.5.1 again, the other version throws an error
 
-22/01/2020: fixed xml encoding issues
+22/01/2021: fixed xml encoding issues
 
-20/01/2020: added new xml file for run 7, updated bioanalyzer to v0.6.2 and updated 02_empirical_digests.R
+20/01/2021: added new xml file for run 7, updated bioanalyzer to v0.6.2 and updated 02_empirical_digests.R
 
-20/01/2020: added the project to a github repository
+20/01/2021: added the project to a github repository
 
 16/12/2020: added a modified read.bioanalyzer function to read in xml file with a missing lower marker in one sample
 
