@@ -1,6 +1,6 @@
 #### Script for reading in restriction enzyme
 #### digestion data from bioanalyzer output files
-## 17/02/2021
+## 01/03/2021
 ## H. Christiansen
 ## v2.3
 
@@ -420,13 +420,13 @@ pniv_ecor1a <- rbind(subset(run3, sample.name %in% species_sample_names(samples,
                     subset(run6, sample.name %in% species_sample_names(samples, "Pagodroma nivea")[8]))
 pniv_ecor1b <- rbind(subset(run10, sample.name %in% species_sample_names(samples, "Pagodroma nivea")[12]),
                     subset(run10, sample.name %in% species_sample_names(samples, "Pagodroma nivea")[15]))
-pniv_pst1 <- rbind(subset(run3, sample.name %in% species_sample_names(samples, "Pagodroma nivea")[3:4]),
-                   subset(run7, sample.name %in% species_sample_names(samples, "Pagodroma nivea")[9]),
-                   subset(run10, sample.name %in% species_sample_names(samples, "Pagodroma nivea")[11]),
-                   subset(run10, sample.name %in% species_sample_names(samples, "Pagodroma nivea")[14]))
-pniv_msp1 <- rbind(subset(run4, sample.name %in% species_sample_names(samples, "Pagodroma nivea")[5:6]),
-                   subset(run6, sample.name %in% species_sample_names(samples, "Pagodroma nivea")[7]),
-                   subset(run10, sample.name %in% species_sample_names(samples, "Pagodroma nivea")[10]),
+pniv_pst1a <- rbind(subset(run3, sample.name %in% species_sample_names(samples, "Pagodroma nivea")[3:4]),
+                    subset(run7, sample.name %in% species_sample_names(samples, "Pagodroma nivea")[9]))
+pniv_pst1b <- rbind(subset(run10, sample.name %in% species_sample_names(samples, "Pagodroma nivea")[11]),
+                    subset(run10, sample.name %in% species_sample_names(samples, "Pagodroma nivea")[14]))
+pniv_msp1a <- rbind(subset(run4, sample.name %in% species_sample_names(samples, "Pagodroma nivea")[5:6]),
+                   subset(run6, sample.name %in% species_sample_names(samples, "Pagodroma nivea")[7]))
+pniv_msp1b <- rbind(subset(run10, sample.name %in% species_sample_names(samples, "Pagodroma nivea")[10]),
                    subset(run10, sample.name %in% species_sample_names(samples, "Pagodroma nivea")[13]))
 
 
@@ -444,33 +444,43 @@ pniv_ecor1a$samples
 recto_qplot_1(pniv_ecor1a, 0, 2, 0.7, 0.7)
 pniv_ecor1b$samples
 recto_qplot_1(pniv_ecor1b, 0, 2, 0.7, 0.7)
-pniv_ecor1 <- rbind(subset(run3, sample.name %in% species_sample_names(samples, "Pagodroma nivea")[1:2]),
-                    subset(run10, sample.name %in% species_sample_names(samples, "Pagodroma nivea")[12]))
-p1 <- recto_qplot_1(pniv_ecor1, 0, 2, 0.7, 0.7)
+pniv_ecor1 <- rbind(subset(run3, sample.name %in% species_sample_names(samples, "Pagodroma nivea")[1]),
+                    subset(run10, sample.name %in% species_sample_names(samples, "Pagodroma nivea")[12]),
+                    subset(run10, sample.name %in% species_sample_names(samples, "Pagodroma nivea")[15]))
+p1 <- recto_qplot_1(pniv_ecor1, 0, 1, 0.7, 0.7)
 seqwidth_ecor1 <- recto_digest_2(ref_genomes, ecor1)
 p2 <- recto_digest_ggplot(seqwidth_ecor1, 30000)
 p3 <- arrangeGrob(p1, p2, nrow = 1)
 recto_ggsave("pniva_ecor1", p3)
 
-
-pniv_pst1$samples
-recto_qplot_1(pniv_pst1, 0, 2, 0.7, 0.7)
-#### NEED TO CONTINUE HERE AND SELECT SAMPLES
-
-
-p1 <- recto_qplot_1(pniv_pst1, 0, 4, 0.7, 0.7)
+pniv_pst1a$samples
+recto_qplot_1(pniv_pst1a, 0, 2, 0.7, 0.7)
+pniv_pst1b$samples
+recto_qplot_1(pniv_pst1b, 0, 2, 0.7, 0.7)
+pniv_pst1 <- rbind(subset(run7, sample.name %in% species_sample_names(samples, "Pagodroma nivea")[9]),
+                    subset(run10, sample.name %in% species_sample_names(samples, "Pagodroma nivea")[11]),
+                    subset(run10, sample.name %in% species_sample_names(samples, "Pagodroma nivea")[14]))
+p1 <- recto_qplot_1(pniv_pst1, 0, 1, 0.7, 0.7)
 seqwidth_pst1 <- recto_digest_2(ref_genomes, pst1)
 p2 <- recto_digest_ggplot(seqwidth_pst1, 30000)
 p3 <- arrangeGrob(p1, p2, nrow = 1)
 recto_ggsave("pniv_pst1", p3)
 
-p1 <- recto_qplot_1(pniv_msp1, 0, 4, 0.7, 0.7)
+pniv_msp1a$samples
+recto_qplot_1(pniv_msp1a, 0, 2, 0.7, 0.7)
+pniv_msp1b$samples
+recto_qplot_1(pniv_msp1b, 0, 2, 0.7, 0.7)
+pniv_msp1 <- pniv_msp1b
+p1 <- recto_qplot_1(pniv_msp1, 0, 1, 0.7, 0.7)
 seqwidth_msp1 <- recto_digest_2(ref_genomes, msp1)
 p2 <- recto_digest_ggplot(seqwidth_msp1, 100000)
 p3 <- arrangeGrob(p1, p2, nrow = 1)
 recto_ggsave("pniv_msp1", p3)
 
 ## clean up
-rm(pniv_ecor1, pniv_ecor1a, pniv_ecor1b, pniv_msp1, pniv_pst1, p1, p2, p3,
+rm(pniv_ecor1, pniv_ecor1a, pniv_ecor1b, pniv_msp1a, pniv_msp1b, pniv_msp1, pniv_pst1a, pniv_pst1b, pniv_pst1, p1, p2, p3,
    seqwidth_msp1, seqwidth_ecor1, seqwidth_pst1, Fulmarus_glacialis, sim_100mb, sim_150mb, ref_genomes)
+## clean up intermediate files from entire script
+rm(apek1a, apek1t, ecor1, msp1, pst1, run1, run2, run3, run4, run5, run6, run7, run8, run9, run10,
+   recto_REs, samples, lower_size, upper_size)
 #####
