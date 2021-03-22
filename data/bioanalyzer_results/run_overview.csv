@@ -87,12 +87,12 @@ run,run_name,sample,specimen,species,enzyme,replicate,quality
 8,2018-09-07_09-46-06,sample 9,B62-RAD-I,Abyssorchomene gerulicorbis,EcoRI,3,ok
 8,2018-09-07_09-46-06,sample 10,A100-RAD-II,Paralicella caperesca,EcoRI,1,ok
 8,2018-09-07_09-46-06,sample 11,A113-RAD-II,Paralicella caperesca,EcoRI,2,ok
-9,2019-07-22_11-23,sample 1,HE10,Eusirus aff perdentatus,MspI,1,
-9,2019-07-22_11-23,sample 2,HE13,Eusirus aff perdentatus,MspI,2,
-9,2019-07-22_11-23,sample 3,HE14,Eusirus aff perdentatus,MspI,3,
-9,2019-07-22_11-23,sample 4,HE10,Eusirus aff perdentatus,EcoRI,1,poor
-9,2019-07-22_11-23,sample 5,HE13,Eusirus aff perdentatus,EcoRI,2,
-9,2019-07-22_11-23,sample 6,HE14,Eusirus aff perdentatus,EcoRI,3,
+9,2019-07-22_11-23,sample 1,HE10,Eusirus pontomedon,MspI,1,
+9,2019-07-22_11-23,sample 2,HE13,Eusirus pontomedon,MspI,2,
+9,2019-07-22_11-23,sample 3,HE14,Eusirus pontomedon,MspI,3,
+9,2019-07-22_11-23,sample 4,HE10,Eusirus pontomedon,EcoRI,1,poor
+9,2019-07-22_11-23,sample 5,HE13,Eusirus pontomedon,EcoRI,2,
+9,2019-07-22_11-23,sample 6,HE14,Eusirus pontomedon,EcoRI,3,
 9,2019-07-22_11-23,sample 7,280,Macropyxis hornei,EcoRI,1,
 9,2019-07-22_11-23,sample 8,340,Macrocyprina rocas,EcoRI,2,overload
 9,2019-07-22_11-23,sample 9,176,Macroscapha falcis,EcoRI,3,
@@ -101,7 +101,7 @@ run,run_name,sample,specimen,species,enzyme,replicate,quality
 10,2019-07-25_11-54-39,sample 1,280,Macropyxis hornei,MspI,1,
 10,2019-07-25_11-54-39,sample 2,340,Macrocyprina rocas,MspI,2,
 10,2019-07-25_11-54-39,sample 3,176,Macroscapha falcis,MspI,3,
-10,2019-07-25_11-54-39,sample 4,HE10,Eusirus aff perdentatus,EcoRI,1,poor
+10,2019-07-25_11-54-39,sample 4,HE10,Eusirus pontomedon,EcoRI,1,poor
 10,2019-07-25_11-54-39,sample 5,340,Macrocyprina rocas,EcoRI,2,
 10,2019-07-25_11-54-39,sample 6,2,Pagodroma nivea,MspI,2_1,
 10,2019-07-25_11-54-39,sample 7,2,Pagodroma nivea,PstI,2_1,
