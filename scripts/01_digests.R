@@ -1,7 +1,7 @@
 #### Script for in silico digestion of
 #### various genomes with different enzymes
 #### for RADseq pilot experiment RECTO
-## 14/12/2020
+## 22/03/2021
 ## H. Christiansen
 ## v2.3
 
@@ -10,13 +10,15 @@ library(here) # to shorten file paths
 library(SimRAD) # for in silico digestion
 library(seqinr) # for GC calculation
 library(tidyverse) # to arrange data
-source(here("analyses/recto_REs_and_functions.R")) # custom functions
+source(here("scripts/recto_REs_and_functions.R")) # custom functions
 
 #### Ostracoda
 #####
 ## reference genome C. torosa
-Ctorosa <- ref.DNAseq(here("data/refgenomes/Cyprideis_torosa.raw_filtered.fasta"),
-                      subselect.contigs = F)
+#### the reference genomes are too big to be hosted on github
+#### you need to get a local copy and store it somewhere and change the file path accordingly
+Ctorosa <- ref.DNAseq(here("../refgenomes/Cyprideis_torosa.raw_filtered.fasta"),
+                               subselect.contigs = F)
 width(Ctorosa)
 # 286.1 Mb
 GC(s2c(Ctorosa))
@@ -58,6 +60,17 @@ write.csv(ostracoda_simII, file = here("data/in_silico_results/ostracoda_simII.c
 
 ostracoda <- rbind(ostracoda_ctorosa, ostracoda_simI, ostracoda_simII)
 write.csv(ostracoda, file = here("data/in_silico_results/ostracoda.csv"))
+
+###########BEGIN
+#######UPDATE CODE HERE
+### calculate some additional size windows
+lower_size <- c(210, 240, 0, 100, 200, 300, 400, 500, 600, 700, 800)
+upper_size <- c(260, 340, 100, 200, 300, 400, 500, 600, 700, 800, 900)
+
+ostracoda_ctorosa <- recto_digest(Ctorosa, recto_REs, c(200, 250), c(350, 500), 1)
+#########END
+
+
 rm(Ctorosa, simI, simII, genome_size, ratio_simI, ratio_simII, ostracoda,
    ostracoda_ctorosa, ostracoda_simI, ostracoda_simII)
 #####
