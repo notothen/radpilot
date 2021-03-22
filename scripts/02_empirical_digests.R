@@ -1,6 +1,6 @@
 #### Script for reading in restriction enzyme
 #### digestion data from bioanalyzer output files
-## 01/03/2021
+## 22/03/2021
 ## H. Christiansen
 ## v2.3
 
@@ -145,14 +145,19 @@ rm(ostra_msp1a, ostra_msp1b, ostra_ecor1a, ostra_ecor1b, ostra_ecor1c, ostra_eco
 #####
 ## subset
 unique(samples$species)
-runs_vs_species(samples, c("Abyssorchomene gerulicorbis", "Paralicella caperesca", "Eusirus aff perdentatus"))
-ager_msp1 <- subset(run8, sample.name %in% species_sample_names(samples, c("Abyssorchomene gerulicorbis", "Paralicella caperesca", "Eusirus aff perdentatus"))[1:3])
-ager_ecor1 <- subset(run8, sample.name %in% species_sample_names(samples, c("Abyssorchomene gerulicorbis", "Paralicella caperesca", "Eusirus aff perdentatus"))[7:9])
-pcap_msp1 <- subset(run8, sample.name %in% species_sample_names(samples, c("Abyssorchomene gerulicorbis", "Paralicella caperesca", "Eusirus aff perdentatus"))[4:6])
-pcap_ecor1 <- subset(run8, sample.name %in% species_sample_names(samples, c("Abyssorchomene gerulicorbis", "Paralicella caperesca", "Eusirus aff perdentatus"))[10:11])
-eper_msp1 <- subset(run9, sample.name %in% species_sample_names(samples, c("Abyssorchomene gerulicorbis", "Paralicella caperesca", "Eusirus aff perdentatus"))[12:14])
-eper_ecor1a <- subset(run9, sample.name %in% species_sample_names(samples, c("Abyssorchomene gerulicorbis", "Paralicella caperesca", "Eusirus aff perdentatus"))[15:17])
-eper_ecor1b <- subset(run10, sample.name %in% species_sample_names(samples, c("Abyssorchomene gerulicorbis", "Paralicella caperesca", "Eusirus aff perdentatus"))[18])
+runs_vs_species(samples, c("Abyssorchomene gerulicorbis"))
+ager_msp1 <- subset(run8, sample.name %in% species_sample_names(samples, "Abyssorchomene gerulicorbis")[1:3])
+ager_ecor1 <- subset(run8, sample.name %in% species_sample_names(samples, "Abyssorchomene gerulicorbis")[4:6])
+runs_vs_species(samples, c("Paralicella caperesca"))
+pcap_msp1 <- subset(run8, sample.name %in% species_sample_names(samples, "Paralicella caperesca")[1:3])
+pcap_ecor1 <- subset(run8, sample.name %in% species_sample_names(samples, "Paralicella caperesca")[4:5])
+runs_vs_species(samples, c("Eusirus pontomedon"))
+eper_msp1 <- subset(run9, sample.name %in% species_sample_names(samples, "Eusirus pontomedon")[1:3])
+eper_ecor1a <- subset(run9, sample.name %in% species_sample_names(samples, "Eusirus pontomedon")[4:6])
+eper_ecor1b <- subset(run10, sample.name %in% species_sample_names(samples, "Eusirus pontomedon")[7])
+runs_vs_species(samples, c("Charcotia obesa"))
+cobe_msp1 <- subset(run6, sample.name %in% species_sample_names(samples, "Charcotia obesa")[1:3])
+cobe_ecor1 <- subset(run6, sample.name %in% species_sample_names(samples, "Charcotia obesa")[4:6])
 
 ## load reference genomes
 #### the reference genomes are too big to be hosted on github
@@ -215,8 +220,18 @@ p2 <- recto_digest_ggplot(seqwidth_ecor1, 100000)
 p3 <- arrangeGrob(p1, p2, nrow = 1)
 recto_ggsave("eper_ecor1", p3)
 
+p1 <- recto_qplot_1(cobe_msp1, 0, 2, 0.7, 0.7)
+p2 <- recto_digest_ggplot(seqwidth_msp1, 100000)
+p3 <- arrangeGrob(p1, p2, nrow = 1)
+recto_ggsave("cobe_msp1", p3)
+
+p1 <- recto_qplot_1(cobe_ecor1, 0, 1, 0.7, 0.7)
+p2 <- recto_digest_ggplot(seqwidth_ecor1, 100000)
+p3 <- arrangeGrob(p1, p2, nrow = 1)
+recto_ggsave("cobe_ecor1", p3)
+
 ## clean up
-rm(ager_ecor1, ager_msp1, eper_ecor1, eper_ecor1a, eper_ecor1b, eper_msp1, p1, p2, p3,
+rm(ager_ecor1, ager_msp1, eper_ecor1, eper_ecor1a, eper_ecor1b, eper_msp1, cobe_ecor1, cobe_msp1, p1, p2, p3,
    seqwidth_msp1, seqwidth_ecor1, Hyalella_azteca, Parhyale_hawaiensis, sim_1000mb, ref_genomes)
 #####
 
