@@ -61,25 +61,50 @@ write.csv(ostracoda_simII, file = here("data/in_silico_results/ostracoda_simII.c
 ostracoda <- rbind(ostracoda_ctorosa, ostracoda_simI, ostracoda_simII)
 write.csv(ostracoda, file = here("data/in_silico_results/ostracoda.csv"))
 
-###########BEGIN
-#######UPDATE CODE HERE
-### calculate some additional size windows
-lower_size <- c(210, 240, 0, 100, 200, 300, 400, 500, 600, 700, 800)
-upper_size <- c(260, 340, 100, 200, 300, 400, 500, 600, 700, 800, 900)
+## calculate some additional size windows
+lower_size <- c(250, 250, 300, 350, 250, 250, 250, 250, 200, 200, 200)
+upper_size <- c(350, 400, 400, 450, 340, 330, 320, 300, 250, 260, 280)
 
-ostracoda_ctorosa <- recto_digest(Ctorosa, recto_REs, c(200, 250), c(350, 500), 1)
-#########END
+ostracoda_ctorosa <- recto_digest(Ctorosa, recto_REs, lower_size, upper_size, 1)
+ostracoda_ctorosa$class <- "ostracoda"
+ostracoda_ctorosa$ref <- "cyprideis_torosa"
+ostracoda_simI <- recto_digest(simI, recto_REs, lower_size, upper_size, ratio_simI)
+ostracoda_simI$class <- "ostracoda"
+ostracoda_simI$ref <- "simI"
+ostracoda_simII <- recto_digest(simII, recto_REs, lower_size, upper_size, ratio_simII)
+ostracoda_simII$class <- "ostracoda"
+ostracoda_simII$ref <- "simII"
+ostracoda2 <- rbind(ostracoda_ctorosa, ostracoda_simI, ostracoda_simII)
+write.csv(ostracoda, file = here("data/in_silico_results/ostracoda2.csv"))
 
+## and even more size windows
+lower_size <- c(200, 200, 200, 200, 200, 200, 250, 250, 250, 200, 300)
+upper_size <- c(300, 350, 400, 450, 500, 320, 420, 450, 500, 500, 500)
 
+ostracoda_ctorosa <- recto_digest(Ctorosa, recto_REs, lower_size, upper_size, 1)
+ostracoda_ctorosa$class <- "ostracoda"
+ostracoda_ctorosa$ref <- "cyprideis_torosa"
+ostracoda_simI <- recto_digest(simI, recto_REs, lower_size, upper_size, ratio_simI)
+ostracoda_simI$class <- "ostracoda"
+ostracoda_simI$ref <- "simI"
+ostracoda_simII <- recto_digest(simII, recto_REs, lower_size, upper_size, ratio_simII)
+ostracoda_simII$class <- "ostracoda"
+ostracoda_simII$ref <- "simII"
+ostracoda3 <- rbind(ostracoda_ctorosa, ostracoda_simI, ostracoda_simII)
+write.csv(ostracoda, file = here("data/in_silico_results/ostracoda3.csv"))
+
+## clean up
 rm(Ctorosa, simI, simII, genome_size, ratio_simI, ratio_simII, ostracoda,
-   ostracoda_ctorosa, ostracoda_simI, ostracoda_simII)
+   ostracoda2, ostracoda3, ostracoda_ctorosa, ostracoda_simI, ostracoda_simII)
 #####
 
 #### Amphipoda
 #####
 ## reference genome H. azteca
-Hazteca <- ref.DNAseq(here("data/refgenomes/GCF_000764305.1_Hazt_2.0_genomic.fna"),
-                      subselect.contigs = F)
+#### the reference genomes are too big to be hosted on github
+#### you need to get a local copy and store it somewhere and change the file paths accordingly
+Hazteca <- ref.DNAseq(here("../refgenomes/GCF_000764305.1_Hazt_2.0_genomic.fna"),
+                              subselect.contigs = F)
 width(Hazteca)
 # 550.9 Mb
 GC(s2c(Hazteca))
@@ -92,32 +117,36 @@ write.csv(amphipoda_hazteca, file = here("data/in_silico_results/amphipoda_hazte
 rm(Hazteca)
 
 ## reference genome P. hawaiensis
-Phawaiensis <- ref.DNAseq(here("refgenomes/GCA_001587735.1_Phaw3.0_genomic.fna"),
-                          subselect.contigs = T, prop.contigs = 0.25)
+#### the reference genomes are too big to be hosted on github
+#### you need to get a local copy and store it somewhere and change the file paths accordingly
+Phawaiensis <- ref.DNAseq(here("../refgenomes/GCA_001587735.1_Phaw3.0_genomic.fna"),
+                                  subselect.contigs = T, prop.contigs = 0.1)
 width(Phawaiensis)
-# 1000.7 Mb * 4
+# 1000.7 Mb * 10
 #GC(s2c(Phawaiensis))
 # 0.408 GC
 # digest
-amphipoda_phaw <- recto_digest(Phawaiensis, recto_REs, lower_size, upper_size, 4)
+amphipoda_phaw <- recto_digest(Phawaiensis, recto_REs, lower_size, upper_size, 10)
 amphipoda_phaw$class <- "amphipoda"
 amphipoda_phaw$ref <- "Parhyale hawaiensis"
 write.csv(amphipoda_phaw, file = here("data/in_silico_results/amphipoda_phawaiensis.csv"))
 rm(Phawaiensis)
 
-## shotgun sequences E. perdentatus
-Eperdentatus <- ref.DNAseq(here("refgenomes/Eperdentatus.fasta"),
-                           subselect.contigs = F)
-width(Eperdentatus)
+## shotgun sequences E. pontomedon
+#Epontomedon <- ref.DNAseq(here("../refgenomes/Epontomedon.fasta"),
+#                           subselect.contigs = F)
+## this was only some shotgut sequencing data
+## which is not available anymore
+width(Epontomedon)
 # 966.2 Mb
-GC(s2c(Eperdentatus))
+GC(s2c(Epontomedon))
 # 0.4408 GC 
 # digest
-amphipoda_eper <- recto_digest(Eperdentatus, recto_REs, lower_size, upper_size, 1)
-amphipoda_eper$class <- "amphipoda"
-amphipoda_eper$ref <- "Eusirus perdentatus"
-write.csv(amphipoda_eper, file = here("data/in_silico_results/amphipoda_eperdentatus.csv"))
-rm(Eperdentatus)
+amphipoda_epon <- recto_digest(Epontomedon, recto_REs, lower_size, upper_size, 1)
+amphipoda_epon$class <- "amphipoda"
+amphipoda_epon$ref <- "Eusirus pontomedon"
+write.csv(amphipoda_epon, file = here("data/in_silico_results/amphipoda_epontomedon.csv"))
+rm(Epontomedon)
 
 ## simulated genome, I
 simI <- sim.DNAseq(size=100000000, GCfreq=0.385)
@@ -143,10 +172,82 @@ write.csv(amphipoda_simII, file = here("data/in_silico_results/amphipoda_simII.c
 rm(simII)
 
 ## combine 
-amphipoda <- rbind(amphipoda_hazteca, amphipoda_phaw, amphipoda_eper,
+#amphipoda <- rbind(amphipoda_hazteca, amphipoda_phaw, amphipoda_epon,
+#                  amphipoda_simI, amphipoda_simII)
+amphipoda <- rbind(amphipoda_hazteca, amphipoda_phaw,
                    amphipoda_simI, amphipoda_simII)
 write.csv(amphipoda, file = here("data/in_silico_results/amphipoda.csv"))
-rm(genome_size, ratio_simI, ratio_simII, amphipoda,
+
+## calculate some additional size windows
+lower_size <- c(250, 250, 300, 350, 250, 250, 250, 250, 200, 200, 200)
+upper_size <- c(350, 400, 400, 450, 340, 330, 320, 300, 250, 260, 280)
+
+Hazteca <- ref.DNAseq(here("../refgenomes/GCF_000764305.1_Hazt_2.0_genomic.fna"),
+                      subselect.contigs = F)
+amphipoda_hazteca <- recto_digest(Hazteca, recto_REs, lower_size, upper_size, 1)
+amphipoda_hazteca$class <- "amphipoda"
+amphipoda_hazteca$ref <- "Hyalella_azteca"
+rm(Hazteca)
+Phawaiensis <- ref.DNAseq(here("../refgenomes/GCA_001587735.1_Phaw3.0_genomic.fna"),
+                          subselect.contigs = T, prop.contigs = 0.1)
+amphipoda_phaw <- recto_digest(Phawaiensis, recto_REs, lower_size, upper_size, 4)
+amphipoda_phaw$class <- "amphipoda"
+amphipoda_phaw$ref <- "Parhyale hawaiensis"
+rm(Phawaiensis)
+simI <- sim.DNAseq(size=100000000, GCfreq=0.385)
+genome_size <- 10000000000 # genome size: 10 000 Mb
+ratio_simI <- genome_size/width(simI)
+amphipoda_simI <- recto_digest(simI, recto_REs, lower_size, upper_size, ratio_simI)
+amphipoda_simI$class <- "amphipoda"
+amphipoda_simI$ref <- "simI"
+rm(simI)
+simII <- sim.DNAseq(size=200000000, GCfreq=0.408)
+genome_size <- 30000000000 # genome size: 30 000 Mb
+ratio_simII <- genome_size/width(simII)
+amphipoda_simII <- recto_digest(simII, recto_REs, lower_size, upper_size, ratio_simII)
+amphipoda_simII$class <- "amphipoda"
+amphipoda_simII$ref <- "simII"
+rm(simII)
+amphipoda2 <- rbind(amphipoda_hazteca, amphipoda_phaw,
+                   amphipoda_simI, amphipoda_simII)
+write.csv(amphipoda2, file = here("data/in_silico_results/amphipoda2.csv"))
+
+## and even more size windows
+lower_size <- c(200, 200, 200, 200, 200, 200, 250, 250, 250, 200, 300)
+upper_size <- c(300, 350, 400, 450, 500, 320, 420, 450, 500, 500, 500)
+
+Hazteca <- ref.DNAseq(here("../refgenomes/GCF_000764305.1_Hazt_2.0_genomic.fna"),
+                      subselect.contigs = F)
+amphipoda_hazteca <- recto_digest(Hazteca, recto_REs, lower_size, upper_size, 1)
+amphipoda_hazteca$class <- "amphipoda"
+amphipoda_hazteca$ref <- "Hyalella_azteca"
+rm(Hazteca)
+Phawaiensis <- ref.DNAseq(here("../refgenomes/GCA_001587735.1_Phaw3.0_genomic.fna"),
+                          subselect.contigs = T, prop.contigs = 0.1)
+amphipoda_phaw <- recto_digest(Phawaiensis, recto_REs, lower_size, upper_size, 4)
+amphipoda_phaw$class <- "amphipoda"
+amphipoda_phaw$ref <- "Parhyale hawaiensis"
+rm(Phawaiensis)
+simI <- sim.DNAseq(size=100000000, GCfreq=0.385)
+genome_size <- 10000000000 # genome size: 10 000 Mb
+ratio_simI <- genome_size/width(simI)
+amphipoda_simI <- recto_digest(simI, recto_REs, lower_size, upper_size, ratio_simI)
+amphipoda_simI$class <- "amphipoda"
+amphipoda_simI$ref <- "simI"
+rm(simI)
+simII <- sim.DNAseq(size=200000000, GCfreq=0.408)
+genome_size <- 30000000000 # genome size: 30 000 Mb
+ratio_simII <- genome_size/width(simII)
+amphipoda_simII <- recto_digest(simII, recto_REs, lower_size, upper_size, ratio_simII)
+amphipoda_simII$class <- "amphipoda"
+amphipoda_simII$ref <- "simII"
+rm(simII)
+amphipoda3 <- rbind(amphipoda_hazteca, amphipoda_phaw,
+                    amphipoda_simI, amphipoda_simII)
+write.csv(amphipoda2, file = here("data/in_silico_results/amphipoda3.csv"))
+
+## clean up
+rm(genome_size, ratio_simI, ratio_simII, amphipoda, amphipoda2, amphipoda3,
    amphipoda_hazteca, amphipoda_phaw, amphipoda_eper,
    amphipoda_simI, amphipoda_simII)
 #####
@@ -154,22 +255,26 @@ rm(genome_size, ratio_simI, ratio_simII, amphipoda,
 #### Bivalvia
 #####
 ## reference genome P. martensii
-Pmartensii <- ref.DNAseq(here("data/refgenomes/GCA_002216045.1_PinMar1.0_genomic.fna"),
-                         subselect.contigs = F)
-width(Pmartensii)
+#### the reference genomes are too big to be hosted on github
+#### you need to get a local copy and store it somewhere and change the file paths accordingly
+Pimbricata <- ref.DNAseq(here("../refgenomes/GCA_002216045.1_PinMar1.0_genomic.fna"),
+                                 subselect.contigs = F)
+width(Pimbricata)
 # 991.0 Mb
-#GC(s2c(Pmartensii))
+#GC(s2c(Pimbricata))
 # 0.353 GC
 # digest
-bivalvia_pmar <- recto_digest(Pmartensii, recto_REs, lower_size, upper_size, 1)
-bivalvia_pmar$class <- "bivalvia"
-bivalvia_pmar$ref <- "Pinctada martensii"
-write.csv(bivalvia_pmar, file = here("data/in_silico_results/bivalvia_pmartensii.csv"))
-rm(Pmartensii)
+bivalvia_pimb <- recto_digest(Pimbricata, recto_REs, lower_size, upper_size, 1)
+bivalvia_pimb$class <- "bivalvia"
+bivalvia_pimb$ref <- "Pinctada imbricata"
+write.csv(bivalvia_pimb, file = here("data/in_silico_results/bivalvia_pimbricata.csv"))
+rm(Pimbricata)
 
 ## reference genome B. platifrons
-Bplatifrons <- ref.DNAseq(here("data/refgenomes/GCA_002080005.1_Bpl_v1.0_genomic.fna"),
-                          subselect.contigs = F)
+#### the reference genomes are too big to be hosted on github
+#### you need to get a local copy and store it somewhere and change the file paths accordingly
+Bplatifrons <- ref.DNAseq(here("../refgenomes/GCA_002080005.1_Bpl_v1.0_genomic.fna"),
+                                       subselect.contigs = F)
 width(Bplatifrons)
 # 1658.2 Mb * 4
 #GC(s2c(Bplatifrons))
@@ -182,8 +287,10 @@ write.csv(bivalvia_bpla, file = here("data/in_silico_results/bivalvia_bplatifron
 rm(Bplatifrons)
 
 ## reference genome C. gigas
-Cgigas <- ref.DNAseq(here("data/refgenomes/GCF_000297895.1_oyster_v9_genomic.fna"),
-                     subselect.contigs = F)
+#### the reference genomes are too big to be hosted on github
+#### you need to get a local copy and store it somewhere and change the file paths accordingly
+Cgigas <- ref.DNAseq(here("../refgenomes/GCF_000297895.1_oyster_v9_genomic.fna"),
+                                subselect.contigs = F)
 width(Cgigas)
 # 557.7 Mb
 #GC(s2c(Cgigas))
@@ -220,6 +327,54 @@ rm(simII)
 bivalvia <- rbind(bivalvia_pmar, bivalvia_bpla, bivalvia_cgig,
                   bivalvia_simI, bivalvia_simII)
 write.csv(bivalvia, file = here("data/in_silico_results/bivalvia.csv"))
+
+## calculate some additional size windows
+lower_size <- c(250, 250, 300, 350, 250, 250, 250, 250, 200, 200, 200)
+upper_size <- c(350, 400, 400, 450, 340, 330, 320, 300, 250, 260, 280)
+
+bivalvia_pimb <- recto_digest(Pimbricata, recto_REs, lower_size, upper_size, 1)
+bivalvia_pimb$class <- "bivalvia"
+bivalvia_pimb$ref <- "Pinctada imbricata"
+bivalvia_bpla <- recto_digest(Bplatifrons, recto_REs, lower_size, upper_size, 4)
+bivalvia_bpla$class <- "bivalvia"
+bivalvia_bpla$ref <- "Bathymodiolus platifrons"
+bivalvia_cgig <- recto_digest(Cgigas, recto_REs, lower_size, upper_size, 1)
+bivalvia_cgig$class <- "bivalvia"
+bivalvia_cgig$ref <- "Crassostrea gigas"
+bivalvia_simI <- recto_digest(simI, recto_REs, lower_size, upper_size, ratio_simI)
+bivalvia_simI$class <- "bivalvia"
+bivalvia_simI$ref <- "simI"
+bivalvia_simII <- recto_digest(simII, recto_REs, lower_size, upper_size, ratio_simII)
+bivalvia_simII$class <- "bivalvia"
+bivalvia_simII$ref <- "simII"
+bivalvia2 <- rbind(bivalvia_pmar, bivalvia_bpla, bivalvia_cgig,
+                  bivalvia_simI, bivalvia_simII)
+write.csv(bivalvia2, file = here("data/in_silico_results/bivalvia.csv"))
+
+## and even more size windows
+lower_size <- c(200, 200, 200, 200, 200, 200, 250, 250, 250, 200, 300)
+upper_size <- c(300, 350, 400, 450, 500, 320, 420, 450, 500, 500, 500)
+
+bivalvia_pimb <- recto_digest(Pimbricata, recto_REs, lower_size, upper_size, 1)
+bivalvia_pimb$class <- "bivalvia"
+bivalvia_pimb$ref <- "Pinctada imbricata"
+bivalvia_bpla <- recto_digest(Bplatifrons, recto_REs, lower_size, upper_size, 4)
+bivalvia_bpla$class <- "bivalvia"
+bivalvia_bpla$ref <- "Bathymodiolus platifrons"
+bivalvia_cgig <- recto_digest(Cgigas, recto_REs, lower_size, upper_size, 1)
+bivalvia_cgig$class <- "bivalvia"
+bivalvia_cgig$ref <- "Crassostrea gigas"
+bivalvia_simI <- recto_digest(simI, recto_REs, lower_size, upper_size, ratio_simI)
+bivalvia_simI$class <- "bivalvia"
+bivalvia_simI$ref <- "simI"
+bivalvia_simII <- recto_digest(simII, recto_REs, lower_size, upper_size, ratio_simII)
+bivalvia_simII$class <- "bivalvia"
+bivalvia_simII$ref <- "simII"
+bivalvia3 <- rbind(bivalvia_pmar, bivalvia_bpla, bivalvia_cgig,
+                   bivalvia_simI, bivalvia_simII)
+write.csv(bivalvia3, file = here("data/in_silico_results/bivalvia.csv"))
+
+## clean up
 rm(genome_size, ratio_simI, ratio_simII, bivalvia,
    bivalvia_pmar, bivalvia_bpla, bivalvia_cgig,
    bivalvia_simI, bivalvia_simII)
