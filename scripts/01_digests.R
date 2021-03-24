@@ -417,8 +417,10 @@ rm(genome_size, ratio_simI, ratio_simII, bivalvia,
 #### Asteroidea
 #####
 ## reference genome A. planci
-Aplanci <- ref.DNAseq(here("data/refgenomes/GCF_001949145.1_OKI-Apl_1.0_genomic.fna"),
-                      subselect.contigs = F)
+#### the reference genomes are too big to be hosted on github
+#### you need to get a local copy and store it somewhere and change the file paths accordingly
+Aplanci <- ref.DNAseq(here("../refgenomes/GCF_001949145.1_OKI-Apl_1.0_genomic.fna"),
+                                 subselect.contigs = F)
 width(Aplanci)
 # 383.9 Mb
 #GC(s2c(Aplanci))
@@ -431,28 +433,32 @@ write.csv(asteroidea_apla, file = here("data/in_silico_results/asteroidea_aplanc
 rm(Aplanci)
 
 ## reference genome P. miniata
-Pminiata <- ref.DNAseq(here("data/refgenomes/GCA_000285935.1_Pmin_1.0_genomic.fna"),
+#### the reference genomes are too big to be hosted on github
+#### you need to get a local copy and store it somewhere and change the file paths accordingly
+Pminiata <- ref.DNAseq(here("../refgenomes/GCA_000285935.1_Pmin_1.0_genomic.fna"),
                        subselect.contigs = F)
 width(Pminiata)
 # 811.0
 #GC(s2c(Pminiata))
 # 0.402 GC
 # digest
-asteroidea_pmin <- recto_digest(Pminiata, recto_REs, lower_size, upper_size, 4)
+asteroidea_pmin <- recto_digest(Pminiata, recto_REs, lower_size, upper_size, 1)
 asteroidea_pmin$class <- "asteroidea"
 asteroidea_pmin$ref <- "Patiria miniata"
 write.csv(asteroidea_pmin, file = here("data/in_silico_results/asteroidea_pminiata.csv"))
 rm(Pminiata)
 
 ## reference genome P. regularis
-Pregularis <- ref.DNAseq(here("data/refgenomes/GCA_900067625.1_Patiriella_regularis_genome_assembly_1.0_genomic.fna"),
-                         subselect.contigs = F)
+#### the reference genomes are too big to be hosted on github
+#### you need to get a local copy and store it somewhere and change the file paths accordingly
+Pregularis <- ref.DNAseq(here("../refgenomes/GCA_900067625.1_Patiriella_regularis_genome_assembly_1.0_genomic.fna"),
+                         subselect.contigs = T, prop.contigs = 0.5)
 width(Pregularis)
-# 949.3 Mb
+# 949.3 Mb (474 724 778 * 2)
 #GC(s2c(Pregularis))
 # 0.404 GC 
 # digest
-asteroidea_preg <- recto_digest(Pregularis, recto_REs, lower_size, upper_size, 1)
+asteroidea_preg <- recto_digest(Pregularis, recto_REs, lower_size, upper_size, 2)
 asteroidea_preg$class <- "asteroidea"
 asteroidea_preg$ref <- "Patririella regularis"
 write.csv(asteroidea_preg, file = here("data/in_silico_results/asteroidea_pregularis.csv"))
@@ -470,7 +476,6 @@ rm(simI)
 
 ## simulated genome, II
 simII <- sim.DNAseq(size=200000000, GCfreq=0.404)
-GC(s2c(simII))
 genome_size <- 2000000000 # genome size: 2000Mb
 ratio_simII <- genome_size/width(simII)
 asteroidea_simII <- recto_digest(simII, recto_REs, lower_size, upper_size, ratio_simII)
@@ -483,9 +488,91 @@ rm(simII)
 asteroidea <- rbind(asteroidea_apla, asteroidea_pmin, asteroidea_preg,
                     asteroidea_simI, asteroidea_simII)
 write.csv(asteroidea, file = here("data/in_silico_results/asteroidea.csv"))
+
+## calculate some additional size windows
+lower_size <- c(250, 250, 300, 350, 250, 250, 250, 250, 200, 200, 200)
+upper_size <- c(350, 400, 400, 450, 340, 330, 320, 300, 250, 260, 280)
+
+Aplanci <- ref.DNAseq(here("../refgenomes/GCF_001949145.1_OKI-Apl_1.0_genomic.fna"),
+                      subselect.contigs = F)
+asteroidea_apla <- recto_digest(Aplanci, recto_REs, lower_size, upper_size, 1)
+asteroidea_apla$class <- "asteroidea"
+asteroidea_apla$ref <- "Acanthaster planci"
+rm(Aplanci)
+Pminiata <- ref.DNAseq(here("../refgenomes/GCA_000285935.1_Pmin_1.0_genomic.fna"),
+                       subselect.contigs = F)
+asteroidea_pmin <- recto_digest(Pminiata, recto_REs, lower_size, upper_size, 1)
+asteroidea_pmin$class <- "asteroidea"
+asteroidea_pmin$ref <- "Patiria miniata"
+rm(Pminiata)
+Pregularis <- ref.DNAseq(here("../refgenomes/GCA_900067625.1_Patiriella_regularis_genome_assembly_1.0_genomic.fna"),
+                         subselect.contigs = T, prop.contigs = 0.5)
+asteroidea_preg <- recto_digest(Pregularis, recto_REs, lower_size, upper_size, 2)
+asteroidea_preg$class <- "asteroidea"
+asteroidea_preg$ref <- "Patririella regularis"
+rm(Pregularis)
+simI <- sim.DNAseq(size=100000000, GCfreq=0.413)
+genome_size <- 1000000000 # genome size: 1000Mb
+ratio_simI <- genome_size/width(simI)
+asteroidea_simI <- recto_digest(simI, recto_REs, lower_size, upper_size, ratio_simI)
+asteroidea_simI$class <- "asteroidea"
+asteroidea_simI$ref <- "simI"
+rm(simI)
+simII <- sim.DNAseq(size=200000000, GCfreq=0.404)
+genome_size <- 2000000000 # genome size: 2000Mb
+ratio_simII <- genome_size/width(simII)
+asteroidea_simII <- recto_digest(simII, recto_REs, lower_size, upper_size, ratio_simII)
+asteroidea_simII$class <- "asteroidea"
+asteroidea_simII$ref <- "simII"
+rm(simII)
+asteroidea2 <- rbind(asteroidea_apla, asteroidea_pmin, asteroidea_preg,
+                    asteroidea_simI, asteroidea_simII)
+write.csv(asteroidea2, file = here("data/in_silico_results/asteroidea2.csv"))
+
+## and even more size windows
+lower_size <- c(200, 200, 200, 200, 200, 200, 250, 250, 250, 200, 300)
+upper_size <- c(300, 350, 400, 450, 500, 320, 420, 450, 500, 500, 500)
+
+Aplanci <- ref.DNAseq(here("../refgenomes/GCF_001949145.1_OKI-Apl_1.0_genomic.fna"),
+                      subselect.contigs = F)
+asteroidea_apla <- recto_digest(Aplanci, recto_REs, lower_size, upper_size, 1)
+asteroidea_apla$class <- "asteroidea"
+asteroidea_apla$ref <- "Acanthaster planci"
+rm(Aplanci)
+Pminiata <- ref.DNAseq(here("../refgenomes/GCA_000285935.1_Pmin_1.0_genomic.fna"),
+                       subselect.contigs = F)
+asteroidea_pmin <- recto_digest(Pminiata, recto_REs, lower_size, upper_size, 1)
+asteroidea_pmin$class <- "asteroidea"
+asteroidea_pmin$ref <- "Patiria miniata"
+rm(Pminiata)
+Pregularis <- ref.DNAseq(here("../refgenomes/GCA_900067625.1_Patiriella_regularis_genome_assembly_1.0_genomic.fna"),
+                         subselect.contigs = T, prop.contigs = 0.5)
+asteroidea_preg <- recto_digest(Pregularis, recto_REs, lower_size, upper_size, 2)
+asteroidea_preg$class <- "asteroidea"
+asteroidea_preg$ref <- "Patririella regularis"
+rm(Pregularis)
+simI <- sim.DNAseq(size=100000000, GCfreq=0.413)
+genome_size <- 1000000000 # genome size: 1000Mb
+ratio_simI <- genome_size/width(simI)
+asteroidea_simI <- recto_digest(simI, recto_REs, lower_size, upper_size, ratio_simI)
+asteroidea_simI$class <- "asteroidea"
+asteroidea_simI$ref <- "simI"
+rm(simI)
+simII <- sim.DNAseq(size=200000000, GCfreq=0.404)
+genome_size <- 2000000000 # genome size: 2000Mb
+ratio_simII <- genome_size/width(simII)
+asteroidea_simII <- recto_digest(simII, recto_REs, lower_size, upper_size, ratio_simII)
+asteroidea_simII$class <- "asteroidea"
+asteroidea_simII$ref <- "simII"
+rm(simII)
+asteroidea3 <- rbind(asteroidea_apla, asteroidea_pmin, asteroidea_preg,
+                     asteroidea_simI, asteroidea_simII)
+write.csv(asteroidea3, file = here("data/in_silico_results/asteroidea3.csv"))
+
+## clean up
 rm(genome_size, ratio_simI, ratio_simII, asteroidea,
    asteroidea_apla, asteroidea_preg, asteroidea_pmin,
-   asteroidea_simI, asteroidea_simII)
+   asteroidea_simI, asteroidea_simII, asteroidea2, asteroidea3)
 #####
 
 #### Actinopterygii
