@@ -680,14 +680,16 @@ rm(genome_size, ratio_simI, ratio_simII, actinopterygii, actinopterygii2, actino
 #### Aves
 #####
 ## reference genome F. glacialis
-Fglacialis <- ref.DNAseq(here("data/refgenomes/GCF_000690835.1_ASM69083v1_genomic.fna"),
-                         subselect.contigs = F)
+#### the reference genomes are too big to be hosted on github
+#### you need to get a local copy and store it somewhere and change the file path accordingly
+Fglacialis <- ref.DNAseq(here("../refgenomes/GCF_000690835.1_ASM69083v1_genomic.fna"),
+                                 subselect.contigs = T, prop.contigs = 0.5)
 width(Fglacialis)
-#  Mb
+# 1141  Mb
 #GC(s2c(Fglacialis))
 # 0. GC
 # digest
-aves_fgla <- recto_digest(Fglacialis, recto_REs, lower_size, upper_size, 1)
+aves_fgla <- recto_digest(Fglacialis, recto_REs, lower_size, upper_size, 2)
 aves_fgla$class <- "aves"
 aves_fgla$ref <- "Fulmarus glacialis"
 write.csv(aves_fgla, file = here("data/in_silico_results/aves_fglacialis.csv"))
@@ -717,7 +719,63 @@ rm(simII)
 ## combine 
 aves <- rbind(aves_fgla, aves_simI, aves_simII)
 write.csv(aves, file = here("data/in_silico_results/aves.csv"))
+
+## calculate some additional size windows
+lower_size <- c(250, 250, 300, 350, 250, 250, 250, 250, 200, 200, 200)
+upper_size <- c(350, 400, 400, 450, 340, 330, 320, 300, 250, 260, 280)
+
+Fglacialis <- ref.DNAseq(here("../refgenomes/GCF_000690835.1_ASM69083v1_genomic.fna"),
+                         subselect.contigs = T, prop.contigs = 0.5)
+aves_fgla <- recto_digest(Fglacialis, recto_REs, lower_size, upper_size, 2)
+aves_fgla$class <- "aves"
+aves_fgla$ref <- "Fulmarus glacialis"
+rm(Fglacialis)
+simI <- sim.DNAseq(size=100000000, GCfreq=0.412)
+genome_size <- 1500000000 # genome size: 1500Mb
+ratio_simI <- genome_size/width(simI)
+aves_simI <- recto_digest(simI, recto_REs, lower_size, upper_size, ratio_simI)
+aves_simI$class <- "aves"
+aves_simI$ref <- "simI"
+rm(simI)
+simII <- sim.DNAseq(size=200000000, GCfreq=0.412)
+genome_size <- 2000000000 # genome size: 2000Mb
+ratio_simII <- genome_size/width(simII)
+aves_simII <- recto_digest(simII, recto_REs, lower_size, upper_size, ratio_simII)
+aves_simII$class <- "aves"
+aves_simII$ref <- "simII"
+rm(simII)
+aves2 <- rbind(aves_fgla, aves_simI, aves_simII)
+write.csv(aves2, file = here("data/in_silico_results/aves2.csv"))
+
+## and even more size windows
+lower_size <- c(200, 200, 200, 200, 200, 200, 250, 250, 250, 200, 300)
+upper_size <- c(300, 350, 400, 450, 500, 320, 420, 450, 500, 500, 500)
+
+Fglacialis <- ref.DNAseq(here("../refgenomes/GCF_000690835.1_ASM69083v1_genomic.fna"),
+                         subselect.contigs = T, prop.contigs = 0.5)
+aves_fgla <- recto_digest(Fglacialis, recto_REs, lower_size, upper_size, 2)
+aves_fgla$class <- "aves"
+aves_fgla$ref <- "Fulmarus glacialis"
+rm(Fglacialis)
+simI <- sim.DNAseq(size=100000000, GCfreq=0.412)
+genome_size <- 1500000000 # genome size: 1500Mb
+ratio_simI <- genome_size/width(simI)
+aves_simI <- recto_digest(simI, recto_REs, lower_size, upper_size, ratio_simI)
+aves_simI$class <- "aves"
+aves_simI$ref <- "simI"
+rm(simI)
+simII <- sim.DNAseq(size=200000000, GCfreq=0.412)
+genome_size <- 2000000000 # genome size: 2000Mb
+ratio_simII <- genome_size/width(simII)
+aves_simII <- recto_digest(simII, recto_REs, lower_size, upper_size, ratio_simII)
+aves_simII$class <- "aves"
+aves_simII$ref <- "simII"
+rm(simII)
+aves3 <- rbind(aves_fgla, aves_simI, aves_simII)
+write.csv(aves3, file = here("data/in_silico_results/aves3.csv"))
+
+## clean up
 rm(genome_size, ratio_simI, ratio_simII, aves,
-   aves_fgla, aves_simI, aves_simII)
+   aves_fgla, aves_simI, aves_simII, aves2, aves3)
 #####
 
