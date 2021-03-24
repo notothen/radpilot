@@ -500,8 +500,8 @@ asteroidea_apla$class <- "asteroidea"
 asteroidea_apla$ref <- "Acanthaster planci"
 rm(Aplanci)
 Pminiata <- ref.DNAseq(here("../refgenomes/GCA_000285935.1_Pmin_1.0_genomic.fna"),
-                       subselect.contigs = F)
-asteroidea_pmin <- recto_digest(Pminiata, recto_REs, lower_size, upper_size, 1)
+                       subselect.contigs = T, prop.contigs = 0.5)
+asteroidea_pmin <- recto_digest(Pminiata, recto_REs, lower_size, upper_size, 2)
 asteroidea_pmin$class <- "asteroidea"
 asteroidea_pmin$ref <- "Patiria miniata"
 rm(Pminiata)
@@ -578,12 +578,14 @@ rm(genome_size, ratio_simI, ratio_simII, asteroidea,
 #### Actinopterygii
 #####
 ## reference genome N. coriiceps
-Ncoriiceps <- ref.DNAseq(here("data/refgenomes/GCF_000735185.1_NC01_genomic.fna"),
-                         subselect.contigs = F)
+#### the reference genomes are too big to be hosted on github
+#### you need to get a local copy and store it somewhere and change the file paths accordingly
+Ncoriiceps <- ref.DNAseq(here("../refgenomes/GCF_000735185.1_NC01_genomic.fna"),
+                                   subselect.contigs = F)
 width(Ncoriiceps)
-#  Mb
-#GC(s2c(Ncoriiceps))
-# 0. GC
+# 636.6  Mb
+GC(s2c(Ncoriiceps))
+# 0.408 GC
 # digest
 actinopterygii_ncor <- recto_digest(Ncoriiceps, recto_REs, lower_size, upper_size, 1)
 actinopterygii_ncor$class <- "actinopterygii"
@@ -615,7 +617,64 @@ rm(simII)
 ## combine 
 actinopterygii <- rbind(actinopterygii_ncor, actinopterygii_simI, actinopterygii_simII)
 write.csv(actinopterygii, file = here("data/in_silico_results/actinopterygii.csv"))
-rm(genome_size, ratio_simI, ratio_simII, actinopterygii,
+
+
+## calculate some additional size windows
+lower_size <- c(250, 250, 300, 350, 250, 250, 250, 250, 200, 200, 200)
+upper_size <- c(350, 400, 400, 450, 340, 330, 320, 300, 250, 260, 280)
+
+Ncoriiceps <- ref.DNAseq(here("../refgenomes/GCF_000735185.1_NC01_genomic.fna"),
+                         subselect.contigs = F)
+actinopterygii_ncor <- recto_digest(Ncoriiceps, recto_REs, lower_size, upper_size, 1)
+actinopterygii_ncor$class <- "actinopterygii"
+actinopterygii_ncor$ref <- "Notothenia coriiceps"
+rm(Ncoriiceps)
+simI <- sim.DNAseq(size=100000000, GCfreq=0.408)
+genome_size <- 1000000000 # genome size: 1000Mb
+ratio_simI <- genome_size/width(simI)
+actinopterygii_simI <- recto_digest(simI, recto_REs, lower_size, upper_size, ratio_simI)
+actinopterygii_simI$class <- "actinopterygii"
+actinopterygii_simI$ref <- "simI"
+rm(simI)
+simII <- sim.DNAseq(size=200000000, GCfreq=0.408)
+genome_size <- 1800000000 # genome size: 1800Mb
+ratio_simII <- genome_size/width(simII)
+actinopterygii_simII <- recto_digest(simII, recto_REs, lower_size, upper_size, ratio_simII)
+actinopterygii_simII$class <- "actinopterygii"
+actinopterygii_simII$ref <- "simII"
+rm(simII)
+actinopterygii2 <- rbind(actinopterygii_ncor, actinopterygii_simI, actinopterygii_simII)
+write.csv(actinopterygii2, file = here("data/in_silico_results/actinopterygii2.csv"))
+
+## and even more size windows
+lower_size <- c(200, 200, 200, 200, 200, 200, 250, 250, 250, 200, 300)
+upper_size <- c(300, 350, 400, 450, 500, 320, 420, 450, 500, 500, 500)
+
+Ncoriiceps <- ref.DNAseq(here("../refgenomes/GCF_000735185.1_NC01_genomic.fna"),
+                         subselect.contigs = F)
+actinopterygii_ncor <- recto_digest(Ncoriiceps, recto_REs, lower_size, upper_size, 1)
+actinopterygii_ncor$class <- "actinopterygii"
+actinopterygii_ncor$ref <- "Notothenia coriiceps"
+rm(Ncoriiceps)
+simI <- sim.DNAseq(size=100000000, GCfreq=0.408)
+genome_size <- 1000000000 # genome size: 1000Mb
+ratio_simI <- genome_size/width(simI)
+actinopterygii_simI <- recto_digest(simI, recto_REs, lower_size, upper_size, ratio_simI)
+actinopterygii_simI$class <- "actinopterygii"
+actinopterygii_simI$ref <- "simI"
+rm(simI)
+simII <- sim.DNAseq(size=200000000, GCfreq=0.408)
+genome_size <- 1800000000 # genome size: 1800Mb
+ratio_simII <- genome_size/width(simII)
+actinopterygii_simII <- recto_digest(simII, recto_REs, lower_size, upper_size, ratio_simII)
+actinopterygii_simII$class <- "actinopterygii"
+actinopterygii_simII$ref <- "simII"
+rm(simII)
+actinopterygii3 <- rbind(actinopterygii_ncor, actinopterygii_simI, actinopterygii_simII)
+write.csv(actinopterygii3, file = here("data/in_silico_results/actinopterygii3.csv"))
+
+## clean up
+rm(genome_size, ratio_simI, ratio_simII, actinopterygii, actinopterygii2, actinopterygii3,
    actinopterygii_ncor, actinopterygii_simI, actinopterygii_simII)
 #####
 
