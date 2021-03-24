@@ -258,13 +258,13 @@ rm(genome_size, ratio_simI, ratio_simII, amphipoda, amphipoda2, amphipoda3,
 #### the reference genomes are too big to be hosted on github
 #### you need to get a local copy and store it somewhere and change the file paths accordingly
 Pimbricata <- ref.DNAseq(here("../refgenomes/GCA_002216045.1_PinMar1.0_genomic.fna"),
-                                 subselect.contigs = F)
+                                 subselect.contigs = T, prop.contigs = 0.5)
 width(Pimbricata)
-# 991.0 Mb
+# 446 Mb (223 * 2)
 #GC(s2c(Pimbricata))
 # 0.353 GC
 # digest
-bivalvia_pimb <- recto_digest(Pimbricata, recto_REs, lower_size, upper_size, 1)
+bivalvia_pimb <- recto_digest(Pimbricata, recto_REs, lower_size, upper_size, 2)
 bivalvia_pimb$class <- "bivalvia"
 bivalvia_pimb$ref <- "Pinctada imbricata"
 write.csv(bivalvia_pimb, file = here("data/in_silico_results/bivalvia_pimbricata.csv"))
@@ -274,9 +274,9 @@ rm(Pimbricata)
 #### the reference genomes are too big to be hosted on github
 #### you need to get a local copy and store it somewhere and change the file paths accordingly
 Bplatifrons <- ref.DNAseq(here("../refgenomes/GCA_002080005.1_Bpl_v1.0_genomic.fna"),
-                                       subselect.contigs = F)
+                                       subselect.contigs = T, prop.contigs = 0.25)
 width(Bplatifrons)
-# 1658.2 Mb * 4
+# 1622.4 Mb (405.6 * 4)
 #GC(s2c(Bplatifrons))
 # 0.342 GC
 # digest
@@ -303,7 +303,7 @@ write.csv(bivalvia_cgig, file = here("data/in_silico_results/bivalvia_cgigas.csv
 rm(Cgigas)
 
 ## simulated genome, I
-simI <- sim.DNAseq(size=100000000, GCfreq=0.353)
+simI <- sim.DNAseq(size=10000000, GCfreq=0.353)
 genome_size <- 1000000000 # genome size: 1000Mb
 ratio_simI <- genome_size/width(simI)
 bivalvia_simI <- recto_digest(simI, recto_REs, lower_size, upper_size, ratio_simI)
@@ -313,7 +313,7 @@ write.csv(bivalvia_simI, file = here("data/in_silico_results/bivalvia_simI.csv")
 rm(simI)
 
 ## simulated genome, II
-simII <- sim.DNAseq(size=500000000, GCfreq=0.342)
+simII <- sim.DNAseq(size=50000000, GCfreq=0.342)
 GC(s2c(simII))
 genome_size <- 5000000000 # genome size: 5000Mb
 ratio_simII <- genome_size/width(simII)
@@ -324,7 +324,7 @@ write.csv(bivalvia_simII, file = here("data/in_silico_results/bivalvia_simII.csv
 rm(simII)
 
 ## combine 
-bivalvia <- rbind(bivalvia_pmar, bivalvia_bpla, bivalvia_cgig,
+bivalvia <- rbind(bivalvia_pimb, bivalvia_bpla, bivalvia_cgig,
                   bivalvia_simI, bivalvia_simII)
 write.csv(bivalvia, file = here("data/in_silico_results/bivalvia.csv"))
 
@@ -332,22 +332,39 @@ write.csv(bivalvia, file = here("data/in_silico_results/bivalvia.csv"))
 lower_size <- c(250, 250, 300, 350, 250, 250, 250, 250, 200, 200, 200)
 upper_size <- c(350, 400, 400, 450, 340, 330, 320, 300, 250, 260, 280)
 
-bivalvia_pimb <- recto_digest(Pimbricata, recto_REs, lower_size, upper_size, 1)
+Pimbricata <- ref.DNAseq(here("../refgenomes/GCA_002216045.1_PinMar1.0_genomic.fna"),
+                         subselect.contigs = T, prop.contigs = 0.5)
+bivalvia_pimb <- recto_digest(Pimbricata, recto_REs, lower_size, upper_size, 2)
 bivalvia_pimb$class <- "bivalvia"
 bivalvia_pimb$ref <- "Pinctada imbricata"
+rm(Pimbricata)
+Bplatifrons <- ref.DNAseq(here("../refgenomes/GCA_002080005.1_Bpl_v1.0_genomic.fna"),
+                          subselect.contigs = T, prop.contigs = 0.25)
 bivalvia_bpla <- recto_digest(Bplatifrons, recto_REs, lower_size, upper_size, 4)
 bivalvia_bpla$class <- "bivalvia"
 bivalvia_bpla$ref <- "Bathymodiolus platifrons"
+rm(Bplatifrons)
+Cgigas <- ref.DNAseq(here("../refgenomes/GCF_000297895.1_oyster_v9_genomic.fna"),
+                     subselect.contigs = F)
 bivalvia_cgig <- recto_digest(Cgigas, recto_REs, lower_size, upper_size, 1)
 bivalvia_cgig$class <- "bivalvia"
 bivalvia_cgig$ref <- "Crassostrea gigas"
+rm(Cgigas)
+simI <- sim.DNAseq(size=10000000, GCfreq=0.353)
+genome_size <- 1000000000 # genome size: 1000Mb
+ratio_simI <- genome_size/width(simI)
 bivalvia_simI <- recto_digest(simI, recto_REs, lower_size, upper_size, ratio_simI)
 bivalvia_simI$class <- "bivalvia"
 bivalvia_simI$ref <- "simI"
+rm(simI)
+simII <- sim.DNAseq(size=50000000, GCfreq=0.342)
+genome_size <- 5000000000 # genome size: 5000Mb
+ratio_simII <- genome_size/width(simII)
 bivalvia_simII <- recto_digest(simII, recto_REs, lower_size, upper_size, ratio_simII)
 bivalvia_simII$class <- "bivalvia"
 bivalvia_simII$ref <- "simII"
-bivalvia2 <- rbind(bivalvia_pmar, bivalvia_bpla, bivalvia_cgig,
+rm(simII)
+bivalvia2 <- rbind(bivalvia_pimb, bivalvia_bpla, bivalvia_cgig,
                   bivalvia_simI, bivalvia_simII)
 write.csv(bivalvia2, file = here("data/in_silico_results/bivalvia.csv"))
 
@@ -355,29 +372,46 @@ write.csv(bivalvia2, file = here("data/in_silico_results/bivalvia.csv"))
 lower_size <- c(200, 200, 200, 200, 200, 200, 250, 250, 250, 200, 300)
 upper_size <- c(300, 350, 400, 450, 500, 320, 420, 450, 500, 500, 500)
 
+Pimbricata <- ref.DNAseq(here("../refgenomes/GCA_002216045.1_PinMar1.0_genomic.fna"),
+                         subselect.contigs = T, prop.contigs = 0.5)
 bivalvia_pimb <- recto_digest(Pimbricata, recto_REs, lower_size, upper_size, 1)
 bivalvia_pimb$class <- "bivalvia"
 bivalvia_pimb$ref <- "Pinctada imbricata"
+rm(Pimbricata)
+Bplatifrons <- ref.DNAseq(here("../refgenomes/GCA_002080005.1_Bpl_v1.0_genomic.fna"),
+                          subselect.contigs = T, prop.contigs = 0.25)
 bivalvia_bpla <- recto_digest(Bplatifrons, recto_REs, lower_size, upper_size, 4)
 bivalvia_bpla$class <- "bivalvia"
 bivalvia_bpla$ref <- "Bathymodiolus platifrons"
+rm(Bplatifrons)
+Cgigas <- ref.DNAseq(here("../refgenomes/GCF_000297895.1_oyster_v9_genomic.fna"),
+                     subselect.contigs = F)
 bivalvia_cgig <- recto_digest(Cgigas, recto_REs, lower_size, upper_size, 1)
 bivalvia_cgig$class <- "bivalvia"
 bivalvia_cgig$ref <- "Crassostrea gigas"
+rm(Cgigas)
+simI <- sim.DNAseq(size=10000000, GCfreq=0.353)
+genome_size <- 1000000000 # genome size: 1000Mb
+ratio_simI <- genome_size/width(simI)
 bivalvia_simI <- recto_digest(simI, recto_REs, lower_size, upper_size, ratio_simI)
 bivalvia_simI$class <- "bivalvia"
 bivalvia_simI$ref <- "simI"
+rm(simI)
+simII <- sim.DNAseq(size=50000000, GCfreq=0.342)
+genome_size <- 5000000000 # genome size: 5000Mb
+ratio_simII <- genome_size/width(simII)
 bivalvia_simII <- recto_digest(simII, recto_REs, lower_size, upper_size, ratio_simII)
 bivalvia_simII$class <- "bivalvia"
 bivalvia_simII$ref <- "simII"
-bivalvia3 <- rbind(bivalvia_pmar, bivalvia_bpla, bivalvia_cgig,
+rm(simII)
+bivalvia3 <- rbind(bivalvia_pimb, bivalvia_bpla, bivalvia_cgig,
                    bivalvia_simI, bivalvia_simII)
 write.csv(bivalvia3, file = here("data/in_silico_results/bivalvia.csv"))
 
 ## clean up
 rm(genome_size, ratio_simI, ratio_simII, bivalvia,
-   bivalvia_pmar, bivalvia_bpla, bivalvia_cgig,
-   bivalvia_simI, bivalvia_simII)
+   bivalvia_pimb, bivalvia_bpla, bivalvia_cgig,
+   bivalvia_simI, bivalvia_simII, bivalvia2, bivalvia3)
 #####
 
 #### Asteroidea
