@@ -618,7 +618,6 @@ rm(simII)
 actinopterygii <- rbind(actinopterygii_ncor, actinopterygii_simI, actinopterygii_simII)
 write.csv(actinopterygii, file = here("data/in_silico_results/actinopterygii.csv"))
 
-
 ## calculate some additional size windows
 lower_size <- c(250, 250, 300, 350, 250, 250, 250, 250, 200, 200, 200)
 upper_size <- c(350, 400, 400, 450, 340, 330, 320, 300, 250, 260, 280)
