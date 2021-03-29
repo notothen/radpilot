@@ -107,7 +107,7 @@ Hazteca <- ref.DNAseq(here("../refgenomes/GCF_000764305.1_Hazt_2.0_genomic.fna")
                               subselect.contigs = F)
 width(Hazteca)
 # 550.9 Mb
-GC(s2c(Hazteca))
+#GC(s2c(Hazteca))
 # 0.385 GC
 # digest
 amphipoda_hazteca <- recto_digest(Hazteca, recto_REs, lower_size, upper_size, 1)
@@ -139,7 +139,7 @@ rm(Phawaiensis)
 ## which is not available anymore
 width(Epontomedon)
 # 966.2 Mb
-GC(s2c(Epontomedon))
+#GC(s2c(Epontomedon))
 # 0.4408 GC 
 # digest
 amphipoda_epon <- recto_digest(Epontomedon, recto_REs, lower_size, upper_size, 1)
@@ -162,7 +162,7 @@ rm(simI)
 
 ## simulated genome, II
 simII <- sim.DNAseq(size=200000000, GCfreq=0.408)
-GC(s2c(simII))
+#GC(s2c(simII))
 genome_size <- 30000000000 # genome size: 30 000 Mb
 ratio_simII <- genome_size/width(simII)
 amphipoda_simII <- recto_digest(simII, recto_REs, lower_size, upper_size, ratio_simII)
