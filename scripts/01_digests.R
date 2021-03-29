@@ -150,8 +150,7 @@ rm(Epontomedon)
 
 ## simulated genome, I
 simI <- sim.DNAseq(size=100000000, GCfreq=0.385)
-GC(s2c(simI))
-
+#GC(s2c(simI))
 genome_size <- 10000000000 # genome size: 10 000 Mb
 ratio_simI <- genome_size/width(simI)
 amphipoda_simI <- recto_digest(simI, recto_REs, lower_size, upper_size, ratio_simI)
