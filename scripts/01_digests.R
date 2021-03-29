@@ -75,7 +75,7 @@ ostracoda_simII <- recto_digest(simII, recto_REs, lower_size, upper_size, ratio_
 ostracoda_simII$class <- "ostracoda"
 ostracoda_simII$ref <- "simII"
 ostracoda2 <- rbind(ostracoda_ctorosa, ostracoda_simI, ostracoda_simII)
-write.csv(ostracoda, file = here("data/in_silico_results/ostracoda2.csv"))
+write.csv(ostracoda2, file = here("data/in_silico_results/ostracoda2.csv"))
 
 ## and even more size windows
 lower_size <- c(200, 200, 200, 200, 200, 200, 250, 250, 250, 200, 300)
@@ -91,7 +91,7 @@ ostracoda_simII <- recto_digest(simII, recto_REs, lower_size, upper_size, ratio_
 ostracoda_simII$class <- "ostracoda"
 ostracoda_simII$ref <- "simII"
 ostracoda3 <- rbind(ostracoda_ctorosa, ostracoda_simI, ostracoda_simII)
-write.csv(ostracoda, file = here("data/in_silico_results/ostracoda3.csv"))
+write.csv(ostracoda3, file = here("data/in_silico_results/ostracoda3.csv"))
 
 ## clean up
 rm(Ctorosa, simI, simII, genome_size, ratio_simI, ratio_simII, ostracoda,
