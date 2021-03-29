@@ -1,7 +1,7 @@
 #### Script for in silico digestion of
 #### various genomes with different enzymes
 #### for RADseq pilot experiment RECTO
-## 22/03/2021
+## 29/03/2021
 ## H. Christiansen
 ## v2.3
 
@@ -366,7 +366,7 @@ bivalvia_simII$ref <- "simII"
 rm(simII)
 bivalvia2 <- rbind(bivalvia_pimb, bivalvia_bpla, bivalvia_cgig,
                   bivalvia_simI, bivalvia_simII)
-write.csv(bivalvia2, file = here("data/in_silico_results/bivalvia.csv"))
+write.csv(bivalvia2, file = here("data/in_silico_results/bivalvia2.csv"))
 
 ## and even more size windows
 lower_size <- c(200, 200, 200, 200, 200, 200, 250, 250, 250, 200, 300)
@@ -406,7 +406,7 @@ bivalvia_simII$ref <- "simII"
 rm(simII)
 bivalvia3 <- rbind(bivalvia_pimb, bivalvia_bpla, bivalvia_cgig,
                    bivalvia_simI, bivalvia_simII)
-write.csv(bivalvia3, file = here("data/in_silico_results/bivalvia.csv"))
+write.csv(bivalvia3, file = here("data/in_silico_results/bivalvia3.csv"))
 
 ## clean up
 rm(genome_size, ratio_simI, ratio_simII, bivalvia,
