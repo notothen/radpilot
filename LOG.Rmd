@@ -1,7 +1,7 @@
 ---
 title: "LOG & EXTENDED README"
 author: "Henrik Christiansen"
-date: "March 22, 2021"
+date: "March 29, 2021"
 output:
   pdf_document: default
   html_document: default
@@ -18,6 +18,10 @@ RADseq optimization pilot experiment with several Antarctic species.
 Contact: <henrik.christiansen@kuleuven.be>
 
 ## Log:
+
+29/03/2021: rerun 01_digests.R again
+
+24/03/2021: updated and rerun 01_digests.R for some additional size windows
 
 22/03/2021: updated amphipod species ID
 
