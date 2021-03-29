@@ -139,7 +139,7 @@ recto_digest <- function(genome, enzyme, minsize, maxsize, ratio){
     dig4_12 <- (length(size.select(dig4, min.size = minsize[11], max.size = maxsize[11], graph = F, verbose = F))-1)*ratio
     
     dig5 <- insilico.digest(genome, enzyme$forward[5], enzyme$reverse[5], enzyme$forward2[5], enzyme$reverse2[5], verbose = F)
-    dig5s <- adapt.select(dig5, type = "AB+BA", enzyme$forward[5], as.character(enzyme$reverse[5]), enzyme$forward2[5], as.character(enzyme$reverse2[5]))
+    dig5 <- adapt.select(dig5, type = "AB+BA", enzyme$forward[5], as.character(enzyme$reverse[5]), enzyme$forward2[5], as.character(enzyme$reverse2[5]))
     dig5_1 <- (length(dig5)-1)*ratio
     dig5_2 <- (length(size.select(dig5, min.size = minsize[1], max.size = maxsize[1], graph = F, verbose = F))-1)*ratio
     dig5_3 <- (length(size.select(dig5, min.size = minsize[2], max.size = maxsize[2], graph = F, verbose = F))-1)*ratio
@@ -182,7 +182,7 @@ recto_digest <- function(genome, enzyme, minsize, maxsize, ratio){
     dig7_12 <- (length(size.select(dig7, min.size = minsize[11], max.size = maxsize[11], graph = F, verbose = F))-1)*ratio
     
     dig8 <- insilico.digest(genome, enzyme$forward[8], enzyme$reverse[8], enzyme$forward2[8], enzyme$reverse2[8], verbose = F)
-    dig8s <- adapt.select(dig8, type = "AB+BA", enzyme$forward[8], as.character(enzyme$reverse[8]), enzyme$forward2[8], as.character(enzyme$reverse2[8]))
+    dig8 <- adapt.select(dig8, type = "AB+BA", enzyme$forward[8], as.character(enzyme$reverse[8]), enzyme$forward2[8], as.character(enzyme$reverse2[8]))
     dig8_1 <- (length(dig8)-1)*ratio
     dig8_2 <- (length(size.select(dig8, min.size = minsize[1], max.size = maxsize[1], graph = F, verbose = F))-1)*ratio
     dig8_3 <- (length(size.select(dig8, min.size = minsize[2], max.size = maxsize[2], graph = F, verbose = F))-1)*ratio
@@ -197,7 +197,7 @@ recto_digest <- function(genome, enzyme, minsize, maxsize, ratio){
     dig8_12 <- (length(size.select(dig8, min.size = minsize[11], max.size = maxsize[11], graph = F, verbose = F))-1)*ratio
     
     dig9 <- insilico.digest(genome, enzyme$forward[9], enzyme$reverse[9], enzyme$forward2[9], enzyme$reverse2[9], verbose = F)
-    dig9s <- adapt.select(dig9, type = "AB+BA", enzyme$forward[9], as.character(enzyme$reverse[9]), enzyme$forward2[9], as.character(enzyme$reverse2[9]))
+    dig9 <- adapt.select(dig9, type = "AB+BA", enzyme$forward[9], as.character(enzyme$reverse[9]), enzyme$forward2[9], as.character(enzyme$reverse2[9]))
     dig9_1 <- (length(dig9)-1)*ratio
     dig9_2 <- (length(size.select(dig9, min.size = minsize[1], max.size = maxsize[1], graph = F, verbose = F))-1)*ratio
     dig9_3 <- (length(size.select(dig9, min.size = minsize[2], max.size = maxsize[2], graph = F, verbose = F))-1)*ratio
@@ -212,7 +212,7 @@ recto_digest <- function(genome, enzyme, minsize, maxsize, ratio){
     dig9_12 <- (length(size.select(dig9, min.size = minsize[11], max.size = maxsize[11], graph = F, verbose = F))-1)*ratio
     
     dig10 <- insilico.digest(genome, enzyme$forward[10], enzyme$reverse[10], enzyme$forward2[10], enzyme$reverse2[10], verbose = F)
-    dig10s <- adapt.select(dig10, type = "AB+BA", enzyme$forward[10], as.character(enzyme$reverse[10]), enzyme$forward2[10], as.character(enzyme$reverse2[10]))
+    dig10 <- adapt.select(dig10, type = "AB+BA", enzyme$forward[10], as.character(enzyme$reverse[10]), enzyme$forward2[10], as.character(enzyme$reverse2[10]))
     dig10_1 <- (length(dig10)-1)*ratio
     dig10_2 <- (length(size.select(dig10, min.size = minsize[1], max.size = maxsize[1], graph = F, verbose = F))-1)*ratio
     dig10_3 <- (length(size.select(dig10, min.size = minsize[2], max.size = maxsize[2], graph = F, verbose = F))-1)*ratio
@@ -227,7 +227,7 @@ recto_digest <- function(genome, enzyme, minsize, maxsize, ratio){
     dig10_12 <- (length(size.select(dig10, min.size = minsize[11], max.size = maxsize[11], graph = F, verbose = F))-1)*ratio
     
     dig11 <- insilico.digest(genome, enzyme$forward[11], enzyme$reverse[11], enzyme$forward2[11], enzyme$reverse2[11], verbose = F)
-    dig11s <- adapt.select(dig11, type = "AB+BA", enzyme$forward[11], as.character(enzyme$reverse[11]), enzyme$forward2[11], as.character(enzyme$reverse2[11]))
+    dig11 <- adapt.select(dig11, type = "AB+BA", enzyme$forward[11], as.character(enzyme$reverse[11]), enzyme$forward2[11], as.character(enzyme$reverse2[11]))
     dig11_1 <- (length(dig11)-1)*ratio
     dig11_2 <- (length(size.select(dig11, min.size = minsize[1], max.size = maxsize[1], graph = F, verbose = F))-1)*ratio
     dig11_3 <- (length(size.select(dig11, min.size = minsize[2], max.size = maxsize[2], graph = F, verbose = F))-1)*ratio
@@ -242,7 +242,7 @@ recto_digest <- function(genome, enzyme, minsize, maxsize, ratio){
     dig11_12 <- (length(size.select(dig11, min.size = minsize[11], max.size = maxsize[11], graph = F, verbose = F))-1)*ratio
     
     dig12 <- insilico.digest(genome, enzyme$forward[12], enzyme$reverse[12], enzyme$forward2[12], enzyme$reverse2[12], verbose = F)
-    dig12s <- adapt.select(dig12, type = "AB+BA", enzyme$forward[12], as.character(enzyme$reverse[12]), enzyme$forward2[12], as.character(enzyme$reverse2[12]))
+    dig12 <- adapt.select(dig12, type = "AB+BA", enzyme$forward[12], as.character(enzyme$reverse[12]), enzyme$forward2[12], as.character(enzyme$reverse2[12]))
     dig12_1 <- (length(dig12)-1)*ratio
     dig12_2 <- (length(size.select(dig12, min.size = minsize[1], max.size = maxsize[1], graph = F, verbose = F))-1)*ratio
     dig12_3 <- (length(size.select(dig12, min.size = minsize[2], max.size = maxsize[2], graph = F, verbose = F))-1)*ratio
