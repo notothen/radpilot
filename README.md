@@ -2,12 +2,13 @@
 
 ### By Henrik Christiansen, last update on 24/05/2021
 ### Reference: Christiansen et al. **"Facilitating population genomics of non-model organisms through optimized experimental design for reduced representation sequencing"** https://doi.org/10.1101/2021.03.30.437642 
-### All code and data (except for the reference genomes) available on github: https://github.com/notothen/radpilot 
+### Code and data (except for the reference genomes) available on github: https://github.com/notothen/radpilot 
+### Sequence data from test libraries available on SRA (reviewer link: https://dataview.ncbi.nlm.nih.gov/object/PRJNA674352?reviewer=dmj6c5816761lpqn2d1oe69qhs) 
 
 # Introduction
 
 The material presented here contains R code, input data in spreadsheet files (tsv/csv), and output plots in different formats (eps/jpg/pdf/tiff) used for a
-reduced representation sequencing (RRS; including RADseq and GBS) optimization pilot exeperiment conducted with several Antarctica animal species.
+reduced representation sequencing (RRS; including RADseq and GBS) optimization pilot experiment conducted with several Antarctic animal species.
 
 With some adjustments the R code can possibly be used for similar analyses with other target taxa or experimental settings in mind. Below, I provide some
 very general comments on how that might be achieved. However, there are no guarantees whatsoever as to the accuracy of the code and that it works in other
@@ -19,7 +20,7 @@ An extended log of the project history and details on all input and output files
 
 # Applying this code for your own setup
 
-In principle you could just use the existing tools from the R packages SimRAD and bioanalyzeR.
+In principle you could just use the existing tools from the R packages **SimRAD** (Lepais & Weir 2014) and **bioanalyzeR** (Foley 2021).
 If you want to apply similar calculations as in Christiansen et al. 2021, then start by loading the source script ```recto_REs_and_functions.R``` from the ```scripts``` folder: https://github.com/notothen/radpilot/tree/main/scripts
 
 This script contains R functions used for the purposes as in Christiansen et al. 2021. Load it like so:
@@ -29,7 +30,7 @@ library(here)
 source(here("scripts/recto_REs_and_functions.R"))
 ```
 
-If you don't have the here package yet, install it first: ```install.packages("here")```. It's a very useful package that helps making code function on different working platforms without the need to explicitly define a working directory.
+If you don't have the **here** package yet, install it first: ```install.packages("here")```. It's a very useful package that helps making code function on different working platforms without the need to explicitly define a working directory.
 
 Then either clone the github directory, or download the ```recto_REs_and_functions.R``` script and put it in a folder called ```scripts```.
 
@@ -44,7 +45,7 @@ library(seqinr)
 library(tidyverse)
 ```
 
-Now you need a reference genome to computationally digest. If you have one (e.g. from GenBank) you can put into a folder called ```refgenomes``` and load it as such:
+Now you need a reference genome to computationally digest. If you have one (e.g. from GenBank) you can put it into a folder called ```refgenomes``` and load it as such:
 
 ```
 refgenome1 <- ref.DNAseq(here("refgenomes/YOUR_REFGENOME.fasta"), subselect.contigs = F)
