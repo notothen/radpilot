@@ -1,11 +1,11 @@
 # RRS pilot experiment calculations
 
 #### By Henrik Christiansen, last update on 01/06/2021
-#### Reference: Christiansen et al. **"Facilitating population genomics of non-model organisms through optimized experimental design for reduced representation sequencing"** https://doi.org/10.1101/2021.03.30.437642 
-#### Code and data (except for the reference genomes) available on github: https://github.com/notothen/radpilot 
-#### Sequence data from test libraries available on SRA ([reviewer link] (https://dataview.ncbi.nlm.nih.gov/object/PRJNA674352?reviewer=dmj6c5816761lpqn2d1oe69qhs)) 
+#### Reference: Christiansen et al. 2021 **"Facilitating population genomics of non-model organisms through optimized experimental design for reduced representation sequencing"** [10.1101/2021.03.30.437642](https://doi.org/10.1101/2021.03.30.437642) 
+#### All code and input files (except for the reference genomes) available on github: [github.com/notothen/radpilot](https://github.com/notothen/radpilot) 
+#### Sequence data from test libraries available on SRA ([reviewer link](https://dataview.ncbi.nlm.nih.gov/object/PRJNA674352?reviewer=dmj6c5816761lpqn2d1oe69qhs)) 
 
-# Introduction
+## Introduction
 
 The material presented here contains R code, input data in spreadsheet files (tsv/csv), and output plots in different formats (eps/jpg/pdf/tiff) used for a
 reduced representation sequencing (RRS; including RADseq and GBS) optimization pilot experiment conducted with several Antarctic animal species.
@@ -14,11 +14,11 @@ With some adjustments the R code can possibly be used for similar analyses with 
 very general comments on how that might be achieved. However, there are no guarantees whatsoever as to the accuracy of the code and that it works in other
 situations. Feel free to copy parts of the code and adjust it to your own liking.
 
-An extended log of the project history and details on all input and output files and the R packages used can be found in the LOG file: https://github.com/notothen/radpilot/blob/main/LOG.pdf
+An extended log of the project history and details on all input and output files and the R packages used can be found in the [LOG file](../main/LOG.pdf)
 
 **If you use any of this code for your own work, don't forget to cite the R package providers (see LOG for a list of the most important packages)!**
 
-# Applying this code for your own setup
+## Applying this code for your own setup
 
 In principle you could just use the existing tools from the R packages **SimRAD** (Lepais & Weir 2014) and **bioanalyzeR** (Foley 2021).
 If you want to apply similar calculations as in Christiansen et al. 2021, then start by loading the source script ```recto_REs_and_functions.R``` from the ```scripts``` folder: https://github.com/notothen/radpilot/tree/main/scripts
