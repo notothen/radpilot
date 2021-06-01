@@ -16,11 +16,11 @@ situations. Feel free to copy parts of the code and adjust it to your own liking
 
 An extended log of the project history and details on all input and output files and the R packages used can be found in the [LOG file](../main/LOG.pdf)
 
-**If you use any of this code for your own work, don't forget to cite the R package providers (see LOG for a list of the most important packages)!**
+**If you use any of this code for your own work, don't forget to cite the R package providers (see [LOG](../main/LOG.pdf) for a list of the most important packages)!**
 
 ## Applying this code for your own setup
 
-In principle you could just use the existing tools from the R packages **SimRAD** (Lepais & Weir 2014) and **bioanalyzeR** (Foley 2021).
+In principle you could just use the existing tools from the R packages [**SimRAD**](https://cran.r-project.org/web/packages/SimRAD/index.html) (Lepais & Weir 2014) and [**bioanalyzeR**](https://stanford.edu/~jwfoley/bioanalyzeR.html) (Foley 2021).
 If you want to apply similar calculations as in Christiansen et al. 2021, then start by loading the source script ```recto_REs_and_functions.R``` from the ```scripts``` folder: https://github.com/notothen/radpilot/tree/main/scripts
 
 This script contains R functions used for the purposes as in Christiansen et al. 2021. Load it like so:
