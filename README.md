@@ -84,7 +84,7 @@ refgenome1_digest <- recto_digest(refgenome1, recto_REs, lower_size, upper_size,
 simgenome1_digest <- recto_digest(simgenome1, recto_REs, lower_size, upper_size, ratio_simgenome1)
 ```
 
-You can also create a folder ```data\in_silico_results``` and save your results there:
+You can also create a folder ```data/in_silico_results``` and save your results there:
 
 ```
 write.csv(refgenome1_digest, file = here("data/in_silico_results/refgenome1_digest.csv"))
