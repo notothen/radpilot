@@ -1,11 +1,11 @@
 #### Script to plot the number of r80 loci
 #### that can be constructed de novo with
 #### varying M parameter from test RAD libraries
-## 14/12/2019
-## v1.6
+## 01/06/2021
+## v1.7
 ## H. Christiansen,
 ## modified from Rochette & Catchen 2017:
-browseURL("https://bitbucket.org/rochette/rad-seq-genotyping-demo/src/default/demo_scripts/R_scripts/")
+browseURL("https://bitbucket.org/rochette/rad-seq-genotyping-demo/src/master/demo_scripts/R_scripts/")
 
 #### load packages
 library(here) # to shorten file paths
