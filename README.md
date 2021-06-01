@@ -122,7 +122,7 @@ upper_size <- c(50, 100, 150, 200, 250, 300, 350, 400, 450, 500, 550)
 
 If you want to simulate with other restriction enzymes or with more or less than 11 size bins, then you would need to change the respective object (```recto_REs```) or function (```recto_digest```) in the ```recto_REs_and_functions.R``` script or write your own.
 
-You can find an extended application of these in silico calculations with the target taxa from Christiansen et al. 2021 in the script ```01_digests.R``` from the the ```scripts``` folder: https://github.com/notothen/radpilot/tree/main/scripts
+You can find an extended application of these *in silico* calculations with the target taxa from Christiansen et al. 2021 in the script ```01_digests.R``` from the the ```scripts``` folder: https://github.com/notothen/radpilot/tree/main/scripts
 
 ## Part 2: Comparison of *in silico* and empirical digestions
 
