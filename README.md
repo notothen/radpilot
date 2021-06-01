@@ -34,7 +34,7 @@ If you don't have the **here** package yet, install it first: ```install.package
 
 Then either clone the github directory, or download the ```recto_REs_and_functions.R``` script and put it in a folder called ```scripts```.
 
-# Part 1: In silico genome digestions
+# Part 1: *in silico* genome digestions
 
 Start by loading these R packages (or install them first, if you don't have them installed):
 
@@ -71,7 +71,7 @@ ratio_simgenome1
 
 We have now simulated a 1,000 Mb genome with 50 % GC content. In fact, we only simulated a 500 Mb genome to make it less computationally intensive. The results will be extrapolated to a 1,000 Mb genome using the ```ratio_simgenome1``` value. You can adjust this in different ways, depending on the computational power of your system.
 
-In order to conduct in silico digestions with these two genomes using the restrictions enzymes and size windows as in Christiansen et al. 2021 all you need to do is run:
+In order to conduct *in silico* digestions with these two genomes using the restrictions enzymes and size windows as in Christiansen et al. 2021 all you need to do is run:
 
 ```
 refgenome1_digest <- recto_digest(refgenome1, recto_REs, lower_size, upper_size, 1)
@@ -89,6 +89,21 @@ That's it! Now you should have estimates for these enzymes:
 
 
 and in these size windows:
+
+|lower size |upper size
+|---|---
+|210|260
+|240|340
+|0|100
+|100|200
+|200|300
+|300|400
+|400|500
+|500|600
+|600|700
+|700|800
+|800|900
+
 
 ```
 lower size: 210, 240, 0, 100, 200, 300, 400, 500, 600, 700, 800
