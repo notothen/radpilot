@@ -21,11 +21,10 @@ An extended log of the project history and details on all input and output files
 ## Applying this code for your own setup
 
 In principle you could just use the existing tools from the R packages:
-* [**SimRAD**](https://cran.r-project.org/web/packages/SimRAD/index.html) (Lepais & Weir 2014)
+* [**SimRAD**](https://cran.r-project.org/web/packages/SimRAD/index.html) (Lepais & Weir 2014, [Molecular Ecology Resources](https://doi.org/10.1111/1755-0998.12273))
 * [**bioanalyzeR**](https://stanford.edu/~jwfoley/bioanalyzeR.html) (Foley 2021)
 and the code provided here:
-* Rochette & Catchen
-
+* [**Stacks Protocol**](https://bitbucket.org/rochette/rad-seq-genotyping-demo/src/master/demo_scripts/R_scripts/) (Rochette & Catchen 2017, [Nature Protocols](https://www.nature.com/articles/nprot.2017.123))
 
 If you want to apply similar calculations as in Christiansen et al. 2021, then start by loading the source script ```recto_REs_and_functions.R``` from the ```scripts``` folder: https://github.com/notothen/radpilot/tree/main/scripts
 
@@ -126,7 +125,7 @@ lower_size <- c(0, 50, 100, 150, 200, 250, 300, 350, 400, 450, 500)
 upper_size <- c(50, 100, 150, 200, 250, 300, 350, 400, 450, 500, 550)
 ```
 
-If you want to simulate with other restriction enzymes or with more or less than 11 size bins, then you would need to change the respective object (```recto_REs```) or function (```recto_digest```) in the ```recto_REs_and_functions.R``` script or write your own.
+If you want to simulate with other restriction enzymes or digest in more/less than 11 size bins, then you would need to change the respective object (```recto_REs```) or function (```recto_digest```) in the ```recto_REs_and_functions.R``` script or write your own.
 
 You can find an extended application of these *in silico* calculations with the target taxa from Christiansen et al. 2021 in the script ```01_digests.R``` from the the ```scripts``` folder: https://github.com/notothen/radpilot/tree/main/scripts
 
@@ -160,4 +159,24 @@ The two values supplied to the ```recto_qplot_2``` function are for the y axis r
 
 More details including subsetting and renaming and an extended application where bioanalyzer data is imported in R and plotted for the target taxa from Christiansen et al. 2021 can be found in the script ```02_empirical_digests.R``` from the the ```scripts``` folder: https://github.com/notothen/radpilot/tree/main/scripts
 
-## Part 3:
+## Part 3: Estimate marker density
+
+TO BE WRITTEN
+
+## Part 4: Evaluate test library output
+
+If you have run some test sequencing libraries and processed them following Rochette & Catchen (2017), then you may want to plot the number of loci and the number of SNPs per locus. To do this you can simply follow the codes provided by these authors. Their codes to run the Stacks pipeline also provide tsv outputs on the number of loci and SNPs. Put this file into a folder ```data/test_libraries``` and load it e.g. like this:
+
+```
+snps_per_loc <- read.delim(here('data/test_libraries/n_snps_per_locus.tsv'))
+```
+
+You can then just proceed to follow the R code of Rochette & Catchen (2017). You can find it here:
+
+https://bitbucket.org/rochette/rad-seq-genotyping-demo/src/master/demo_scripts/R_scripts/
+
+A detailed adaptation of this code using the data of five test sequencing libraries as in Christiansen et al. 2021 can be found in the scripts ```03_plot_n_loci.R``` and ```04_plot_n_snps_per_locus.R``` from the ```scripts``` folder: https://github.com/notothen/radpilot/tree/main/scripts
+
+In addition, you may want to plot the realized number of loci and coverage for your test libraries. For this we collated a csv file with all metadata about the sequenced test libraries (the library number, species, specimen ID) and ....CONTINUE HERE
+
+
