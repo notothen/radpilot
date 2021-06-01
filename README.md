@@ -34,7 +34,7 @@ If you don't have the **here** package yet, install it first: ```install.package
 
 Then either clone the github directory, or download the ```recto_REs_and_functions.R``` script and put it in a folder called ```scripts```.
 
-# Part 1: *in silico* genome digestions
+## Part 1: *in silico* genome digestions
 
 Start by loading these R packages (or install them first, if you don't have them installed):
 
@@ -87,6 +87,8 @@ write.csv(simgenome1_digest, file = here("data/in_silico_results/simgenome1_dige
 
 That's it! Now you should have estimates for these enzymes:
 
+|single digest|*sbf1*|*ecor1*|*sph1*|*pst1*|*apek1*|*msp1*|*mse1*
+|double digest|*sbf1*-*sph1*|*sbf1*-*msp1*|*pst1*-*msp1*|*ecor1*-*sph1*|*ecor1*-*msp1*
 
 and in these size windows:
 
@@ -104,21 +106,45 @@ and in these size windows:
 |700|800
 |800|900
 
+You can adjust the size windows by providing any other sequence of 11 numbers as ```lower_size``` and ```upper_size```, e.g.:
 
 ```
-lower size: 210, 240, 0, 100, 200, 300, 400, 500, 600, 700, 800
-upper size: 260, 340, 100, 200, 300, 400, 500, 600, 700, 800, 900
+lower_size <- c(0, 50, 100, 150, 200, 250, 300, 350, 400, 450, 500)
+upper_size <- c(50, 100, 150, 200, 250, 300, 350, 400, 450, 500, 550)
 ```
 
-You can adjust the size windows by providing any other sequence of numbers as ```lower_size``` and ```upper_size```, e.g.:
-
-```
-lower_size <- c(210, 240, 0, 100, 200, 300, 400, 500, 600, 700, 800)
-upper_size <- c(260, 340, 100, 200, 300, 400, 500, 600, 700, 800, 900)
-```
+If you want to simulate with other restriction enzymes or with more or less than 11 size bins, then you would need to change the respective object (```recto_REs```) or function (```recto_digest```) in the ```recto_REs_and_functions.R``` script or write your own.
 
 You can find an extended application of these in silico calculations with the target taxa from Christiansen et al. 2021 in the script ```01_digests.R``` from the the ```scripts``` folder: https://github.com/notothen/radpilot/tree/main/scripts
 
-# Part 2:
+## Part 2: Comparison of *in silico* and empirical digestions
 
+If you have done some empirical enzyme digestion tests and run them on a Bioanalyzer platform, you may want to compare those results with your *in silico* estimates. 
 
+Start by loading these R packages (or install them first, if you don't have them installed):
+
+```
+library(here)
+library(bioanalyzeR)
+library(tidyverse)
+library(gridExtra)
+library(SimRAD)
+```
+
+If you have results from a Bioanalyzer run make sure to export these as XML files. Then you can import them like this e.g.:
+
+```
+run1 <- read.bioanalyzer(here("data/bioanalyzer_results/run01_2017-12-01_09-25-08.xml"))
+```
+
+If you want to plot the concentration over fragment size in a similar fashion as presented in Christiansen et al. 2021, then you could do so like this:
+
+```
+recto_qplot_2(run1, 0, 50)
+```
+
+The two values supplied to the ```recto_qplot_2``` function are for the y axis range limits. You may need to experiment with these. You may also want to rename and subset your Bioanalyzer run data, but in principle that's all!
+
+More details including subsetting and renaming and an extended application where bioanalyzer data is imported in R and plotted for the target taxa from Christiansen et al. 2021 can be found in the script ```02_empirical_digests.R``` from the the ```scripts``` folder: https://github.com/notothen/radpilot/tree/main/scripts
+
+## Part 3:
