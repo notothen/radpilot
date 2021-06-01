@@ -87,8 +87,15 @@ write.csv(simgenome1_digest, file = here("data/in_silico_results/simgenome1_dige
 
 That's it! Now you should have estimates for these enzymes:
 
-|single digest|*sbf1*|*ecor1*|*sph1*|*pst1*|*apek1*|*msp1*|*mse1*
-|double digest|*sbf1*-*sph1*|*sbf1*-*msp1*|*pst1*-*msp1*|*ecor1*-*sph1*|*ecor1*-*msp1*
+|single digest||double digest
+|---|---
+|*sbf1*|*sbf1*-*sph1*
+|*ecor1*|*ecor1*-*msp1*
+|*sph1*|*ecor1*-*sph1*
+|*pst1*|*pst1*-*msp1*
+|*msp1*|*sbf1*-*msp1*
+|*apek1*|
+|*mse1*|
 
 and in these size windows:
 
