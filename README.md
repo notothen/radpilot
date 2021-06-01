@@ -1,9 +1,9 @@
 # RRS pilot experiment calculations
 
-## By Henrik Christiansen, last update on 01/06/2021
-## Reference: Christiansen et al. **"Facilitating population genomics of non-model organisms through optimized experimental design for reduced representation sequencing"** https://doi.org/10.1101/2021.03.30.437642 
-## Code and data (except for the reference genomes) available on github: https://github.com/notothen/radpilot 
-## Sequence data from test libraries available on SRA (reviewer link: https://dataview.ncbi.nlm.nih.gov/object/PRJNA674352?reviewer=dmj6c5816761lpqn2d1oe69qhs) 
+#### By Henrik Christiansen, last update on 01/06/2021
+#### Reference: Christiansen et al. **"Facilitating population genomics of non-model organisms through optimized experimental design for reduced representation sequencing"** https://doi.org/10.1101/2021.03.30.437642 
+#### Code and data (except for the reference genomes) available on github: https://github.com/notothen/radpilot 
+#### Sequence data from test libraries available on SRA ([reviewer link] (https://dataview.ncbi.nlm.nih.gov/object/PRJNA674352?reviewer=dmj6c5816761lpqn2d1oe69qhs)) 
 
 # Introduction
 
