@@ -172,12 +172,20 @@ If you have run some test sequencing libraries and processed them following Roch
 snps_per_loc <- read.delim(here('data/test_libraries/n_snps_per_locus.tsv'))
 ```
 
-You can then just proceed to follow the R code of Rochette & Catchen (2017). You can find it here:
+You can then just proceed to follow the R code of [Rochette & Catchen (2017)](https://www.nature.com/articles/nprot.2017.123). You can find it here:
 
 https://bitbucket.org/rochette/rad-seq-genotyping-demo/src/master/demo_scripts/R_scripts/
 
 A detailed adaptation of this code using the data of five test sequencing libraries as in Christiansen et al. 2021 can be found in the scripts ```03_plot_n_loci.R``` and ```04_plot_n_snps_per_locus.R``` from the ```scripts``` folder: https://github.com/notothen/radpilot/tree/main/scripts
 
-In addition, you may want to plot the realized number of loci and coverage for your test libraries. For this we collated a csv file with all metadata about the sequenced test libraries (the library number, species, specimen ID) and ....CONTINUE HERE
+In addition, you may want to plot the realized number of loci and coverage for your test libraries. For this we collated a csv file with metadata and metrics about the sequenced test libraries. The file is called ```coverage_stats.csv``` and located in the ```data/test_libraries``` folder. It contains the library number (lib), the  species or family (species), specimen ID (ind), the obtained coverage when using Stacks parameter M=1 (cov_M_1), the optimal M parameter according to a parameter optimization test (opt_M), the cooverage obtained with that M (cov_opt_M), the target coverage as estimated *in silico* (target_cov), the target number of loci as estimated *in silico* (target_loci), the obtained number of loci (n_loci), the number of used forward reas (n_used_fw_reads), the mean coverage (mean_cov), and a weighted mean coverage (mean_cov_ns). The latter values (n_loci, n_usef_fw_reads, mean_cov, mean_cov_ns) were retrieved from the output files of the gstacks module of [**Stacks**](https://catchenlab.life.illinois.edu/stacks/). You could create a similar file for with your own data.
+
+The script ```05_plot_coverage.R``` contains code to load this metadata file and create a plot as shown in Fig. 3 of Christiansen et al. 2021. The script is also in the ```scripts``` folder:
+https://github.com/notothen/radpilot/tree/main/scripts
+
+## Conclusion
+
+Above you have some guidelines to follow the calculations and plotting exercises as they were used for the RRS setup optimization as presented in Christiansen et al. 2021. You can copy all R script files and manipulate them to work with your own data. If you run into trouble, you could always go back to this github repository which contains everything - except for the reference genomes from GenBank - you need to reproduce the exact calculations and plots as in our paper (except for some tiny stochastic variation in the numbers) and try to see where your problem occurs. Alternatively, you could file an [issue](https://github.com/notothen/radpilot/issues) to ask for help or suggest changes.
+
 
 
