@@ -6,7 +6,7 @@
 ## v3.3
 
 ## This is a source script containing R objects and functions that do most of the work.
-## The scripts 01_digests.R and 02_empirical_digests.R depend on this source script
+## The scripts 01_digests.R and 02_empirical_digests.R depend on this source script.
 
 #### load restriction enzymes
 #####

@@ -128,7 +128,7 @@ upper_size <- c(50, 100, 150, 200, 250, 300, 350, 400, 450, 500, 550)
 
 If you want to simulate with other restriction enzymes or digest in more/less than 11 size bins, then you would need to change the respective object (```recto_REs```) or function (```recto_digest```) in the ```recto_REs_and_functions.R``` script or write your own.
 
-You can find an extended application of these *in silico* calculations with the target taxa from Christiansen et al. 2021 in the script ```01_digests.R``` from the the ```scripts``` folder: https://github.com/notothen/radpilot/tree/main/scripts
+You can find an extended application of these *in silico* calculations with the target taxa from Christiansen et al. 2021 in the script ```01_digests.R``` from the ```scripts``` folder: https://github.com/notothen/radpilot/tree/main/scripts
 
 ## Part 2: Comparison of *in silico* and empirical digestions
 
@@ -158,7 +158,7 @@ recto_qplot_2(run1, 0, 50)
 
 The two values supplied to the ```recto_qplot_2``` function are for the y axis range limits. You may need to experiment with these. You may also want to rename and subset your Bioanalyzer run data, but in principle that's all!
 
-More details including subsetting and renaming and an extended application where bioanalyzer data is imported in R and plotted for the target taxa from Christiansen et al. 2021 can be found in the script ```02_empirical_digests.R``` from the the ```scripts``` folder: https://github.com/notothen/radpilot/tree/main/scripts
+More details including subsetting and renaming and an extended application where bioanalyzer data is imported in R and plotted for the target taxa from Christiansen et al. 2021 can be found in the script ```02_empirical_digests.R``` from the ```scripts``` folder: https://github.com/notothen/radpilot/tree/main/scripts
 
 ## Part 3: Estimate marker density
 
@@ -178,7 +178,7 @@ https://bitbucket.org/rochette/rad-seq-genotyping-demo/src/master/demo_scripts/R
 
 A detailed adaptation of this code using the data of five test sequencing libraries as in Christiansen et al. 2021 can be found in the scripts ```03_plot_n_loci.R``` and ```04_plot_n_snps_per_locus.R``` from the ```scripts``` folder: https://github.com/notothen/radpilot/tree/main/scripts
 
-In addition, you may want to plot the realized number of loci and coverage for your test libraries. For this we collated a csv file with metadata and metrics about the sequenced test libraries. The file is called ```coverage_stats.csv``` and located in the ```data/test_libraries``` folder. It contains the library number (lib), the  species or family (species), specimen ID (ind), the obtained coverage when using Stacks parameter M=1 (cov_M_1), the optimal M parameter according to a parameter optimization test (opt_M), the cooverage obtained with that M (cov_opt_M), the target coverage as estimated *in silico* (target_cov), the target number of loci as estimated *in silico* (target_loci), the obtained number of loci (n_loci), the number of used forward reas (n_used_fw_reads), the mean coverage (mean_cov), and a weighted mean coverage (mean_cov_ns). The latter values (n_loci, n_usef_fw_reads, mean_cov, mean_cov_ns) were retrieved from the output files of the gstacks module of [**Stacks**](https://catchenlab.life.illinois.edu/stacks/). You could create a similar file for with your own data.
+In addition, you may want to plot the realized number of loci and coverage for your test libraries. For this we collated a csv file with metadata and metrics about the sequenced test libraries. The file is called ```coverage_stats.csv``` and located in the ```data/test_libraries``` folder. It contains the library number (lib), the  species or family (species), specimen ID (ind), the obtained coverage when using Stacks parameter M=1 (cov_M_1), the optimal M parameter according to a parameter optimization test (opt_M), the coverage obtained with that M (cov_opt_M), the target coverage as estimated *in silico* (target_cov), the target number of loci as estimated *in silico* (target_loci), the obtained number of loci (n_loci), the number of used forward reads (n_used_fw_reads), the mean coverage (mean_cov), and a weighted mean coverage (mean_cov_ns). The latter values (n_loci, n_usef_fw_reads, mean_cov, mean_cov_ns) were retrieved from the output files of the gstacks module of [**Stacks**](https://catchenlab.life.illinois.edu/stacks/). You could create a similar file for with your own data.
 
 The script ```05_plot_coverage.R``` contains code to load this metadata file and create a plot as shown in Fig. 3 of Christiansen et al. 2021. The script is also in the ```scripts``` folder:
 https://github.com/notothen/radpilot/tree/main/scripts
