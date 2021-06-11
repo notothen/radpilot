@@ -8,11 +8,13 @@
 ## This is a source script containing R objects and functions that do most of the work.
 ## The scripts 01_digests.R and 02_empirical_digests.R depend on this source script.
 
-## load packages required for these function
+#### load packages required for these functions
 #### install them first if you don't have them
-library(scales)
-library(SimRAD)
-library(bioanalyzeR)
+library(here) # to shorten file paths
+library(SimRAD) # for in silico digestion
+library(bioanalyzeR) # to read bioanalyzer files
+library(tidyverse) # to arrange data and plot
+library(scales) # to calculate percentages
 
 #### load restriction enzymes
 #####
@@ -432,14 +434,15 @@ marker_density <- function(fragments, genome_size, sequencer = "HiSeq2500", pair
   density <- sequenced_bases*SNP_density
   portion <- round((sequenced_bases/genome_size), digits = 2)
   everyother <- genome_size/density
-  results <- data.frame(format(fragments, big.mark = ","), format(sequenced_bases, big.mark = ","),
+  results <- data.frame(format(fragments, big.mark = ","), genome_size, sequencer, paired_end, SNP_density,
+                        format(sequenced_bases, big.mark = ","),
                         format(density, big.mark = ","), percent(portion), paste(round(everyother, digits = 0), "bp"))
   ## make the results a bit more appealing/easier to read
   names(results)[1] <- "number_of_fragments"
-  names(results)[2] <- "number_of_bases_sequenced"
-  names(results)[3] <- "number_of_SNPs"
-  names(results)[4] <- "portion_of_genome_sequenced"
-  names(results)[5] <- "one_SNP_every"
+  names(results)[6] <- "number_of_bases_sequenced"
+  names(results)[7] <- "number_of_SNPs"
+  names(results)[8] <- "portion_of_genome_sequenced"
+  names(results)[9] <- "one_SNP_every"
   return(results)  
 }
 #####
