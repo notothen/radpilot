@@ -432,11 +432,11 @@ marker_density <- function(fragments, genome_size, sequencer = "HiSeq2500", pair
   results <- data.frame()
   sequenced_bases <- ratio*read_length*fragments
   density <- sequenced_bases*SNP_density
-  portion <- round((sequenced_bases/genome_size), digits = 2)
+  portion <- round((sequenced_bases/genome_size), digits = 4)
   everyother <- genome_size/density
   results <- data.frame(format(fragments, big.mark = ","), genome_size, sequencer, paired_end, SNP_density,
                         format(sequenced_bases, big.mark = ","),
-                        format(round(density), big.mark = ","), percent(portion), paste(round(everyother, digits = 0), "bp"))
+                        format(round(density), big.mark = ","), percent(portion, accuracy = 0.01), paste(round(everyother, digits = 0), "bp"))
   ## make the results a bit more appealing/easier to read
   names(results)[1] <- "number_of_fragments"
   names(results)[6] <- "number_of_bases_sequenced"
