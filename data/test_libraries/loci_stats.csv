@@ -1,5 +1,5 @@
 species,enzyme,size_selection,sequencer,number_of_loci,number_of_bases_sequenced,number_of_SNPs,filtered
-Macrocyprididae,apek1,200_350,HiSeq2500,542591,"63,614,939",191866,no
+Macrocyprididae,apek1,200_350,HiSeq2500,542591,63614939,191866,no
 Macrocyprididae,apek1,200_350,HiSeq2500,2238,266618,7910,yes
 Laternula elliptica,apek1,200_260,HiSeq2500,413456,48472935,203888,no
 Laternula elliptica,apek1,200_260,HiSeq2500,54850,6451542,71372,yes
