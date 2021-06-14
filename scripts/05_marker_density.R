@@ -13,6 +13,7 @@ source(here("scripts/recto_REs_and_functions.R")) # custom functions
 #####
 ## define constant variables
 ## (these ones are probably unnecessary?)
+## (perhaps add later a function to estimate how many inds. to pool)
 reads_hiseq4000 <- 300000000
 reads_hiseq2500 <- 200000000
 reads_novaseq <- 10000000000 # need to check this
@@ -23,6 +24,18 @@ read_length_hiseq4000 <- 150
 read_length_hiseq2500 <- 125
 read_length_novaseq <- 100 # need to check this
 #####
+
+#### calculate similar statistics for empirical data
+#####
+create a csv file containing raw data from populations.log files
+from each library in filters & unfiltered
+
+
+
+#####
+
+
+
 
 #### calculate marker density for different cases
 #####
@@ -35,5 +48,18 @@ ostracoda2 <- marker_density(fragments = 65244, genome_size = 250000000, sequenc
 ## based on: empirical with apek1, 200-350 bp, hiseq 2500, Macrocyprididae genome size guess
 ostracoda3 <- marker_density(fragments = 69817, genome_size = 250000000, sequencer = "HiSeq2500", paired_end = T, 0.01)  
 ostracoda <- rbind(ostracoda1, ostracoda2, ostracoda3)
+
+## malacostraca
+## based on: in silico with apek1, 200-350 bp, hiseq 4000, C. torosa genome
+ostracoda1 <- marker_density(fragments = 88550, genome_size = 250000000, sequencer = "HiSeq4000", paired_end = T, 0.01)  
+## based on: in silico with apek1, 200-350 bp, hiseq 2500, C. torosa genome
+ostracoda2 <- marker_density(fragments = 65244, genome_size = 250000000, sequencer = "HiSeq2500", paired_end = T, 0.01)  
+## based on: empirical with apek1, 200-350 bp, hiseq 2500, Macrocyprididae genome size guess
+ostracoda3 <- marker_density(fragments = 69817, genome_size = 250000000, sequencer = "HiSeq2500", paired_end = T, 0.01)  
+ostracoda <- rbind(ostracoda1, ostracoda2, ostracoda3)
+
+
+
+#####
 
 
