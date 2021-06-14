@@ -1,0 +1,17 @@
+species,enzyme,size_selection,sequencer,number_of_loci,number_of_bases_sequenced,number_of_SNPs,filtered
+Macrocyprididae,apek1,200_350,HiSeq2500,542591,"63,614,939",191866,no
+Macrocyprididae,apek1,200_350,HiSeq2500,2238,266618,7910,yes
+Laternula elliptica,apek1,200_260,HiSeq2500,413456,48472935,203888,no
+Laternula elliptica,apek1,200_260,HiSeq2500,54850,6451542,71372,yes
+Aequiyoldia eightsii,apek1,200_260,HiSeq2500,523955,61393929,202229,no
+Aequiyoldia eightsii,apek1,200_260,HiSeq2500,52376,6158528,49776,yes
+Bathybiaster loripes,apek1,200_300,HiSeq2500,353555,41518078,435007,no
+Bathybiaster loripes,apek1,200_300,HiSeq2500,8475,1001997,33005,yes
+Psilaster charcoti,apek1,200_300,HiSeq2500,645893,75805144,766264,no
+Psilaster charcoti,apek1,200_300,HiSeq2500,27088,3205284,144739,yes
+Trematomus bernacchii,ecor1_msp1,200_450,HiSeq2500,40631,9775861,54229,no
+Trematomus bernacchii,ecor1_msp1,200_450,HiSeq2500,13720,3547300,8841,yes
+Trematomus loennbergii,ecor1_msp1,200_450,HiSeq2500,49400,11938930,86380,no
+Trematomus loennbergii,ecor1_msp1,200_450,HiSeq2500,14677,3783454,40929,yes
+Pagodroma nivea,pst1,200_300,HiSeq2500,317109,37194812,100814,no
+Pagodroma nivea,pst1,200_300,HiSeq2500,63880,7517008,16148,yes

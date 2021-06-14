@@ -1,0 +1,108 @@
+populations v2.4, executed 2019-07-09 19:56:36 (zlib-1.2.3)
+/staging/leuven/stg_00026/appl_taito/stacks-2.4/populations -P /staging/leuven/stg_00026/henrik/radpilot/denovo/lib3/psilaster/tests.denovo.cat/stacks.M5 -O /staging/leuven/stg_00026/henrik/radpilot/denovo/lib3/psilaster/tests.denovo.cat/stacks.M5
+Locus/sample distributions will be written to '/staging/leuven/stg_00026/henrik/radpilot/denovo/lib3/psilaster/tests.denovo.cat/stacks.M5/populations.log.distribs'.
+populations parameters selected:
+  Percent samples limit per population: 0
+  Locus Population limit: 1
+  Percent samples overall: 0
+  Minor allele frequency cutoff: 0
+  Maximum observed heterozygosity cutoff: 1
+  Applying Fst correction: none.
+  Pi/Fis kernel smoothing: off
+  Fstats kernel smoothing: off
+  Bootstrap resampling: off
+
+A population map was not specified, all samples will be read from '/staging/leuven/stg_00026/henrik/radpilot/denovo/lib3/psilaster/tests.denovo.cat/stacks.M5/' as a single popultaion.
+No population map specified, using all samples...
+Working on 16 samples.
+Working on 1 population(s):
+    defaultpop: Psi002, Psi003, Psi008, Psi036, Psi037, Psi037_rep, Psi039, Psi039_rep, Psi040, Psi048, Psi063, Psi075, Psi153, Psi155, Psi164, 
+                Psi215
+Working on 1 group(s) of populations:
+    defaultgrp: defaultpop
+
+Genotyping markers will be written to '/staging/leuven/stg_00026/henrik/radpilot/denovo/lib3/psilaster/tests.denovo.cat/stacks.M5/populations.markers.tsv'
+Raw Genotypes/Haplotypes will be written to '/staging/leuven/stg_00026/henrik/radpilot/denovo/lib3/psilaster/tests.denovo.cat/stacks.M5/populations.haplotypes.tsv'
+Population-level summary statistics will be written to '/staging/leuven/stg_00026/henrik/radpilot/denovo/lib3/psilaster/tests.denovo.cat/stacks.M5/populations.sumstats.tsv'
+Population-level haplotype summary statistics will be written to '/staging/leuven/stg_00026/henrik/radpilot/denovo/lib3/psilaster/tests.denovo.cat/stacks.M5/populations.hapstats.tsv'
+
+Processing data in batches:
+  * load a batch of catalog loci and apply filters
+  * compute SNP- and haplotype-wise per-population statistics
+  * write the above statistics in the output files
+  * export the genotypes/haplotypes in specified format(s)
+More details in '/staging/leuven/stg_00026/henrik/radpilot/denovo/lib3/psilaster/tests.denovo.cat/stacks.M5/populations.log.distribs'.
+Now processing...
+Batch 1 
+Batch 2 
+Batch 3 
+Batch 4 
+Batch 5 
+Batch 6 
+Batch 7 
+Batch 8 
+Batch 9 
+Batch 10 
+Batch 11 
+Batch 12 
+Batch 13 
+Batch 14 
+Batch 15 
+Batch 16 
+Batch 17 
+Batch 18 
+Batch 19 
+Batch 20 
+Batch 21 
+Batch 22 
+Batch 23 
+Batch 24 
+Batch 25 
+Batch 26 
+Batch 27 
+Batch 28 
+Batch 29 
+Batch 30 
+Batch 31 
+Batch 32 
+Batch 33 
+Batch 34 
+Batch 35 
+Batch 36 
+Batch 37 
+Batch 38 
+Batch 39 
+Batch 40 
+Batch 41 
+Batch 42 
+Batch 43 
+Batch 44 
+Batch 45 
+Batch 46 
+Batch 47 
+Batch 48 
+Batch 49 
+Batch 50 
+Batch 51 
+Batch 52 
+Batch 53 
+Batch 54 
+Batch 55 
+Batch 56 
+Batch 57 
+Batch 58 
+Batch 59 
+Batch 60 
+Batch 61 
+Batch 62 
+Batch 63 
+Batch 64 
+Batch 65 
+
+Removed 0 loci that did not pass sample/population constraints from 645893 loci.
+Kept 645893 loci, composed of 75805144 sites; 0 of those sites were filtered, 766264 variant sites remained.
+Mean genotyped sites per locus: 117.36bp (stderr 0.00).
+
+Population summary statistics (more detail in populations.sumstats_summary.tsv):
+  defaultpop: 7.5555 samples per locus; pi: 0.37003; all/variant/polymorphic sites: 75804845/766264/766264; private alleles: 0
+Populations is done.

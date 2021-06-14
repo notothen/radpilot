@@ -1,0 +1,49 @@
+populations v2.4, executed 2019-06-25 16:33:17 (zlib-1.2.3)
+/staging/leuven/stg_00026/appl_taito/stacks-2.4/populations -P stacks.M4 -O stacks.M4/populations.r80 -r 0.80
+Locus/sample distributions will be written to 'stacks.M4/populations.r80/populations.log.distribs'.
+populations parameters selected:
+  Percent samples limit per population: 0.8
+  Locus Population limit: 1
+  Percent samples overall: 0
+  Minor allele frequency cutoff: 0
+  Maximum observed heterozygosity cutoff: 1
+  Applying Fst correction: none.
+  Pi/Fis kernel smoothing: off
+  Fstats kernel smoothing: off
+  Bootstrap resampling: off
+
+A population map was not specified, all samples will be read from 'stacks.M4/' as a single popultaion.
+No population map specified, using all samples...
+Working on 12 samples.
+Working on 1 population(s):
+    defaultpop: Yoldia_1C, Yoldia_2C, Yoldia_3C, Yoldia_KGI2, Yoldia_KGI5, Yoldia_R10, Yoldia_R11, Yoldia_R12, Yoldia_R27, Yoldia_R27_rep, 
+                Yoldia_R28, Yoldia_R28_rep
+Working on 1 group(s) of populations:
+    defaultgrp: defaultpop
+
+Genotyping markers will be written to 'stacks.M4/populations.r80/populations.markers.tsv'
+Raw Genotypes/Haplotypes will be written to 'stacks.M4/populations.r80/populations.haplotypes.tsv'
+Population-level summary statistics will be written to 'stacks.M4/populations.r80/populations.sumstats.tsv'
+Population-level haplotype summary statistics will be written to 'stacks.M4/populations.r80/populations.hapstats.tsv'
+
+Processing data in batches:
+  * load a batch of catalog loci and apply filters
+  * compute SNP- and haplotype-wise per-population statistics
+  * write the above statistics in the output files
+  * export the genotypes/haplotypes in specified format(s)
+More details in 'stacks.M4/populations.r80/populations.log.distribs'.
+Now processing...
+Batch 1 
+Batch 2 
+Batch 3 
+Batch 4 
+Batch 5 
+Batch 6 
+
+Removed 471579 loci that did not pass sample/population constraints from 523955 loci.
+Kept 52376 loci, composed of 6158528 sites; 16123 of those sites were filtered, 49776 variant sites remained.
+Mean genotyped sites per locus: 117.58bp (stderr 0.01).
+
+Population summary statistics (more detail in populations.sumstats_summary.tsv):
+  defaultpop: 11.257 samples per locus; pi: 0.30408; all/variant/polymorphic sites: 6158443/49776/49776; private alleles: 0
+Populations is done.

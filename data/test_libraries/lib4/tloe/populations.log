@@ -1,0 +1,52 @@
+populations v2.4, executed 2019-07-09 19:56:47 (zlib-1.2.3)
+/staging/leuven/stg_00026/appl_taito/stacks-2.4/populations -P /staging/leuven/stg_00026/henrik/radpilot/denovo/lib4/tloe/tests.denovo.c/stacks.M3 -O /staging/leuven/stg_00026/henrik/radpilot/denovo/lib4/tloe/tests.denovo.c/stacks.M3
+Locus/sample distributions will be written to '/staging/leuven/stg_00026/henrik/radpilot/denovo/lib4/tloe/tests.denovo.c/stacks.M3/populations.log.distribs'.
+populations parameters selected:
+  Percent samples limit per population: 0
+  Locus Population limit: 1
+  Percent samples overall: 0
+  Minor allele frequency cutoff: 0
+  Maximum observed heterozygosity cutoff: 1
+  Applying Fst correction: none.
+  Pi/Fis kernel smoothing: off
+  Fstats kernel smoothing: off
+  Bootstrap resampling: off
+
+A population map was not specified, all samples will be read from '/staging/leuven/stg_00026/henrik/radpilot/denovo/lib4/tloe/tests.denovo.c/stacks.M3/' as a single popultaion.
+No population map specified, using all samples...
+Working on 12 samples.
+Working on 1 population(s):
+    defaultpop: T.loe_ROS_1352, T.loe_ROS_1352_rep, T.loe_ROS_1353, T.loe_ROS_1353_rep, T.loe_ROS_1354, T.loe_ROS_1417, T.loe_ROS_1418, T.loe_ROS_1419, 
+                T.loe_ROS_1420, T.loe_ROS_1421, T.loe_ROS_1484, T.loe_ROS_1485
+Working on 1 group(s) of populations:
+    defaultgrp: defaultpop
+
+Genotyping markers will be written to '/staging/leuven/stg_00026/henrik/radpilot/denovo/lib4/tloe/tests.denovo.c/stacks.M3/populations.markers.tsv'
+Raw Genotypes/Haplotypes will be written to '/staging/leuven/stg_00026/henrik/radpilot/denovo/lib4/tloe/tests.denovo.c/stacks.M3/populations.haplotypes.tsv'
+Population-level summary statistics will be written to '/staging/leuven/stg_00026/henrik/radpilot/denovo/lib4/tloe/tests.denovo.c/stacks.M3/populations.sumstats.tsv'
+Population-level haplotype summary statistics will be written to '/staging/leuven/stg_00026/henrik/radpilot/denovo/lib4/tloe/tests.denovo.c/stacks.M3/populations.hapstats.tsv'
+
+Processing data in batches:
+  * load a batch of catalog loci and apply filters
+  * compute SNP- and haplotype-wise per-population statistics
+  * write the above statistics in the output files
+  * export the genotypes/haplotypes in specified format(s)
+More details in '/staging/leuven/stg_00026/henrik/radpilot/denovo/lib4/tloe/tests.denovo.c/stacks.M3/populations.log.distribs'.
+Now processing...
+Batch 1 
+Batch 2 
+Batch 3 
+Batch 4 
+Batch 5 
+
+Removed 0 loci that did not pass sample/population constraints from 49400 loci.
+Kept 49400 loci, composed of 11938930 sites; 0 of those sites were filtered, 86380 variant sites remained.
+Number of loci with PE contig: 48854.00 (98.9%);
+  Mean length of loci: 233.03bp (stderr 0.15);
+Number of loci with SE/PE overlap: 27194.00 (55.0%);
+  Mean length of overlapping loci: 231.76bp (stderr 0.17); mean overlap: 25.31bp (stderr 0.04);
+Mean genotyped sites per locus: 237.16bp (stderr 0.15).
+
+Population summary statistics (more detail in populations.sumstats_summary.tsv):
+  defaultpop: 8.2814 samples per locus; pi: 0.32885; all/variant/polymorphic sites: 11715581/86380/86380; private alleles: 0
+Populations is done.

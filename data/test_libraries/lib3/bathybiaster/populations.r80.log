@@ -1,0 +1,43 @@
+populations v2.4, executed 2019-06-25 16:15:01 (zlib-1.2.3)
+/staging/leuven/stg_00026/appl_taito/stacks-2.4/populations -P stacks.M5 -O stacks.M5/populations.r80 -r 0.80
+Locus/sample distributions will be written to 'stacks.M5/populations.r80/populations.log.distribs'.
+populations parameters selected:
+  Percent samples limit per population: 0.8
+  Locus Population limit: 1
+  Percent samples overall: 0
+  Minor allele frequency cutoff: 0
+  Maximum observed heterozygosity cutoff: 1
+  Applying Fst correction: none.
+  Pi/Fis kernel smoothing: off
+  Fstats kernel smoothing: off
+  Bootstrap resampling: off
+
+A population map was not specified, all samples will be read from 'stacks.M5/' as a single popultaion.
+No population map specified, using all samples...
+Working on 12 samples.
+Working on 1 population(s):
+    defaultpop: Bat004, Bat004_rep, Bat062, Bat062_rep, Bat076, Bat095, Bat096, Bat152, Bat156, Bat157, Bat164, Bat184
+Working on 1 group(s) of populations:
+    defaultgrp: defaultpop
+
+Genotyping markers will be written to 'stacks.M5/populations.r80/populations.markers.tsv'
+Raw Genotypes/Haplotypes will be written to 'stacks.M5/populations.r80/populations.haplotypes.tsv'
+Population-level summary statistics will be written to 'stacks.M5/populations.r80/populations.sumstats.tsv'
+Population-level haplotype summary statistics will be written to 'stacks.M5/populations.r80/populations.hapstats.tsv'
+
+Processing data in batches:
+  * load a batch of catalog loci and apply filters
+  * compute SNP- and haplotype-wise per-population statistics
+  * write the above statistics in the output files
+  * export the genotypes/haplotypes in specified format(s)
+More details in 'stacks.M5/populations.r80/populations.log.distribs'.
+Now processing...
+Batch 1 
+
+Removed 345080 loci that did not pass sample/population constraints from 353555 loci.
+Kept 8475 loci, composed of 1001997 sites; 7815 of those sites were filtered, 33005 variant sites remained.
+Mean genotyped sites per locus: 118.23bp (stderr 0.03).
+
+Population summary statistics (more detail in populations.sumstats_summary.tsv):
+  defaultpop: 10.014 samples per locus; pi: 0.22469; all/variant/polymorphic sites: 1001996/33005/33005; private alleles: 0
+Populations is done.
