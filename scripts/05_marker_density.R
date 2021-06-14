@@ -25,17 +25,20 @@ read_length_hiseq2500 <- 125
 read_length_novaseq <- 100 # need to check this
 #####
 
-#### calculate similar statistics for empirical data
+#### read in some statistics from test libraries
+#### and create a function to select the data per species
 #####
-create a csv file containing raw data from populations.log files
-from each library in filters & unfiltered
+coverage <- read.csv(here("data/test_libraries/coverage_stats.csv"), header = T)
+coverage$opt_M <- as.factor(coverage$opt_M)
 
-
-
+## function to calculate mean number of loci across individuals
+mean_n_loci <- function(coverage, species_sel) {
+  mean_n_loci <- coverage %>%
+    filter(species == species_sel) %>%
+    summarise_at(vars(n_loci), list(mean))
+  return(round(deframe(mean_n_loci)))
+}
 #####
-
-
-
 
 #### calculate marker density for different cases
 #####
@@ -46,20 +49,25 @@ ostracoda1 <- marker_density(fragments = 88550, genome_size = 250000000, sequenc
 ## based on: in silico with apek1, 200-350 bp, hiseq 2500, C. torosa genome
 ostracoda2 <- marker_density(fragments = 65244, genome_size = 250000000, sequencer = "HiSeq2500", paired_end = T, 0.01)  
 ## based on: empirical with apek1, 200-350 bp, hiseq 2500, Macrocyprididae genome size guess
-ostracoda3 <- marker_density(fragments = 69817, genome_size = 250000000, sequencer = "HiSeq2500", paired_end = T, 0.01)  
+ostracoda3 <- marker_density(fragments = mean_n_loci(coverage, "Macrocyprididae"), genome_size = 250000000, sequencer = "HiSeq2500", paired_end = T, 0.01)  
 ostracoda <- rbind(ostracoda1, ostracoda2, ostracoda3)
-
-## malacostraca
-## based on: in silico with apek1, 200-350 bp, hiseq 4000, C. torosa genome
-ostracoda1 <- marker_density(fragments = 88550, genome_size = 250000000, sequencer = "HiSeq4000", paired_end = T, 0.01)  
-## based on: in silico with apek1, 200-350 bp, hiseq 2500, C. torosa genome
-ostracoda2 <- marker_density(fragments = 65244, genome_size = 250000000, sequencer = "HiSeq2500", paired_end = T, 0.01)  
-## based on: empirical with apek1, 200-350 bp, hiseq 2500, Macrocyprididae genome size guess
-ostracoda3 <- marker_density(fragments = 69817, genome_size = 250000000, sequencer = "HiSeq2500", paired_end = T, 0.01)  
-ostracoda <- rbind(ostracoda1, ostracoda2, ostracoda3)
+ostracoda <- add_column(ostracoda, input = c("in-silico_apek1_200-350", "in-silico_apek1_200-350", "empirical_apek1_200-350"), .before = 1)
+ostracoda
 
 
 
+
+#####
+
+
+#### read in loci statistics from empirical test libraries
+#####
+loci_stats <- read.csv(here("data/test_libraries/loci_stats.csv"), header = T)
+loci_stats <- as_tibble(loci_stats)
+
+loci_stats %>%
+  filter(species == "Macrocyprididae" & filtered == "no") %>%
+  select(number_of_loci)
 #####
 
 
