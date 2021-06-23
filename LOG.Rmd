@@ -1,7 +1,7 @@
 ---
 title: "LOG & EXTENDED README"
 author: "Henrik Christiansen"
-date: "June 14, 2021"
+date: "June 23, 2021"
 output:
   pdf_document: default
   html_document: default
@@ -18,6 +18,8 @@ RADseq optimization pilot experiment with several Antarctic species.
 Contact: <henrik.christiansen@kuleuven.be>
 
 ## Log:
+
+23/06/2021: added digestion with a standard 1000 mb genome
 
 10-14/06/2021: added empirical loci statistics and updated marker density calculations
 
