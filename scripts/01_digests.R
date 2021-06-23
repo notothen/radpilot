@@ -16,7 +16,7 @@ source(here("scripts/recto_REs_and_functions.R")) # custom functions
 #### to get an approximation of how often the different enzymes cut
 #####
 ## simulate a standard 1000 Mb genome with 40 % GC content
-sim_standard <- sim.DNAseq(size = 500000000, GCfreq = 0.4)
+sim_standard <- sim.DNAseq(size = 100000000, GCfreq = 0.4)
 GC(s2c(sim_standard))
 
 genome_size <- 1000000000 # genome size: 1000 Mb
