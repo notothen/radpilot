@@ -1,9 +1,9 @@
 #### Script for in silico digestion of
 #### various genomes with different enzymes
 #### for RADseq pilot experiment RECTO
-## 29/03/2021
+## 23/06/2021
 ## H. Christiansen
-## v2.3
+## v2.4
 
 #### load packages
 library(here) # to shorten file paths
@@ -11,6 +11,32 @@ library(SimRAD) # for in silico digestion
 library(seqinr) # for GC calculation
 library(tidyverse) # to arrange data
 source(here("scripts/recto_REs_and_functions.R")) # custom functions
+
+#### First, create some digestions of a standard, simulated genome
+#### to get an approximation of how often the different enzymes cut
+#####
+## simulate a standard 1000 Mb genome with 40 % GC content
+sim_standard <- sim.DNAseq(size=100000000, GCfreq = 0.4)
+GC(s2c(sim_standard))
+
+genome_size <- 1000000000 # genome size: 100 Mb
+ratio_sim_standard <- genome_size/width(sim_standard)
+ratio_sim_standard
+
+## change size windows to include total amount of fragments
+lower_size <- c(0, 240, 0, 100, 200, 300, 400, 500, 600, 700, 800)
+upper_size <- c(1000000, 340, 100, 200, 300, 400, 500, 600, 700, 800, 900)
+
+## digest
+digests_sim_standard <- recto_digest(sim_standard, recto_REs, lower_size, upper_size, ratio_sim_standard)
+digests_sim_standard
+digests_sim_standard$class <- "-"
+digests_sim_standard$ref <- "standard 1000 Mb genome"
+write.csv(digests_sim_standard, file = here("data/in_silico_results/digests_sim_standard.csv"))
+
+## clean up
+rm(sim_standard, digests_sim_standard, genome_size, ratio_sim_standard)
+#####
 
 #### Ostracoda
 #####
@@ -23,6 +49,10 @@ width(Ctorosa)
 # 286.1 Mb
 GC(s2c(Ctorosa))
 # 0.439 GC
+
+## change size windows back to "default"
+lower_size <- c(210, 240, 0, 100, 200, 300, 400, 500, 600, 700, 800)
+upper_size <- c(260, 340, 100, 200, 300, 400, 500, 600, 700, 800, 900)
 
 # digest
 ostracoda_ctorosa <- recto_digest(Ctorosa, recto_REs, lower_size, upper_size, 1)
