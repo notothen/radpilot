@@ -1,9 +1,9 @@
 #### Source script containing restriction enzymes,
 #### size windows and functions 
 #### for the RRS pilot experiment within RECTO
-## 11/06/2021
+## 24/06/2021
 ## H. Christiansen
-## v4.0
+## v4.1
 
 ## This is a source script containing R objects and functions that do most of the work.
 ## The scripts 01_digests.R and 02_empirical_digests.R depend on this source script.
@@ -15,6 +15,7 @@ library(SimRAD) # for in silico digestion
 library(bioanalyzeR) # to read bioanalyzer files
 library(tidyverse) # to arrange data and plot
 library(scales) # to calculate percentages
+library(RColorBrewer) # for plotting colors
 
 #### load restriction enzymes
 #####
@@ -359,9 +360,10 @@ recto_doubledigest <- function(genomes, enzyme1, enzyme2){
 }
 
 ## ggplot function
-recto_digest_ggplot <- function(seqwidth, bins) {
-  ggplot2::ggplot(data = seqwidth, aes(x = size, fill = genome)) + 
-    geom_histogram(binwidth = length(seqwidth$size)/bins, alpha = 0.4, position = "identity") +
+recto_digest_ggplot <- function(seqwidth, bins, order) {
+  ggplot2::ggplot(data = seqwidth, aes(x = size, fill = factor(genome, levels = order))) + 
+    geom_histogram(binwidth = length(seqwidth$size)/bins, alpha = 1, position = "identity") +
+    scale_fill_brewer(palette = "Set2") +  
     xlim(0, 2200) +
     xlab("locus size (bp)") +
     ylab("number of loci") +
@@ -376,7 +378,8 @@ recto_digest_ggplot <- function(seqwidth, bins) {
 #####
 ## version 1, all three replicates in one plot
 recto_qplot_1 <- function(runsubset, ylim1, ylim2, legendpos1, legendpos2) {
-  qplot.electrophoresis(runsubset, geom = "area", region.alpha = NA, facets = NULL, area.alpha = 0.4, xlim = c(0, 2200), ylim = c(ylim1, ylim2)) + 
+  qplot.electrophoresis(runsubset, geom = "area", region.alpha = NA, facets = NULL, area.alpha = 1, xlim = c(0, 2200), ylim = c(ylim1, ylim2)) + 
+  scale_fill_brewer(palette = "Set2") +  
   theme_classic() +
   theme(legend.position = c(legendpos1, legendpos2)) +
   theme(legend.title = element_blank())
