@@ -272,8 +272,9 @@ aeig_msp1 <- subset(run2, sample.name %in% species_sample_names(samples, "Aequiy
 
 runs_vs_species(samples, "Laternula elliptica")
 lell_ecor1 <- subset(run1, sample.name %in% species_sample_names(samples, "Laternula elliptica")[1:3])
-lell_pst1 <- rbind(subset(run1, sample.name %in% species_sample_names(samples, "Laternula elliptica")[4:5]),
-                   subset(run2, sample.name %in% species_sample_names(samples, "Laternula elliptica")[6]))
+lell_pst1 <- rbind(subset(run1, sample.name %in% species_sample_names(samples, "Laternula elliptica")[4]),
+                   subset(run2, sample.name %in% species_sample_names(samples, "Laternula elliptica")[6]),
+                   subset(run1, sample.name %in% species_sample_names(samples, "Laternula elliptica")[5]))
 lell_msp1 <- subset(run2, sample.name %in% species_sample_names(samples, "Laternula elliptica")[7:9])
 
 ## load reference genomes
@@ -289,35 +290,75 @@ ref_genomes <- data.frame(Pinctada_imbricata, Bathymodiolus_platifrons, Crassost
 
 ## plot
 p1 <- recto_qplot_1(aeig_ecor1, 0, 4, 0.7, 0.7)
+p1 # order not ok
+# subset and recombine to reorder
+a <- subset(aeig_ecor1, sample.name == "Aequiyoldia eightsii_EcoRI_3")
+b <- subset(aeig_ecor1, sample.name == "Aequiyoldia eightsii_EcoRI_1")
+c <- subset(aeig_ecor1, sample.name == "Aequiyoldia eightsii_EcoRI_2")
+aeig_ecor1 <- rbind(a, b, c)
+p1 <- recto_qplot_1(aeig_ecor1, 0, 4, 0.7, 0.7)
+p1 # order ok
 seqwidth_ecor1 <- recto_digest_2(ref_genomes, ecor1)
-p2 <- recto_digest_ggplot(seqwidth_ecor1, 30000)
+p2 <- recto_digest_ggplot(seqwidth_ecor1, 30000, c("Pinctada_imbricata", "Bathymodiolus_platifrons", "Crassostrea_gigas"))
+p2 # order ok
 p3 <- arrangeGrob(p1, p2, nrow = 1)
 recto_ggsave("aeig_ecor1", p3)
 
 p1 <- recto_qplot_1(aeig_pst1, 0, 4, 0.7, 0.7)
+p1 # order not ok
+# subset and recombine to reorder
+a <- subset(aeig_pst1, sample.name == "Aequiyoldia eightsii_PstI_3")
+b <- subset(aeig_pst1, sample.name == "Aequiyoldia eightsii_PstI_1")
+c <- subset(aeig_pst1, sample.name == "Aequiyoldia eightsii_PstI_2")
+aeig_pst1 <- rbind(a, b, c)
+p1 <- recto_qplot_1(aeig_pst1, 0, 4, 0.7, 0.7)
+p1 # order ok
 seqwidth_pst1 <- recto_digest_2(ref_genomes, pst1)
-p2 <- recto_digest_ggplot(seqwidth_pst1, 30000)
+p2 <- recto_digest_ggplot(seqwidth_pst1, 30000, c("Bathymodiolus_platifrons", "Pinctada_imbricata", "Crassostrea_gigas"))
+p2 # order ok
 p3 <- arrangeGrob(p1, p2, nrow = 1)
 recto_ggsave("aeig_pst1", p3)
 
 p1 <- recto_qplot_1(aeig_msp1, 0, 4, 0.7, 0.7)
+p1 # order not ok
+# subset and recombine to reorder
+a <- subset(aeig_msp1, sample.name == "Aequiyoldia eightsii_MspI_3")
+b <- subset(aeig_msp1, sample.name == "Aequiyoldia eightsii_MspI_2")
+c <- subset(aeig_msp1, sample.name == "Aequiyoldia eightsii_MspI_1")
+aeig_msp1 <- rbind(a, b, c)
+p1 <- recto_qplot_1(aeig_msp1, 0, 4, 0.7, 0.7)
+p1 # order ok
 seqwidth_msp1 <- recto_digest_2(ref_genomes, msp1)
-p2 <- recto_digest_ggplot(seqwidth_msp1, 100000)
+p2 <- recto_digest_ggplot(seqwidth_msp1, 100000, c("Bathymodiolus_platifrons", "Pinctada_imbricata", "Crassostrea_gigas"))
+p2 # order ok
 p3 <- arrangeGrob(p1, p2, nrow = 1)
 recto_ggsave("aeig_msp1", p3)
 
 p1 <- recto_qplot_1(lell_msp1, 0, 10, 0.7, 0.7)
-p2 <- recto_digest_ggplot(seqwidth_msp1, 100000)
+p1 # order not ok
+# subset and recombine to reorder
+a <- subset(lell_msp1, sample.name == "Laternula elliptica_MspI_1")
+b <- subset(lell_msp1, sample.name == "Laternula elliptica_MspI_3")
+c <- subset(lell_msp1, sample.name == "Laternula elliptica_MspI_2")
+lell_msp1 <- rbind(a, b, c)
+p1 <- recto_qplot_1(lell_msp1, 0, 10, 0.7, 0.7)
+p1 # order ok
+p2 <- recto_digest_ggplot(seqwidth_msp1, 100000, c("Bathymodiolus_platifrons", "Pinctada_imbricata", "Crassostrea_gigas"))
+p2 # order ok
 p3 <- arrangeGrob(p1, p2, nrow = 1)
 recto_ggsave("lell_msp1", p3)
 
 p1 <- recto_qplot_1(lell_pst1, 0, 4, 0.7, 0.7)
-p2 <- recto_digest_ggplot(seqwidth_pst1, 30000)
+p1 # order ok
+p2 <- recto_digest_ggplot(seqwidth_pst1, 30000, c("Bathymodiolus_platifrons", "Pinctada_imbricata", "Crassostrea_gigas"))
+p2 # order ok
 p3 <- arrangeGrob(p1, p2, nrow = 1)
 recto_ggsave("lell_pst1", p3)
 
 p1 <- recto_qplot_1(lell_ecor1, 0, 4, 0.7, 0.7)
-p2 <- recto_digest_ggplot(seqwidth_ecor1, 30000)
+p1 # order ok
+p2 <- recto_digest_ggplot(seqwidth_ecor1, 30000, c("Pinctada_imbricata", "Bathymodiolus_platifrons", "Crassostrea_gigas"))
+p2 # order ok
 p3 <- arrangeGrob(p1, p2, nrow = 1)
 recto_ggsave("lell_ecor1", p3)
 
