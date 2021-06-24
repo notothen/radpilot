@@ -188,57 +188,72 @@ ref_genomes <- data.frame(Hyalella_azteca, Parhyale_hawaiensis, sim_1000mb)
 ## plot
 p1 <- recto_qplot_1(ager_msp1, 0, 50, 0.7, 0.7)
 seqwidth_msp1 <- recto_digest_2(ref_genomes, msp1)
-p2 <- recto_digest_ggplot(seqwidth_msp1, 100000)
+p2 <- recto_digest_ggplot(seqwidth_msp1, 100000, c("Parhyale_hawaiensis", "Hyalella_azteca", "sim_1000mb" ))
+p2 # order ok
 p3 <- arrangeGrob(p1, p2, nrow = 1)
 recto_ggsave("ager_msp1", p3)
 
 p1 <- recto_qplot_1(ager_ecor1, 0, 20, 0.7, 0.7)
 seqwidth_ecor1 <- recto_digest_2(ref_genomes, ecor1)
-p2 <- recto_digest_ggplot(seqwidth_ecor1, 100000)
+p2 <- recto_digest_ggplot(seqwidth_ecor1, 100000, c("Hyalella_azteca", "Parhyale_hawaiensis", "sim_1000mb"))
+p2 # order ok
 p3 <- arrangeGrob(p1, p2, nrow = 1)
 recto_ggsave("ager_ecor1", p3)
 
 p1 <- recto_qplot_1(pcap_msp1, 0, 5, 0.7, 0.7)
-p2 <- recto_digest_ggplot(seqwidth_msp1, 100000)
+p2 <- recto_digest_ggplot(seqwidth_msp1, 100000, c("Parhyale_hawaiensis", "Hyalella_azteca", "sim_1000mb"))
+p2 # order ok
 p3 <- arrangeGrob(p1, p2, nrow = 1)
 recto_ggsave("pcap_msp1", p3)
 
 p1 <- recto_qplot_1(pcap_ecor1, 0, 3, 0.7, 0.7)
-p2 <- recto_digest_ggplot(seqwidth_ecor1, 100000)
+p2 <- recto_digest_ggplot(seqwidth_ecor1, 100000, c("Hyalella_azteca", "Parhyale_hawaiensis", "sim_1000mb"))
+p2 # order ok
 p3 <- arrangeGrob(p1, p2, nrow = 1)
 recto_ggsave("pcap_ecor1", p3)
 
 p1 <- recto_qplot_1(eper_msp1, 0, 1, 0.7, 0.7)
-p2 <- recto_digest_ggplot(seqwidth_msp1, 100000)
+p1 # order ok
+p2 <- recto_digest_ggplot(seqwidth_msp1, 100000, c("Parhyale_hawaiensis", "Hyalella_azteca", "sim_1000mb"))
+p2 # order ok
 p3 <- arrangeGrob(p1, p2, nrow = 1)
 recto_ggsave("eper_msp1", p3)
 
 p1 <- recto_qplot_1(eper_ecor1a, 0, 0.5, 0.7, 0.7)
-p2 <- recto_digest_ggplot(seqwidth_ecor1, 100000)
+p1 # order ok
+p2 <- recto_digest_ggplot(seqwidth_ecor1, 100000, c("Hyalella_azteca", "Parhyale_hawaiensis", "sim_1000mb"))
+p2 # order ok
 p3 <- arrangeGrob(p1, p2, nrow = 1)
 recto_ggsave("eper_ecor1a", p3)
 
 p1 <- recto_qplot_1(eper_ecor1b, 0, 1, 0.7, 0.7)
-p2 <- recto_digest_ggplot(seqwidth_ecor1, 100000)
+p1 # order ok
+p2 <- recto_digest_ggplot(seqwidth_ecor1, 100000, c("Hyalella_azteca", "Parhyale_hawaiensis", "sim_1000mb"))
+p2 # order ok
 p3 <- arrangeGrob(p1, p2, nrow = 1)
 recto_ggsave("eper_ecor1b", p3)
 
 # select the "best" runs from multiple trials
-eper_ecor1 <- rbind(subset(eper_ecor1a, well.number %in% c (5, 6)), eper_ecor1b)
+eper_ecor1 <- rbind(eper_ecor1b, subset(eper_ecor1a, well.number %in% c (5, 6)))
 eper_ecor1$samples
-
 p1 <- recto_qplot_1(eper_ecor1, 0, 1, 0.7, 0.7)
-p2 <- recto_digest_ggplot(seqwidth_ecor1, 100000)
+p1 # order ok
+p2 <- recto_digest_ggplot(seqwidth_ecor1, 100000, c("Hyalella_azteca", "Parhyale_hawaiensis", "sim_1000mb"))
+p2 # order ok
 p3 <- arrangeGrob(p1, p2, nrow = 1)
 recto_ggsave("eper_ecor1", p3)
 
 p1 <- recto_qplot_1(cobe_msp1, 0, 2, 0.7, 0.7)
-p2 <- recto_digest_ggplot(seqwidth_msp1, 100000)
+p1 # order ok
+p2 <- recto_digest_ggplot(seqwidth_msp1, 100000, c("Parhyale_hawaiensis", "Hyalella_azteca", "sim_1000mb"))
+p2 # order ok
 p3 <- arrangeGrob(p1, p2, nrow = 1)
 recto_ggsave("cobe_msp1", p3)
 
 p1 <- recto_qplot_1(cobe_ecor1, 0, 1, 0.7, 0.7)
-p2 <- recto_digest_ggplot(seqwidth_ecor1, 100000)
+p1 # order ok
+p2 <- recto_digest_ggplot(seqwidth_ecor1, 100000, c("Hyalella_azteca", "Parhyale_hawaiensis", "sim_1000mb"))
+p2 # order ok
 p3 <- arrangeGrob(p1, p2, nrow = 1)
 recto_ggsave("cobe_ecor1", p3)
 
