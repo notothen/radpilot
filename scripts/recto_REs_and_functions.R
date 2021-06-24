@@ -392,15 +392,16 @@ recto_qplot_2 <- function(runsubset, ylim1, ylim2) {
   theme(strip.background =  element_blank())
 }
 ## saving output in a standardized way and multiple formats
+#### edit: removed tiff and eps for now, as they are not needed for the journal
 recto_ggsave <- function(name, plot) {
-  ggsave(paste0(name, ".tiff"), plot, path = here('figures'),
-         width = 10, height = 5, units = 'in', dpi = 300)
+  #ggsave(paste0(name, ".tiff"), plot, path = here('figures'),
+  #       width = 10, height = 5, units = 'in', dpi = 300)
   ggsave(paste0(name, ".pdf"), plot, path = here('figures'),
          width = 10, height = 5, units = 'in', dpi = 1200)
   ggsave(paste0(name, ".jpg"), plot, path = here('figures'),
          width = 10, height = 5, units = 'in', dpi = 1200)
-  ggsave(paste0(name, ".eps"), plot, path = here('figures'),
-         width = 10, height = 5, units = 'in', dpi = 1200)
+  #ggsave(paste0(name, ".eps"), plot, path = here('figures'),
+  #       width = 10, height = 5, units = 'in', dpi = 1200)
   dev.off()
 }
 #####
