@@ -258,7 +258,7 @@ p3 <- arrangeGrob(p1, p2, nrow = 1)
 recto_ggsave("cobe_ecor1", p3)
 
 ## clean up
-rm(ager_ecor1, ager_msp1, eper_ecor1, eper_ecor1a, eper_ecor1b, eper_msp1, cobe_ecor1, cobe_msp1, p1, p2, p3,
+rm(ager_ecor1, ager_msp1, pcap_ecor1, pcap_msp1, eper_ecor1, eper_ecor1a, eper_ecor1b, eper_msp1, cobe_ecor1, cobe_msp1, p1, p2, p3,
    seqwidth_msp1, seqwidth_ecor1, Hyalella_azteca, Parhyale_hawaiensis, sim_1000mb, ref_genomes)
 #####
 
@@ -466,8 +466,9 @@ rm(pcha_ecor1, pcha_pst1, pcha_msp1, blor_msp1, blor_pst1, blor_ecor1, p1, p2, p
 ## subset
 runs_vs_species(samples, "Trematomus bernacchii")
 tber_apek1 <- subset(run5, sample.name %in% species_sample_names(samples, "Trematomus bernacchii")[1:3])
-tber_ecor1 <- rbind(subset(run5, sample.name %in% species_sample_names(samples, "Trematomus bernacchii")[4:5]),
-                   subset(run7, sample.name %in% species_sample_names(samples, "Trematomus bernacchii")[6:7]))
+tber_ecor1 <- rbind(subset(run5, sample.name %in% species_sample_names(samples, "Trematomus bernacchii")[5]),
+                   subset(run7, sample.name %in% species_sample_names(samples, "Trematomus bernacchii")[6:7]),
+                   subset(run5, sample.name %in% species_sample_names(samples, "Trematomus bernacchii")[4]))
 tber_msp1_ecor1 <- subset(run7, sample.name %in% species_sample_names(samples, "Trematomus bernacchii")[8:10])
 
 runs_vs_species(samples, "Trematomus loennbergii")
@@ -486,35 +487,68 @@ ref_genomes <- data.frame(Notothenia_coriiceps, sim_100mb, sim_180mb)
 
 ## plot
 p1 <- recto_qplot_1(tber_apek1, 0, 4, 0.7, 0.7)
+p1 # order not ok
+# subset and recombine to reorder
+a <- subset(tber_apek1, sample.name == "Trematomus bernacchii_ApeKI_1")
+b <- subset(tber_apek1, sample.name == "Trematomus bernacchii_ApeKI_3")
+c <- subset(tber_apek1, sample.name == "Trematomus bernacchii_ApeKI_2")
+tber_apek1 <- rbind(a, b, c)
+p1 <- recto_qplot_1(tber_apek1, 0, 4, 0.7, 0.7)
+p1 # order ok
 seqwidth_apek1 <- recto_digest_3(ref_genomes, apek1a, apek1t)
-p2 <- recto_digest_ggplot(seqwidth_apek1, 100000)
+p2 <- recto_digest_ggplot(seqwidth_apek1, 100000, c("Notothenia_coriiceps", "sim_180mb", "sim_100mb"))
+p2 # order ok
 p3 <- arrangeGrob(p1, p2, nrow = 1)
 recto_ggsave("tber_apek1", p3)
 
 p1 <- recto_qplot_1(tber_ecor1, 0, 3, 0.7, 0.7)
+p1 # order ok
 seqwidth_ecor1 <- recto_digest_2(ref_genomes, ecor1)
-p2 <- recto_digest_ggplot(seqwidth_ecor1, 30000)
+p2 <- recto_digest_ggplot(seqwidth_ecor1, 30000, c("Notothenia_coriiceps", "sim_180mb", "sim_100mb"))
+p2 # order ok
 p3 <- arrangeGrob(p1, p2, nrow = 1)
 recto_ggsave("tber_ecor1", p3)
 
 p1 <- recto_qplot_1(tber_msp1_ecor1, 0, 4, 0.7, 0.7)
+p1 # order not ok
+# subset and recombine to reorder
+a <- subset(tber_msp1_ecor1, sample.name == "Trematomus bernacchii_MspI_EcoRI_3")
+b <- subset(tber_msp1_ecor1, sample.name == "Trematomus bernacchii_MspI_EcoRI_2")
+c <- subset(tber_msp1_ecor1, sample.name == "Trematomus bernacchii_MspI_EcoRI_1")
+tber_msp1_ecor1 <- rbind(a, b, c)
+p1 <- recto_qplot_1(tber_msp1_ecor1, 0, 4, 0.7, 0.7)
+p1 # order ok
 seqwidth_msp1_ecor1 <- recto_doubledigest(ref_genomes, msp1, ecor1)
-p2 <- recto_digest_ggplot(seqwidth_msp1_ecor1, 30000)
+p2 <- recto_digest_ggplot(seqwidth_msp1_ecor1, 30000, c("Notothenia_coriiceps", "sim_180mb", "sim_100mb"))
+p2 # order ok
 p3 <- arrangeGrob(p1, p2, nrow = 1)
 recto_ggsave("tber_msp1_ecor1", p3)
 
 p1 <- recto_qplot_1(tloe_apek1, 0, 4, 0.7, 0.7)
-p2 <- recto_digest_ggplot(seqwidth_apek1, 100000)
+p1 # order ok
+p2 <- recto_digest_ggplot(seqwidth_apek1, 100000, c("Notothenia_coriiceps", "sim_180mb", "sim_100mb"))
+p2 # order ok
 p3 <- arrangeGrob(p1, p2, nrow = 1)
 recto_ggsave("tloe_apek1", p3)
 
 p1 <- recto_qplot_1(tloe_ecor1, 0, 2, 0.7, 0.7)
-p2 <- recto_digest_ggplot(seqwidth_ecor1, 30000)
+p1 # order ok
+p2 <- recto_digest_ggplot(seqwidth_ecor1, 30000, c("Notothenia_coriiceps", "sim_180mb", "sim_100mb"))
+p2 # order ok
 p3 <- arrangeGrob(p1, p2, nrow = 1)
 recto_ggsave("tloe_ecor1", p3)
 
 p1 <- recto_qplot_1(tloe_msp1_ecor1, 0, 5, 0.7, 0.7)
-p2 <- recto_digest_ggplot(seqwidth_msp1_ecor1, 30000)
+p1 # order not ok
+# subset and recombine to reorder
+a <- subset(tloe_msp1_ecor1, sample.name == "Trematomus loennbergii_MspI_EcoRI_1")
+b <- subset(tloe_msp1_ecor1, sample.name == "Trematomus loennbergii_MspI_EcoRI_3")
+c <- subset(tloe_msp1_ecor1, sample.name == "Trematomus loennbergii_MspI_EcoRI_2")
+tloe_msp1_ecor1 <- rbind(a, b, c)
+p1 <- recto_qplot_1(tloe_msp1_ecor1, 0, 4, 0.7, 0.7)
+p1 # order ok
+p2 <- recto_digest_ggplot(seqwidth_msp1_ecor1, 30000, c("Notothenia_coriiceps", "sim_180mb", "sim_100mb"))
+p2 # order ok
 p3 <- arrangeGrob(p1, p2, nrow = 1)
 recto_ggsave("tloe_msp1_ecor1", p3)
 
@@ -537,8 +571,8 @@ pniv_pst1b <- rbind(subset(run10, sample.name %in% species_sample_names(samples,
                     subset(run10, sample.name %in% species_sample_names(samples, "Pagodroma nivea")[14]))
 pniv_msp1a <- rbind(subset(run4, sample.name %in% species_sample_names(samples, "Pagodroma nivea")[5:6]),
                    subset(run6, sample.name %in% species_sample_names(samples, "Pagodroma nivea")[7]))
-pniv_msp1b <- rbind(subset(run10, sample.name %in% species_sample_names(samples, "Pagodroma nivea")[10]),
-                   subset(run10, sample.name %in% species_sample_names(samples, "Pagodroma nivea")[13]))
+pniv_msp1b <- rbind(subset(run10, sample.name %in% species_sample_names(samples, "Pagodroma nivea")[13]),
+                   subset(run10, sample.name %in% species_sample_names(samples, "Pagodroma nivea")[10]))
 
 
 ## load reference genomes
@@ -555,12 +589,14 @@ pniv_ecor1a$samples
 recto_qplot_1(pniv_ecor1a, 0, 2, 0.7, 0.7)
 pniv_ecor1b$samples
 recto_qplot_1(pniv_ecor1b, 0, 2, 0.7, 0.7)
-pniv_ecor1 <- rbind(subset(run3, sample.name %in% species_sample_names(samples, "Pagodroma nivea")[1]),
-                    subset(run10, sample.name %in% species_sample_names(samples, "Pagodroma nivea")[12]),
-                    subset(run10, sample.name %in% species_sample_names(samples, "Pagodroma nivea")[15]))
+pniv_ecor1 <- rbind(subset(run10, sample.name %in% species_sample_names(samples, "Pagodroma nivea")[15]),
+                    subset(run3, sample.name %in% species_sample_names(samples, "Pagodroma nivea")[1]),
+                    subset(run10, sample.name %in% species_sample_names(samples, "Pagodroma nivea")[12]))
 p1 <- recto_qplot_1(pniv_ecor1, 0, 1, 0.7, 0.7)
+p1 # order ok
 seqwidth_ecor1 <- recto_digest_2(ref_genomes, ecor1)
-p2 <- recto_digest_ggplot(seqwidth_ecor1, 30000)
+p2 <- recto_digest_ggplot(seqwidth_ecor1, 30000, c("Fulmarus_glacialis", "sim_150mb", "sim_100mb"))
+p2 # order ok
 p3 <- arrangeGrob(p1, p2, nrow = 1)
 recto_ggsave("pniva_ecor1", p3)
 
@@ -569,11 +605,13 @@ recto_qplot_1(pniv_pst1a, 0, 2, 0.7, 0.7)
 pniv_pst1b$samples
 recto_qplot_1(pniv_pst1b, 0, 2, 0.7, 0.7)
 pniv_pst1 <- rbind(subset(run7, sample.name %in% species_sample_names(samples, "Pagodroma nivea")[9]),
-                    subset(run10, sample.name %in% species_sample_names(samples, "Pagodroma nivea")[11]),
-                    subset(run10, sample.name %in% species_sample_names(samples, "Pagodroma nivea")[14]))
+                    subset(run10, sample.name %in% species_sample_names(samples, "Pagodroma nivea")[14]),
+                   subset(run10, sample.name %in% species_sample_names(samples, "Pagodroma nivea")[11]))
 p1 <- recto_qplot_1(pniv_pst1, 0, 1, 0.7, 0.7)
+p1 # order ok
 seqwidth_pst1 <- recto_digest_2(ref_genomes, pst1)
-p2 <- recto_digest_ggplot(seqwidth_pst1, 30000)
+p2 <- recto_digest_ggplot(seqwidth_pst1, 30000, c("Fulmarus_glacialis", "sim_150mb", "sim_100mb"))
+p2 # order ok
 p3 <- arrangeGrob(p1, p2, nrow = 1)
 recto_ggsave("pniv_pst1", p3)
 
@@ -583,8 +621,10 @@ pniv_msp1b$samples
 recto_qplot_1(pniv_msp1b, 0, 2, 0.7, 0.7)
 pniv_msp1 <- pniv_msp1b
 p1 <- recto_qplot_1(pniv_msp1, 0, 1, 0.7, 0.7)
+p1 # order ok
 seqwidth_msp1 <- recto_digest_2(ref_genomes, msp1)
-p2 <- recto_digest_ggplot(seqwidth_msp1, 100000)
+p2 <- recto_digest_ggplot(seqwidth_msp1, 100000, c("Fulmarus_glacialis", "sim_150mb", "sim_100mb"))
+p2 # order ok
 p3 <- arrangeGrob(p1, p2, nrow = 1)
 recto_ggsave("pniv_msp1", p3)
 
@@ -593,5 +633,5 @@ rm(pniv_ecor1, pniv_ecor1a, pniv_ecor1b, pniv_msp1a, pniv_msp1b, pniv_msp1, pniv
    seqwidth_msp1, seqwidth_ecor1, seqwidth_pst1, Fulmarus_glacialis, sim_100mb, sim_150mb, ref_genomes)
 ## clean up intermediate files from entire script
 rm(apek1a, apek1t, ecor1, msp1, pst1, run1, run2, run3, run4, run5, run6, run7, run8, run9, run10,
-   recto_REs, samples, lower_size, upper_size)
+   recto_REs, samples, lower_size, upper_size, a, b, c)
 #####

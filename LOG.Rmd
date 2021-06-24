@@ -1,7 +1,7 @@
 ---
 title: "LOG & EXTENDED README"
 author: "Henrik Christiansen"
-date: "June 23, 2021"
+date: "June 24, 2021"
 output:
   pdf_document: default
   html_document: default
@@ -18,6 +18,8 @@ RADseq optimization pilot experiment with several Antarctic species.
 Contact: <henrik.christiansen@kuleuven.be>
 
 ## Log:
+
+24/06/2021: changed and rerun empirical digestion plots, set alpha to 1 and changed plotting order to avoid overlays
 
 23/06/2021: added digestion with a standard 1000 mb genome
 
@@ -113,6 +115,8 @@ CSV/TSV files in data/test_libraries with data from 5 test libraries:
 
 * coverage_stats.csv: coverage for each library under different M values
 
+* loci_stats.csv: additional statistics for each library as reported in populations.log files
+
 * various n_snps_per_locus.tsv: files for each library/species and different r/M values with information about the loci and SNPs
 
 R script that contains restriction enzyme information and various functions for analysis and plotting as used in the analyses scripts:
@@ -135,6 +139,8 @@ To be run sequentially, all listed under /scripts.
 
 * 04_plot_n_snps_per_locus.R: script based on Rochette & Catchen 2017 to plot the number of SNPs per locus for different M parameters
 
+* 05_marker_density.R: script to calculate how many snps are sequenced across the genome
+
 * 05_plot_coverage.R: script to plot target and realized coverage
 
 ## Output:
@@ -151,7 +157,7 @@ In /figures:
 
 * various n_snps per library/species, created with 04_n_snps_per_locus.R
 
-* coverage plots, created by 05_plot_coverage.R
+* coverage plots, created by 06_plot_coverage.R
 
 ## Session info:
 
