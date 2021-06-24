@@ -1,8 +1,8 @@
 #### Script for reading in restriction enzyme
 #### digestion data from bioanalyzer output files
-## 22/03/2021
+## 24/06/2021
 ## H. Christiansen
-## v2.3
+## v2.5
 
 #### NOT RUN
 #### install package
@@ -18,6 +18,7 @@ library(bioanalyzeR) # to read bioanalyzer files
 library(tidyverse) # to arrange data
 library(gridExtra) # to combine plots
 library(SimRAD) # for in silico digestion
+library(RColorBrewer) # for plotting colors
 source(here("scripts/recto_REs_and_functions.R")) # custom functions
 
 #### read in data from bioanalyzer
@@ -109,8 +110,17 @@ ref_genomes <- data.frame(Cyprideis_torosa, sim_100mb, sim_500mb)
 
 ## plot
 p1 <- recto_qplot_1(ostra_msp1a, 0, 50, 0.7, 0.7)
+p1 # need to reorder
+# subset and recombine to reorder
+a <- subset(ostra_msp1a, sample.name == "Macroscapha falcis_MspI_3")
+b <- subset(ostra_msp1a, sample.name == "Macropyxis hornei_MspI_1")
+c <- subset(ostra_msp1a, sample.name == "Macrocyprina rocas_MspI_2")
+ostra_msp1a <- rbind(a, b, c)
+p1 <- recto_qplot_1(ostra_msp1a, 0, 50, 0.7, 0.7)
+p1 # better
 seqwidth_msp1 <- recto_digest_2(ref_genomes, msp1)
-p2 <- recto_digest_ggplot(seqwidth_msp1, 100000)
+p2 <- recto_digest_ggplot(seqwidth_msp1, 100000, c("sim_500mb", "Cyprideis_torosa", "sim_100mb"))
+p2 # order ok like this
 p3 <- arrangeGrob(p1, p2, nrow = 1)
 recto_ggsave("ostracoda_msp1a", p3)
 
@@ -119,8 +129,10 @@ p3 <- arrangeGrob(p1, p2, nrow = 1)
 recto_ggsave("ostracoda_msp1b", p3)
 
 p1 <- recto_qplot_1(ostra_ecor1a, 0, 50, 0.7, 0.7)
+p1 # order ok
 seqwidth_ecor1 <- recto_digest_2(ref_genomes, ecor1)
-p2 <- recto_digest_ggplot(seqwidth_ecor1, 30000)
+p2 <- recto_digest_ggplot(seqwidth_ecor1, 30000, c("Cyprideis_torosa", "sim_500mb", "sim_100mb"))
+p2 # order ok
 p3 <- arrangeGrob(p1, p2, nrow = 1)
 recto_ggsave("ostracoda_ecor1a", p3)
 
