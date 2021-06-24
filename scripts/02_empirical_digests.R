@@ -372,15 +372,17 @@ rm(aeig_ecor1, aeig_pst1, aeig_msp1, lell_msp1, lell_pst1, lell_ecor1, p1, p2, p
 ## subset
 runs_vs_species(samples, "Psilaster charcoti")
 pcha_ecor1 <- subset(run3, sample.name %in% species_sample_names(samples, "Psilaster charcoti")[1:3])
-pcha_pst1 <- rbind(subset(run3, sample.name %in% species_sample_names(samples, "Psilaster charcoti")[4]),
-                   subset(run4, sample.name %in% species_sample_names(samples, "Psilaster charcoti")[5:6]))
+pcha_pst1 <- rbind(subset(run4, sample.name %in% species_sample_names(samples, "Psilaster charcoti")[6]),
+                   subset(run4, sample.name %in% species_sample_names(samples, "Psilaster charcoti")[5]),
+                   subset(run3, sample.name %in% species_sample_names(samples, "Psilaster charcoti")[4]))
 pcha_msp1 <- subset(run4, sample.name %in% species_sample_names(samples, "Psilaster charcoti")[7:9])
 
 runs_vs_species(samples, "Bathybiaster loripes")
 blor_ecor1 <- subset(run3, sample.name %in% species_sample_names(samples, "Bathybiaster loripes")[1:3])
 blor_pst1 <- subset(run4, sample.name %in% species_sample_names(samples, "Bathybiaster loripes")[4:6])
 blor_msp1 <- rbind(subset(run4, sample.name %in% species_sample_names(samples, "Bathybiaster loripes")[7]),
-                   subset(run7, sample.name %in% species_sample_names(samples, "Bathybiaster loripes")[8:9]))
+                   subset(run7, sample.name %in% species_sample_names(samples, "Bathybiaster loripes")[9]),
+                   subset(run7, sample.name %in% species_sample_names(samples, "Bathybiaster loripes")[8]))
 
 
 ## load reference genomes
@@ -396,35 +398,61 @@ ref_genomes <- data.frame(Acanthaster_planci, Patiria_miniata, Patiriella_regula
 
 ## plot
 p1 <- recto_qplot_1(pcha_ecor1, 0, 2, 0.7, 0.7)
+p1 # order not ok
+# subset and recombine to reorder
+a <- subset(pcha_ecor1, sample.name == "Psilaster charcoti_EcoRI_3")
+b <- subset(pcha_ecor1, sample.name == "Psilaster charcoti_EcoRI_1")
+c <- subset(pcha_ecor1, sample.name == "Psilaster charcoti_EcoRI_2")
+pcha_ecor1 <- rbind(a, b, c)
+p1 <- recto_qplot_1(pcha_ecor1, 0, 4, 0.7, 0.7)
+p1 # order ok
 seqwidth_ecor1 <- recto_digest_2(ref_genomes, ecor1)
-p2 <- recto_digest_ggplot(seqwidth_ecor1, 30000)
+p2 <- recto_digest_ggplot(seqwidth_ecor1, 30000, c("Patiriella_regularis", "Patiria_miniata", "Acanthaster_planci"))
+p2 # order ok
 p3 <- arrangeGrob(p1, p2, nrow = 1)
 recto_ggsave("pcha_ecor1", p3)
 
 p1 <- recto_qplot_1(pcha_pst1, 0, 4, 0.7, 0.7)
+p1 # order ok
 seqwidth_pst1 <- recto_digest_2(ref_genomes, pst1)
-p2 <- recto_digest_ggplot(seqwidth_pst1, 30000)
+p2 <- recto_digest_ggplot(seqwidth_pst1, 30000, c("Patiriella_regularis", "Patiria_miniata", "Acanthaster_planci"))
+p2 # order ok
 p3 <- arrangeGrob(p1, p2, nrow = 1)
 recto_ggsave("pcha_pst1", p3)
 
 p1 <- recto_qplot_1(pcha_msp1, 0, 4, 0.7, 0.7)
+p1 # order not ok
+# subset and recombine to reorder
+a <- subset(pcha_msp1, sample.name == "Psilaster charcoti_MspI_3")
+b <- subset(pcha_msp1, sample.name == "Psilaster charcoti_MspI_2")
+c <- subset(pcha_msp1, sample.name == "Psilaster charcoti_MspI_1")
+pcha_msp1 <- rbind(a, b, c)
+p1 <- recto_qplot_1(pcha_msp1, 0, 4, 0.7, 0.7)
+p1 # order ok
 seqwidth_msp1 <- recto_digest_2(ref_genomes, msp1)
-p2 <- recto_digest_ggplot(seqwidth_msp1, 100000)
+p2 <- recto_digest_ggplot(seqwidth_msp1, 100000, c("Patiria_miniata", "Patiriella_regularis", "Acanthaster_planci"))
+p2 # order ok
 p3 <- arrangeGrob(p1, p2, nrow = 1)
 recto_ggsave("pcha_msp1", p3)
 
 p1 <- recto_qplot_1(blor_msp1, 0, 10, 0.7, 0.7)
-p2 <- recto_digest_ggplot(seqwidth_msp1, 100000)
+p1 # order ok
+p2 <- recto_digest_ggplot(seqwidth_msp1, 100000, c("Patiria_miniata", "Patiriella_regularis", "Acanthaster_planci"))
+p2 # order ok
 p3 <- arrangeGrob(p1, p2, nrow = 1)
 recto_ggsave("blor_msp1", p3)
 
 p1 <- recto_qplot_1(blor_pst1, 0, 2, 0.7, 0.7)
-p2 <- recto_digest_ggplot(seqwidth_pst1, 30000)
+p1 # order ok
+p2 <- recto_digest_ggplot(seqwidth_pst1, 30000, c("Patiriella_regularis", "Patiria_miniata", "Acanthaster_planci"))
+p2 # order ok
 p3 <- arrangeGrob(p1, p2, nrow = 1)
 recto_ggsave("blor_pst1", p3)
 
 p1 <- recto_qplot_1(blor_ecor1, 0, 4, 0.7, 0.7)
-p2 <- recto_digest_ggplot(seqwidth_ecor1, 30000)
+p1 # order ok
+p2 <- recto_digest_ggplot(seqwidth_ecor1, 30000, c("Patiriella_regularis", "Patiria_miniata", "Acanthaster_planci"))
+p2 # order ok
 p3 <- arrangeGrob(p1, p2, nrow = 1)
 recto_ggsave("blor_ecor1", p3)
 
