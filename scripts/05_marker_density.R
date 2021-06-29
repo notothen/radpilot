@@ -1,8 +1,8 @@
 #### Script for calculating marker density based on
 #### in silico or empirical number of loci and genome size
-## 14/06/2021
+## 29/06/2021
 ## H. Christiansen
-## v1.1
+## v2.0
 
 #### load packages
 library(here) # to shorten file paths
@@ -13,15 +13,10 @@ source(here("scripts/recto_REs_and_functions.R")) # custom functions
 #### prepare for marker density calculation
 #####
 ## define constant variables
-## (these ones are unnecessary for now, could be used in the future)
-## (perhaps add later a function to estimate how many inds. to pool?)
-## (perhaps also add a function to calculate coverage based on different in silico results?)
 reads_hiseq4000 <- 300000000 # conservative estimate
 reads_hiseq2500 <- 200000000 # conservative estimate
 reads_novaseq <- 1800000000 # adjust this depending on what exactly you plan to sequence on!
-ind_per_lib <- 96
-
-## these ones are important
+ind_per_lib <- 96 # adjust this depending on how many individuals you plan to pool per library!
 read_length_hiseq4000 <- 150
 read_length_hiseq2500 <- 125
 read_length_novaseq <- 100 # adjust this depending on what exactly you plan to sequence on!
@@ -113,12 +108,12 @@ marker_density
 
 #### read in loci statistics from empirical test libraries
 #####
-loci_stats <- read.csv(here("data/test_libraries/loci_stats.csv"), header = T)
-loci_stats <- as_tibble(loci_stats)
+density_stats <- read.csv(here("data/test_libraries/density_stats.csv"), header = T)
+density_stats <- as_tibble(density_stats)
 
-loci_stats %>%
+densitu_stats %>%
   filter(species == "Macrocyprididae" & filtered == "no") %>%
-  select(number_of_loci)
+  select(total_number_of_loci)
 #####
 
 

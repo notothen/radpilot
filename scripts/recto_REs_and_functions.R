@@ -426,10 +426,13 @@ marker_density <- function(fragments, genome_size, sequencer = "HiSeq2500", pair
   ## define read length
   if (sequencer == "HiSeq4000") {
     read_length <- read_length_hiseq4000
+    number_of_reads <- reads_hiseq4000
   } else if (sequencer == "HiSeq2500") {
     read_length <- read_length_hiseq2500
+    number_of_reads <- reads_hiseq2500
   } else if (sequencer == "NovaSeq") {
     read_length <- read_length_novaseq
+    number_of_reads <- reads_novaseq
   } else {
     stop("sequencer must be either HiSeq2500, HiSeq4000 or NovaSeq")
   }
@@ -437,16 +440,18 @@ marker_density <- function(fragments, genome_size, sequencer = "HiSeq2500", pair
   sequenced_bases <- ratio*read_length*fragments
   density <- sequenced_bases*SNP_density
   portion <- round((sequenced_bases/genome_size), digits = 4)
+  coverage <- round((number_of_reads/ind_per_lib/fragments), digits = 1)
   everyother <- genome_size/density
   results <- data.frame(format(fragments, big.mark = ","), genome_size, sequencer, paired_end, SNP_density,
-                        format(sequenced_bases, big.mark = ","),
-                        format(round(density), big.mark = ","), percent(portion, accuracy = 0.01), paste(round(everyother, digits = 0), "bp"))
+                        format(sequenced_bases, big.mark = ","), format(round(density), big.mark = ","),
+                        percent(portion, accuracy = 0.01), paste(coverage, "x"), paste(round(everyother, digits = 0), "bp"))
   ## make the results a bit more appealing/easier to read
   names(results)[1] <- "number_of_fragments"
   names(results)[6] <- "number_of_bases_sequenced"
   names(results)[7] <- "number_of_SNPs"
   names(results)[8] <- "portion_of_genome_sequenced"
-  names(results)[9] <- "one_SNP_every"
+  names(results)[9] <- "coverage"
+  names(results)[10] <- "one_SNP_every"
   return(results)  
 }
 #####
