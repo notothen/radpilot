@@ -1,7 +1,7 @@
 ---
 title: "LOG & EXTENDED README"
 author: "Henrik Christiansen"
-date: "June 24, 2021"
+date: "June 29, 2021"
 output:
   pdf_document: default
   html_document: default
@@ -18,6 +18,8 @@ RADseq optimization pilot experiment with several Antarctic species.
 Contact: <henrik.christiansen@kuleuven.be>
 
 ## Log:
+
+29/06/2021: added coverage calculation in script 05_marker_density.R
 
 24/06/2021: changed and rerun empirical digestion plots, set alpha to 1 and changed plotting order to avoid overlays
 
@@ -113,9 +115,9 @@ CSV file with all metadata related to the Bioanalyzer runs, created manually:
 
 CSV/TSV files in data/test_libraries with data from 5 test libraries:
 
-* coverage_stats.csv: coverage for each library under different M values
+* coverage_stats.csv: number of loci and coverage for each library under different M values as reported in gstacks.log.distribs files
 
-* loci_stats.csv: additional statistics for each library as reported in populations.log files
+* density_stats.csv: additional statistics for each library as reported in populations.log files
 
 * various n_snps_per_locus.tsv: files for each library/species and different r/M values with information about the loci and SNPs
 
@@ -141,7 +143,7 @@ To be run sequentially, all listed under /scripts.
 
 * 05_marker_density.R: script to calculate how many snps are sequenced across the genome
 
-* 05_plot_coverage.R: script to plot target and realized coverage
+* 06_plot_coverage.R: script to plot target and realized coverage
 
 ## Output:
 
