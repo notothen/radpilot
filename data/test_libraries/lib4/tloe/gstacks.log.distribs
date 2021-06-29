@@ -1,0 +1,63 @@
+# Note: Individual distributions can be extracted using the `stacks-dist-extract` utility.
+#       e.g. `stacks-dist-extract gstacks.log.distribs dist_name`
+
+BEGIN effective_coverages_per_sample
+# For mean_cov_ns, the coverage at each locus is weighted by the number of
+# samples present at that locus (i.e. coverage at shared loci counts more).
+sample	n_loci	n_used_fw_reads	mean_cov	mean_cov_ns
+T.loe_ROS_1352	25014	1146414	45.831	54.704
+T.loe_ROS_1352_rep	23064	977306	42.374	48.787
+T.loe_ROS_1353	26389	1526372	57.841	70.906
+T.loe_ROS_1353_rep	22477	1158116	51.524	58.811
+T.loe_ROS_1354	27915	1721250	61.660	77.891
+T.loe_ROS_1417	23344	1276043	54.663	65.420
+T.loe_ROS_1418	24120	1122199	46.526	55.141
+T.loe_ROS_1419	25065	1159927	46.277	55.275
+T.loe_ROS_1420	23944	1105682	46.178	54.637
+T.loe_ROS_1421	21942	921192	41.983	47.662
+T.loe_ROS_1484	19568	1035460	52.916	57.971
+T.loe_ROS_1485	20468	1149586	56.165	63.225
+END effective_coverages_per_sample
+
+BEGIN phasing_rates_per_sample
+sample	n_gts	n_multisnp_hets	n_phased	misphasing_rate
+T.loe_ROS_1352	17760	3249	2797	0.139
+T.loe_ROS_1352_rep	16832	3034	2624	0.135
+T.loe_ROS_1353	18394	3494	3076	0.120
+T.loe_ROS_1353_rep	16693	3053	2730	0.106
+T.loe_ROS_1354	18970	3524	3115	0.116
+T.loe_ROS_1417	16684	3018	2689	0.109
+T.loe_ROS_1418	17294	3146	2818	0.104
+T.loe_ROS_1419	17910	3247	2921	0.100
+T.loe_ROS_1420	17293	3116	2747	0.118
+T.loe_ROS_1421	16386	2939	2626	0.106
+T.loe_ROS_1484	15211	2752	2466	0.104
+T.loe_ROS_1485	15398	2699	2407	0.108
+END phasing_rates_per_sample
+
+BEGIN clockings
+Num. threads: 1
+Parallel time: 951.7
+Average thread time spent:
+    22.6  reading (2.4%)
+   912.5  processing (95.9%)
+           826.2 pre-alignments block (86.8%)
+             4.6  reformatting fw-reads (0.5%)
+           128.7  assembling (13.5%)
+             4.0  initializing alignments (0.4%)
+           645.6  aligning (67.8%)
+            43.1  merging read pairs (4.5%)
+            84.2 post-alignments block (8.8%)
+             0.0  filtering reads (0.0%)
+            35.2  counting nucleotides (3.7%)
+             8.0  genotyping (0.8%)
+             2.4  haplotyping (0.3%)
+             0.1  computing consensus (0.0%)
+             0.5  building_fa (0.0%)
+            37.9  building_vcf (4.0%)
+     2.7  writing_fa (0.3%)
+    14.0  writing_vcf (1.5%)
+     0.2  clocking (0.0%)
+Total time spent writing vcf: 14.0 (1.5%)
+VCFwrite block size: mean=1.0(n=50478); max=1
+END clockings

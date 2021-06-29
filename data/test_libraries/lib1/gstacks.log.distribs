@@ -1,0 +1,59 @@
+# Note: Individual distributions can be extracted using the `stacks-dist-extract` utility.
+#       e.g. `stacks-dist-extract gstacks.log.distribs dist_name`
+
+BEGIN effective_coverages_per_sample
+# For mean_cov_ns, the coverage at each locus is weighted by the number of
+# samples present at that locus (i.e. coverage at shared loci counts more).
+sample	n_loci	n_used_fw_reads	mean_cov	mean_cov_ns
+Macroscapha_176	46361	1581416	34.111	41.158
+Macroscapha_186	202458	3957354	19.547	24.788
+Macroscapha_187	14006	450769	32.184	36.973
+Macroscapha_223	64518	1608021	24.924	30.950
+Macroscapha_226	26785	835472	31.192	39.526
+Macroscapha_226_rep	40041	1246192	31.123	42.225
+Macroscapha_240	143522	3893280	27.127	36.021
+Macroscapha_240_rep	109445	2207948	20.174	24.973
+Macroscapha_280	46704	1223054	26.187	26.154
+Macroscapha_340	4334	157143	36.258	33.917
+END effective_coverages_per_sample
+
+BEGIN phasing_rates_per_sample
+sample	n_gts	n_multisnp_hets	n_phased	misphasing_rate
+Macroscapha_176	8798	922	897	0.027
+Macroscapha_186	46273	7137	6639	0.070
+Macroscapha_187	3146	279	274	0.018
+Macroscapha_223	18313	1529	1429	0.065
+Macroscapha_226	7362	622	585	0.059
+Macroscapha_226_rep	9114	912	846	0.072
+Macroscapha_240	39337	6051	5188	0.143
+Macroscapha_240_rep	30101	4699	4246	0.096
+Macroscapha_280	2657	750	749	0.001
+Macroscapha_340	197	52	49	0.058
+END phasing_rates_per_sample
+
+BEGIN clockings
+Num. threads: 1
+Parallel time: 529.3
+Average thread time spent:
+    14.3  reading (2.7%)
+   444.1  processing (83.9%)
+           214.0 pre-alignments block (40.4%)
+             6.1  reformatting fw-reads (1.2%)
+            59.5  assembling (11.2%)
+            13.1  initializing alignments (2.5%)
+           130.3  aligning (24.6%)
+             4.2  merging read pairs (0.8%)
+           224.8 post-alignments block (42.5%)
+             0.1  filtering reads (0.0%)
+            28.4  counting nucleotides (5.4%)
+            13.0  genotyping (2.5%)
+             1.1  haplotyping (0.2%)
+             0.6  computing consensus (0.1%)
+             1.2  building_fa (0.2%)
+           179.5  building_vcf (33.9%)
+    14.5  writing_fa (2.7%)
+    56.2  writing_vcf (10.6%)
+     1.6  clocking (0.3%)
+Total time spent writing vcf: 56.1 (10.6%)
+VCFwrite block size: mean=1.0(n=545190); max=1
+END clockings

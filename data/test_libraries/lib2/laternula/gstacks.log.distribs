@@ -1,0 +1,59 @@
+# Note: Individual distributions can be extracted using the `stacks-dist-extract` utility.
+#       e.g. `stacks-dist-extract gstacks.log.distribs dist_name`
+
+BEGIN effective_coverages_per_sample
+# For mean_cov_ns, the coverage at each locus is weighted by the number of
+# samples present at that locus (i.e. coverage at shared loci counts more).
+sample	n_loci	n_used_fw_reads	mean_cov	mean_cov_ns
+Laternula_4C	138427	2415341	17.448	22.731
+Laternula_5C	128387	2074994	16.162	20.806
+Laternula_6C	101840	2252892	22.122	27.860
+Laternula_KGI11	121650	3314512	27.246	34.051
+Laternula_KGI18	113563	3189900	28.089	35.237
+Laternula_R5	170760	2451450	14.356	21.619
+Laternula_R6	98448	1661368	16.876	19.314
+Laternula_R6_rep	109783	3044224	27.729	36.309
+Laternula_R7	152222	3035007	19.938	27.675
+Laternula_R7_rep	117974	3227935	27.361	35.489
+END effective_coverages_per_sample
+
+BEGIN phasing_rates_per_sample
+sample	n_gts	n_multisnp_hets	n_phased	misphasing_rate
+Laternula_4C	60185	12803	10941	0.145
+Laternula_5C	57158	11292	9577	0.152
+Laternula_6C	44809	6546	5796	0.115
+Laternula_KGI11	57194	12378	10569	0.146
+Laternula_KGI18	53258	10568	8961	0.152
+Laternula_R5	55291	10643	8936	0.160
+Laternula_R6	50061	9482	7843	0.173
+Laternula_R6_rep	48123	6692	5711	0.147
+Laternula_R7	63334	12579	10227	0.187
+Laternula_R7_rep	53776	9386	7943	0.154
+END phasing_rates_per_sample
+
+BEGIN clockings
+Num. threads: 1
+Parallel time: 564.0
+Average thread time spent:
+    21.9  reading (3.9%)
+   483.6  processing (85.7%)
+           300.3 pre-alignments block (53.2%)
+             6.8  reformatting fw-reads (1.2%)
+            73.4  assembling (13.0%)
+             9.9  initializing alignments (1.8%)
+           202.5  aligning (35.9%)
+             6.9  merging read pairs (1.2%)
+           178.0 post-alignments block (31.6%)
+             0.0  filtering reads (0.0%)
+            31.9  counting nucleotides (5.7%)
+            14.2  genotyping (2.5%)
+             2.3  haplotyping (0.4%)
+             0.5  computing consensus (0.1%)
+             1.3  building_fa (0.2%)
+           127.1  building_vcf (22.5%)
+    11.2  writing_fa (2.0%)
+    47.2  writing_vcf (8.4%)
+     1.2  clocking (0.2%)
+Total time spent writing vcf: 47.1 (8.3%)
+VCFwrite block size: mean=1.0(n=428404); max=1
+END clockings

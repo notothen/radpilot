@@ -1,0 +1,63 @@
+# Note: Individual distributions can be extracted using the `stacks-dist-extract` utility.
+#       e.g. `stacks-dist-extract gstacks.log.distribs dist_name`
+
+BEGIN effective_coverages_per_sample
+# For mean_cov_ns, the coverage at each locus is weighted by the number of
+# samples present at that locus (i.e. coverage at shared loci counts more).
+sample	n_loci	n_used_fw_reads	mean_cov	mean_cov_ns
+T.ber_JRI_02	18963	882257	46.525	52.207
+T.ber_JRI_03	18956	665808	35.124	39.303
+T.ber_JRI_03_rep	21643	1408276	65.068	77.945
+T.ber_JRI_04	19499	753015	38.618	43.568
+T.ber_JRI_04_rep	24423	1367414	55.989	70.806
+T.ber_JRI_05	22181	897181	40.448	48.264
+T.ber_JRI_06	19959	649184	32.526	37.193
+T.ber_JRI_07	23153	720169	31.105	37.804
+T.ber_JRI_08	20505	635057	30.971	35.814
+T.ber_JRI_09	13659	291236	21.322	22.038
+T.ber_JRI_10	28236	1560125	55.253	74.933
+T.ber_JRI_11	22278	1366522	61.340	73.503
+END effective_coverages_per_sample
+
+BEGIN phasing_rates_per_sample
+sample	n_gts	n_multisnp_hets	n_phased	misphasing_rate
+T.ber_JRI_02	13805	2309	2034	0.119
+T.ber_JRI_03	13661	2383	2129	0.107
+T.ber_JRI_03_rep	14902	2648	2271	0.142
+T.ber_JRI_04	13923	2324	2075	0.107
+T.ber_JRI_04_rep	15799	2749	2347	0.146
+T.ber_JRI_05	15083	2624	2307	0.121
+T.ber_JRI_06	14086	2342	2088	0.108
+T.ber_JRI_07	15210	2675	2353	0.120
+T.ber_JRI_08	14275	2450	2184	0.109
+T.ber_JRI_09	10501	1720	1571	0.087
+T.ber_JRI_10	16911	3243	2786	0.141
+T.ber_JRI_11	15304	2630	2257	0.142
+END phasing_rates_per_sample
+
+BEGIN clockings
+Num. threads: 1
+Parallel time: 714.6
+Average thread time spent:
+    17.8  reading (2.5%)
+   683.3  processing (95.6%)
+           616.3 pre-alignments block (86.3%)
+             3.4  reformatting fw-reads (0.5%)
+           110.0  assembling (15.4%)
+             3.0  initializing alignments (0.4%)
+           466.0  aligning (65.2%)
+            33.8  merging read pairs (4.7%)
+            65.3 post-alignments block (9.1%)
+             0.0  filtering reads (0.0%)
+            25.7  counting nucleotides (3.6%)
+             6.9  genotyping (1.0%)
+             1.7  haplotyping (0.2%)
+             0.1  computing consensus (0.0%)
+             0.4  building_fa (0.1%)
+            30.4  building_vcf (4.3%)
+     2.2  writing_fa (0.3%)
+    11.3  writing_vcf (1.6%)
+     0.1  clocking (0.0%)
+Total time spent writing vcf: 11.3 (1.6%)
+VCFwrite block size: mean=1.0(n=41561); max=1
+END clockings

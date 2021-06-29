@@ -1,0 +1,63 @@
+# Note: Individual distributions can be extracted using the `stacks-dist-extract` utility.
+#       e.g. `stacks-dist-extract gstacks.log.distribs dist_name`
+
+BEGIN effective_coverages_per_sample
+# For mean_cov_ns, the coverage at each locus is weighted by the number of
+# samples present at that locus (i.e. coverage at shared loci counts more).
+sample	n_loci	n_used_fw_reads	mean_cov	mean_cov_ns
+Yoldia_1C	106996	2198671	20.549	25.798
+Yoldia_2C	116641	2159835	18.517	22.972
+Yoldia_3C	106876	1764149	16.507	20.300
+Yoldia_KGI2	125275	2579781	20.593	27.773
+Yoldia_KGI5	139307	3511705	25.208	21.163
+Yoldia_R10	140930	2702367	19.175	23.819
+Yoldia_R11	148384	2644520	17.822	23.586
+Yoldia_R12	155586	2644298	16.996	22.762
+Yoldia_R27	199907	5008828	25.056	34.303
+Yoldia_R27_rep	146951	2790997	18.993	23.220
+Yoldia_R28	148626	3166270	21.304	25.623
+Yoldia_R28_rep	187135	3780846	20.204	28.424
+END effective_coverages_per_sample
+
+BEGIN phasing_rates_per_sample
+sample	n_gts	n_multisnp_hets	n_phased	misphasing_rate
+Yoldia_1C	46702	7729	6335	0.180
+Yoldia_2C	50106	9771	7729	0.209
+Yoldia_3C	44358	8401	6879	0.181
+Yoldia_KGI2	50512	8395	6800	0.190
+Yoldia_KGI5	52703	9567	7975	0.166
+Yoldia_R10	49427	9287	7575	0.184
+Yoldia_R11	53103	9740	7858	0.193
+Yoldia_R12	53202	10128	8148	0.195
+Yoldia_R27	63276	13635	10560	0.226
+Yoldia_R27_rep	51679	10429	8372	0.197
+Yoldia_R28	56595	11874	9269	0.219
+Yoldia_R28_rep	60967	12262	9617	0.216
+END phasing_rates_per_sample
+
+BEGIN clockings
+Num. threads: 1
+Parallel time: 710.7
+Average thread time spent:
+    29.0  reading (4.1%)
+   605.4  processing (85.2%)
+           360.3 pre-alignments block (50.7%)
+             8.6  reformatting fw-reads (1.2%)
+            95.0  assembling (13.4%)
+            12.6  initializing alignments (1.8%)
+           233.8  aligning (32.9%)
+             9.1  merging read pairs (1.3%)
+           238.6 post-alignments block (33.6%)
+             0.0  filtering reads (0.0%)
+            43.5  counting nucleotides (6.1%)
+            17.9  genotyping (2.5%)
+             2.6  haplotyping (0.4%)
+             0.6  computing consensus (0.1%)
+             1.7  building_fa (0.2%)
+           171.4  building_vcf (24.1%)
+    15.2  writing_fa (2.1%)
+    60.8  writing_vcf (8.6%)
+     1.5  clocking (0.2%)
+Total time spent writing vcf: 60.6 (8.5%)
+VCFwrite block size: mean=1.0(n=535935); max=1
+END clockings

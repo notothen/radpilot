@@ -1,0 +1,63 @@
+# Note: Individual distributions can be extracted using the `stacks-dist-extract` utility.
+#       e.g. `stacks-dist-extract gstacks.log.distribs dist_name`
+
+BEGIN effective_coverages_per_sample
+# For mean_cov_ns, the coverage at each locus is weighted by the number of
+# samples present at that locus (i.e. coverage at shared loci counts more).
+sample	n_loci	n_used_fw_reads	mean_cov	mean_cov_ns
+Bat004	101578	2116077	20.832	25.450
+Bat004_rep	92475	1865784	20.176	23.335
+Bat062	53990	867038	16.059	17.760
+Bat062_rep	87106	1895066	21.756	27.490
+Bat076	136862	3842936	28.079	39.114
+Bat095	99990	2469475	24.697	30.755
+Bat096	110415	2670025	24.182	30.233
+Bat152	124466	3732067	29.985	39.956
+Bat156	84260	1622828	19.260	22.078
+Bat157	102500	2303756	22.476	26.980
+Bat164	1636	14987	9.161	8.676
+Bat184	61	483	7.918	6.328
+END effective_coverages_per_sample
+
+BEGIN phasing_rates_per_sample
+sample	n_gts	n_multisnp_hets	n_phased	misphasing_rate
+Bat004	67282	11183	10050	0.101
+Bat004_rep	65298	11709	10534	0.100
+Bat062	40274	5827	5130	0.120
+Bat062_rep	57671	8972	7687	0.143
+Bat076	84911	20573	13824	0.328
+Bat095	49615	8575	8247	0.038
+Bat096	74544	12955	11298	0.128
+Bat152	80941	14304	12324	0.138
+Bat156	61202	9925	8579	0.136
+Bat157	66676	11529	10275	0.109
+Bat164	817	44	42	0.045
+Bat184	26	3	3	0.000
+END phasing_rates_per_sample
+
+BEGIN clockings
+Num. threads: 1
+Parallel time: 596.3
+Average thread time spent:
+    19.3  reading (3.2%)
+   521.8  processing (87.5%)
+           334.7 pre-alignments block (56.1%)
+             7.2  reformatting fw-reads (1.2%)
+            69.5  assembling (11.7%)
+             8.5  initializing alignments (1.4%)
+           242.8  aligning (40.7%)
+             6.0  merging read pairs (1.0%)
+           182.5 post-alignments block (30.6%)
+             0.0  filtering reads (0.0%)
+            28.9  counting nucleotides (4.8%)
+            15.4  genotyping (2.6%)
+             3.0  haplotyping (0.5%)
+             0.4  computing consensus (0.1%)
+             1.1  building_fa (0.2%)
+           133.1  building_vcf (22.3%)
+    10.1  writing_fa (1.7%)
+    44.9  writing_vcf (7.5%)
+     1.0  clocking (0.2%)
+Total time spent writing vcf: 44.8 (7.5%)
+VCFwrite block size: mean=1.0(n=358296); max=1
+END clockings
