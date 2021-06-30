@@ -1,6 +1,6 @@
 # RRS pilot experiment calculations
 
-#### By Henrik Christiansen, last update on 29/06/2021
+#### By Henrik Christiansen, last update on 30/06/2021
 #### Reference: Christiansen et al. 2021 **"Facilitating population genomics of non-model organisms through optimized experimental design for reduced representation sequencing"** [10.1101/2021.03.30.437642](https://doi.org/10.1101/2021.03.30.437642) 
 #### All code and input files (except for the reference genomes) available on github: [github.com/notothen/radpilot](https://github.com/notothen/radpilot) 
 #### Sequence data from test libraries available on SRA ([reviewer link](https://dataview.ncbi.nlm.nih.gov/object/PRJNA674352?reviewer=dmj6c5816761lpqn2d1oe69qhs)) 
@@ -160,13 +160,9 @@ The two values supplied to the ```recto_qplot_2``` function are for the y axis r
 
 More details including subsetting and renaming and an extended application where bioanalyzer data is imported in R and plotted for the target taxa from Christiansen et al. 2021 can be found in the script ```02_empirical_digests.R``` from the ```scripts``` folder: https://github.com/notothen/radpilot/tree/main/scripts
 
-## Part 3: Estimate marker density
+## Part 3 & 4: Evaluate test library output
 
-TO BE WRITTEN
-
-## Part 4: Evaluate test library output
-
-If you have run some test sequencing libraries and processed them following Rochette & Catchen (2017), then you may want to plot the number of loci and the number of SNPs per locus. To do this you can simply follow the codes provided by these authors. Their codes to run the Stacks pipeline also provide tsv outputs on the number of loci and SNPs. Put this file into a folder ```data/test_libraries``` and load it e.g. like this:
+If you have run some test sequencing libraries and processed them following Rochette & Catchen (2017), then you may want to plot the number of loci and the number of SNPs per locus. To do this you can simply follow the code provided by these authors. Their code to run the Stacks pipeline also provides tsv outputs on the number of loci and SNPs. Put this file into a folder ```data/test_libraries``` and load it e.g. like this:
 
 ```
 snps_per_loc <- read.delim(here('data/test_libraries/n_snps_per_locus.tsv'))
@@ -178,9 +174,53 @@ https://bitbucket.org/rochette/rad-seq-genotyping-demo/src/master/demo_scripts/R
 
 A detailed adaptation of this code using the data of five test sequencing libraries as in Christiansen et al. 2021 can be found in the scripts ```03_plot_n_loci.R``` and ```04_plot_n_snps_per_locus.R``` from the ```scripts``` folder: https://github.com/notothen/radpilot/tree/main/scripts
 
-In addition, you may want to plot the realized number of loci and coverage for your test libraries. For this we collated a csv file with metadata and metrics about the sequenced test libraries. The file is called ```coverage_stats.csv``` and located in the ```data/test_libraries``` folder. It contains the library number (lib), the  species or family (species), specimen ID (ind), the obtained coverage when using Stacks parameter M=1 (cov_M_1), the optimal M parameter according to a parameter optimization test (opt_M), the coverage obtained with that M (cov_opt_M), the target coverage as estimated *in silico* (target_cov), the target number of loci as estimated *in silico* (target_loci), the obtained number of loci (n_loci), the number of used forward reads (n_used_fw_reads), the mean coverage (mean_cov), and a weighted mean coverage (mean_cov_ns). The latter values (n_loci, n_usef_fw_reads, mean_cov, mean_cov_ns) were retrieved from the output files of the gstacks module of [**Stacks**](https://catchenlab.life.illinois.edu/stacks/). You could create a similar file for with your own data.
+## Part 5: Estimate marker density
 
-The script ```05_plot_coverage.R``` contains code to load this metadata file and create a plot as shown in Fig. 3 of Christiansen et al. 2021. The script is also in the ```scripts``` folder:
+In order to assess how large a portion of a given genome you are able to scan with a selected RRS setup you may want to assess marker density, i.e. the number of fragments/markers/SNPs that you are able to genotype in relation to the genome size. The function ```marker_density()``` which is included in the source script ```recto_REs_and_functions.R``` can estimate some useful parameters given a genome size, number of fragments, and information about the sequencing setup.
+
+Start by loading these R packages (or install them first, if you don't have them installed) and the source script:
+
+```
+library(here)
+library(scales)
+library(tidyverse)
+source(here("scripts/recto_REs_and_functions.R"))
+```
+
+Now, let us first define some constant variables. You can change these values, depending on what you plan to sequence on what kind of sequencing output you expect. Here, are the values we used:
+
+```
+reads_hiseq4000 <- 300000000 # conservative estimate
+reads_hiseq2500 <- 200000000 # conservative estimate
+reads_novaseq <- 1800000000 # adjust this depending on what exactly you plan to sequence on!
+ind_per_lib <- 96 # adjust this depending on how many individuals you plan to pool per library!
+read_length_hiseq4000 <- 150
+read_length_hiseq2500 <- 125
+read_length_novaseq <- 100 # adjust this depending on what exactly you plan to sequence on!
+```
+
+Next, we can use the ```marker_density``` function by supplying:
+
+* the number of fragments you expect (e.g. as simulated in silico) or observed (as found through test sequencing libraries)
+* the genome size of the target species (based on available information and/or a best guess)
+* the sequencing platform (based on what we defined above either "HiSeq2500", "HiSeq4000", or "NovaSeq")
+* whether you plan to do/did paired end sequencing or not
+* what fraction of SNPs per base pair you expect (e.g. 1 SNP every 100 bp = 0.01)
+
+A simple execution could look like this:
+
+```
+marker_density(fragment = 50000, genome_size = 1500000000, sequencer = "HiSeq2500", paired_end = T, 0.01)
+```
+
+The results should be pretty self-explanatory. You could go further and collect more such estimates, collect them in a dataframe (e.g. with ```rbind()```), and save the results (e.g. with ```write.csv()```). The script ```05_marker_density.R``` contains longer code to apply this function on the target taxa from Christiansen et al. 2021. The marker density results reported in Table 4 were estimated in this way. The entire output from that script is available in the file ```marker_density_results.csv``` in the ```data``` folder. The script is available in the ```scripts``` folder:
+https://github.com/notothen/radpilot/tree/main/scripts
+
+## Part 6: Plot estimated and realized numbers of loci and coverage
+
+Finally, you may want to plot the realized number of loci and coverage for your test libraries. For this we collated a csv file with metadata and metrics about the sequenced test libraries. The file is called ```coverage_stats.csv``` and located in the ```data/test_libraries``` folder. It contains the library number (lib), the  species or family (species), specimen ID (ind), the obtained coverage when using Stacks parameter M=1 (cov_M_1), the optimal M parameter according to a parameter optimization test (opt_M), the coverage obtained with that M (cov_opt_M), the target coverage as estimated *in silico* (target_cov), the target number of loci as estimated *in silico* (target_loci), the obtained number of loci (n_loci), the number of used forward reads (n_used_fw_reads), the mean coverage (mean_cov), and a weighted mean coverage (mean_cov_ns). The latter values (n_loci, n_used_fw_reads, mean_cov, mean_cov_ns) were retrieved from the output files (gstacks.log.distribs) of the gstacks module of [**Stacks**](https://catchenlab.life.illinois.edu/stacks/). For consistency, these files (gstacks.logs.distribs) are included for each sequencing library in the repository under ```data/test_libraries``` but they are not actually needed to reproduce our results (as everything is collated in the ```coverage_stats.csv``` file. You could create a similar file with your own data.
+
+The script ```06_plot_coverage.R``` contains code to load this metadata file and create a plot as shown in Fig. 2 of Christiansen et al. 2021. The script is also in the ```scripts``` folder:
 https://github.com/notothen/radpilot/tree/main/scripts
 
 ## Conclusion
