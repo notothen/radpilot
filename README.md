@@ -67,7 +67,7 @@ GC(s2c(refgenome1))
 Alternatively, you can simulate a genome, like so:
 
 ```
-simgenome1 <- sim.DNAseq(size=500000000, GCfreq=0.5)
+simgenome1 <- sim.DNAseq(size = 250000000, GCfreq = 0.5)
 GC(s2c(simgenome1))
 
 genome_size <- 1000000000 # genome size: 1000 Mb
@@ -75,7 +75,7 @@ ratio_simgenome1 <- genome_size/width(simgenome1)
 ratio_simgenome1
 ```
 
-We have now simulated a 1,000 Mb genome with 50 % GC content. In fact, we only simulated a 500 Mb genome to make it less computationally intensive. The results will be extrapolated to a 1,000 Mb genome using the ```ratio_simgenome1``` value. You can adjust this in different ways, depending on the computational power of your system.
+We have now simulated a 1,000 Mb genome with 50 % GC content. In fact, we only simulated a 250 Mb genome to make it less computationally intensive. The results will be extrapolated to a 1,000 Mb genome using the ```ratio_simgenome1``` value. You can adjust this in different ways, depending on the computational power of your system.
 
 In order to conduct *in silico* digestions with these two genomes using the restrictions enzymes and size windows as in Christiansen et al. 2021 all you need to do is run:
 
