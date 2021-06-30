@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/331342737.svg)](https://zenodo.org/badge/latestdoi/331342737)
+
 # RRS pilot experiment calculations
 
 #### By Henrik Christiansen, last update on 30/06/2021
