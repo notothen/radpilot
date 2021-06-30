@@ -1,7 +1,7 @@
 ---
 title: "LOG & EXTENDED README"
 author: "Henrik Christiansen"
-date: "June 29, 2021"
+date: "June 30, 2021"
 output:
   pdf_document: default
   html_document: default
@@ -18,6 +18,8 @@ RADseq optimization pilot experiment with several Antarctic species.
 Contact: <henrik.christiansen@kuleuven.be>
 
 ## Log:
+
+30/06/2021: updated readme
 
 29/06/2021: added coverage calculation in script 05_marker_density.R
 
@@ -103,7 +105,7 @@ Contact: <henrik.christiansen@kuleuven.be>
 
 Various reference genomes from target species, or related species in fasta format under:
 
-* ../refgenomes
+* ../refgenomes (note: these are not included in the online version on github and zenodo as they are too big; if you want to replicate these analyses you need to download the refgenomes from genbank)
 
 Output files from the Agilent Bioanalyzer Software in XML format under:
 
@@ -115,9 +117,9 @@ CSV file with all metadata related to the Bioanalyzer runs, created manually:
 
 CSV/TSV files in data/test_libraries with data from 5 test libraries:
 
-* coverage_stats.csv: number of loci and coverage for each library under different M values as reported in gstacks.log.distribs files
+* coverage_stats.csv: number of loci and coverage for each library under different M values as reported in gstacks.log.distribs files (note: the original gstacks.log.distribgs files are included as well, but actually not needed as long as you have this summary csv file)
 
-* density_stats.csv: additional statistics for each library as reported in populations.log files
+* density_stats.csv: additional statistics for each library as reported in populations.log files (note: the original populations.log files are included as well, but actually not needed as long as you have this summary csv file)
 
 * various n_snps_per_locus.tsv: files for each library/species and different r/M values with information about the loci and SNPs
 
@@ -150,6 +152,10 @@ To be run sequentially, all listed under /scripts.
 In /data/in_silico_results:
 
 * various tables.csv containing in silico digest results per target taxa
+
+In /data:
+
+* marker_density_results.csv containing the output from the 05_marker_density.R script
 
 In /figures:
 
