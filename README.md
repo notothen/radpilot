@@ -150,7 +150,31 @@ If you have results from a Bioanalyzer run make sure to export these as XML file
 run1 <- read.bioanalyzer(here("data/bioanalyzer_results/run01_2017-12-01_09-25-08.xml"))
 ```
 
-If you want to plot the concentration over fragment size in a similar fashion as presented in Christiansen et al. 2021, then you could do so like this:
+The default names in the Bioanalyzer output are not very meaningful. You can replace them, for example like this, with the help of some manually curated metadata and a small helper function to extract the correct names:
+
+```
+## read in metadata from the runs
+samples <- read.csv(here("data/bioanalyzer_results/run_overview.csv"))
+samples <- as_tibble(samples)
+
+## function to extract sample names per run
+run_sample_names <-  function(samples, run_nr) {
+  run_names <- samples %>%
+    filter(run == run_nr) %>% 
+    select(species, enzyme, replicate) %>%
+    transmute(sample_names = str_c(species, enzyme, replicate, sep = "_"))
+  return(deframe(run_names))
+}
+
+library(plyr)
+default_names <- c("sample 1", "sample 2", "sample 3", "sample 4", "sample 5", "sample 6",
+                   "sample 7", "sample 8", "sample 9", "sample 10", "sample 11")
+run1$samples$sample.name <- mapvalues(run1$samples$sample.name, from = default_names, to = run_sample_names(samples, 1))
+detach(package:plyr) # conflicts with package:here
+rm(default_names)
+```
+
+If you then want to plot the concentration over fragment size in a similar fashion as presented in Christiansen et al. 2021, you could do so like this:
 
 ```
 recto_qplot_2(run1, 0, 50)
